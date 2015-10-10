@@ -106,8 +106,8 @@ function charmeem_colors( $wp_customize ) {
 	//var_dump(get_background_color());
 	//var_dump($bck);
 	
-	// Adding color picker Setting and Control for Body
-	
+	// Adding color picker Setting and Control for Body only if the theme already does not support this feature
+	if(!current_theme_supports('custom-background')){
 	$wp_customize->add_setting( 'body_color', array(
 		'type' => 'option',
 		'capability' => 'edit_theme_options',
@@ -122,7 +122,7 @@ function charmeem_colors( $wp_customize ) {
 		'section' => 'colors',  // ID of already existing color section.
 		'settings' => 'body_color',
 	) ) );
-	
+	}
 	// Adding color picker Setting and Control for footer
 	$wp_customize->add_setting( 'footer_color', array(
 		'type' => 'option',
@@ -149,9 +149,12 @@ function charmeem_colors( $wp_customize ) {
 		}	
 	}
 	// Some of the themes like twentytwelve implement their custom settings in the customizer panel
-	// Since I prefer my own custom settings to prevail therefore I am removing the theme customization here
-	remove_theme_support('custom-header');
-	remove_theme_support('custom-background');
+	//Since I prefer my own custom settings to prevail therefore I am removing the theme customization here
+	//if(current_theme_supports('custom-header')){
+	//remove_theme_support('custom-header');
+	//}
+	//or
+	//remove_theme_support('custom-background');
 } // end of function	
 
 		
