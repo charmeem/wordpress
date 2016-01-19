@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Plugin Name: Theme Color Picker
+	Plugin Name: Charmeem Color Design
 	Plugin URI: http://www.charmeen.com
 	Description:	*A simple interface to make customize colourful themes.
 					*Designing Themes made easy by utilizing WP built-in 'Customizer' that gives live-preview of any customize
@@ -30,8 +30,10 @@
 	51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-
-if ( ! defined( 'ABSPATH' ) ) {
+/********************************************
+* Security for preventig direct access to files
+*********************************************/
+if ( !defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 /********************************************
@@ -57,7 +59,9 @@ define( 'THEME_COLOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );	// define the 
 /********************************************
 * INCLUDES - keeping it modular
 ********************************************/
-include_once( THEME_COLOR_PLUGIN_PATH . 'functions/color-customizer.php' );	// Adds control settings in customizer menu
+//include_once( THEME_COLOR_PLUGIN_PATH . 'functions/color-customizer.php' );	// Adds control settings in customizer menu
+//include_once( THEME_COLOR_PLUGIN_PATH . 'functions/customizer_classify.php' );	// Adds control settings in customizer menu
+include_once( THEME_COLOR_PLUGIN_PATH . 'functions/customizer_nonclassify.php' );	// Adds control settings in customizer menu
 include_once( THEME_COLOR_PLUGIN_PATH . 'functions/helpers.php' );			// Sanitizing
 //include_once( THEME_COLOR_PLUGIN_PATH . 'functions/header-divider.php' ); // Divides header into 2 parts, title and branding
 ?>

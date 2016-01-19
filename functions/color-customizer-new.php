@@ -20,20 +20,49 @@
 		if ( isset( $colorpicker ) ) {
 			return $colorpicker;
 		}
-		
+		add_action( 'customize_controls_enqueue_scripts', array(&$this, 'charmeem_customize_control_js' ), 99);
+		add_action( 'customize_preview_init', array( &$this, 'charmeem_preview_js' ), 99 );
 		add_action( 'after_setup_theme', array( &$this, 'check_theme' ), 99);
 		add_action( 'customize_register', array( &$this, 'customizer_setup' ), 99);
 		add_action( 'wp_head', array( &$this, 'process_styles' ), 99 );
-		add_action( 'customize_preview_init', array( &$this, 'color_picker_preview_js' ), 99 );
-		//add_action( 'customize_controls_enqueue_scripts', array(&this, 'colorpicker_customize_control_js' ), 99);
+	
 	}
+	
+	/**
+	* Binds JS listener to make Customizer color_scheme control.
+	*
+	* Passes color scheme data as colorScheme global.
+	*
+	* @since Twenty Fifteen 1.0
+	*/
+	
+	function charmeem_customize_control_js() {
+	wp_enqueue_script( 'color-scheme-control', plugins_url('charmeem-plugins/js/color-scheme-control.js'), array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20141216', true );
+	//wp_localize_script( 'color-scheme-control', 'colorScheme', get_settings() );
+	//wp_localize_script is used to transfer data from php file into javascript file.
+	// here colorScheme is new object created while its parametres are fetched from twentyfifteen-get_color_schemes
+	}
+
+	
+	/**
+	* Binds JS handlers to make the Customizer preview reload changes asynchronously.
+	*
+	* @since 
+	*/
+	
+	function charmeem_preview_js() {
+	wp_enqueue_script( 'color_picker_preview_js', plugins_url('charmeem-plugins/js/customize-preview.js'), array( 'customize-preview' ), '20141216', true );
+	}
+	
+	
 	
 	/**
 	 * Check current theme and include theme style file if it exists
 	 *
 	 * @param type $theme_name
 	 */
-	function check_theme() {
+	 
+	 function check_theme() {
 
 		$current_theme = wp_get_theme();
 
@@ -58,14 +87,19 @@
 	 * @param type $
 	 */
  
-	
 	function customizer_setup( $wp_customize ) {
 	
-	$settings = $this->get_settings(); // A function defined at the end.
+	$settings = $this->get_settings(); // A function defined at the end that fetches the settings of the current theme
+	                                   // from respective file in theme-styles directory
 	
-		if ( $settings ) {
+	// Testing new array member'themeStyle in twenty-twelve.php
+	//$colors = $settings['themeStyle'];
+	//var_dump($colors);
+	
 
-			// include custom controls
+	if ( $settings ) {
+
+			// include custom controls if any
 			include_once( 'custom-controls.php' );
 
 			$priority = 1;
@@ -76,7 +110,14 @@
 				// does the color control already exist (through background and header colour customization?
 				// if not then create the control - else reuse the existing one
 
-				// loop through colours and output controls
+				/**
+				 * loop through colour keys defined in respective theme file
+				 * Following generic key names are selected
+				 * link 
+				 * menu
+				 * post	
+				 */
+				 
 				foreach( $settings[ 'colors' ] as $color_key => $color ) {
 			//var_dump($color_key);
 					$key = 'colorpicker_color_' . $color_key;
@@ -104,6 +145,24 @@
 					$priority ++;
 
 				}
+				
+	// Adding Background color Setting and Control if the theme does not support this feature by default
+	if(!current_theme_supports('custom-background')){
+	$wp_customize->add_setting( 'background_color', array(
+		'type' => 'option',
+		'capability' => 'edit_theme_options',
+		'default' => '#e2ad00', // setting default title color to black
+		'transport' => 'postMessage', // change to postMessage if using js
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+	) );
+	
+	$wp_customize->add_control( new WP_customize_Color_Control( $wp_customize, 'body_color', array(
+		'label' => 'Background Color',
+		'section' => 'colors',  // ID of already existing color section.
+		'settings' => 'background_color',
+	) ) );
+	}
 			}
 		}
 	} // end of function	
@@ -112,6 +171,7 @@
 	/**
 	 * output the css styles for the current theme
 	 */
+	 
 	function process_styles() {
 
 		$settings = $this->get_settings();// A function defined below to fetch the theme settings 
@@ -141,7 +201,7 @@
 			}
 
 		}
-		// getting css style from theme style file
+
 		if ( ! empty( $settings[ 'css' ] ) ) {
 			$this->output_css( $settings[ 'css' ] );
 		}
@@ -156,7 +216,7 @@
 	 */
 	 
 	 	function process_colors( $colorpicker, $color1, $color2 = null ) {
-		
+		//var_dump($color1);
 		// Creating object of Class CSS_Color defined in file csscolor.php
 		// Beauty of this class is that when given a background color and a foreground 
 		// it modifies the foreground color so it will have enough contrast
@@ -200,6 +260,7 @@
 	}
 	
 	
+	
 	/**
 	 * print css to the head
 	 *
@@ -210,7 +271,7 @@
 		$css = trim( $css );
 		$start_css = $css;
 
-		// replace colors in the css template
+		// replace colours in the css template
 		foreach( $this->colors as $key => $color ) {
 		//var_dump($key);
 			$css = str_replace( '{{color-' . $key . '}}', colorpicker_sanitize_hex_color( $color ), $css );
@@ -222,35 +283,19 @@
 		if ( $start_css != $css ) {
 		
 		?>	
-	<script type="text/html" id="tmpl-twentyfifteen-color-scheme">
-		<?php echo twentyfifteen_get_color_scheme_css( $colors ); ?>
-		//console.log(colors);
-	</script>
-	<?php
-			echo '<!-- Colorpicker styles -->' . "\r\n";
-			echo '<style>' . stripslashes( wp_filter_nohtml_kses( $css ) ) . '</style>';
+		<script type="text/html" id="tmpl-charmeem-color-scheme">
+		<?php echo $css; ?>
+		//console.log($css);
+		</script>
+		<?php
+			//echo '<!-- Colorpicker styles -->' . "\r\n";
+			//echo '<style>' . stripslashes( wp_filter_nohtml_kses( $css ) ) . '</style>';
 		}
 
 	}
 	
 	
-	/**
-	 * EnQueueing JS file for live previewing
-	 *
-	 * This js file is needed when we change transport = postMessage to have fast preview in customizer
-	 *
-	 * @param type $
-	 */
-	
-	// Already added action hook above	
-	function color_picker_preview_js($wp_customize) {
-    // As per document	https://codex.wordpress.org/Theme_Customization_API  is_admin check should not be used in customizer
-		//if ( $wp_customize->is_preview() && ! is_admin() ){
-		if ( $wp_customize->is_preview()) {
-			wp_enqueue_script('color-customizer-js', plugins_url('charmeem-plugins/js/color-picker-preview.js'), array('customize-preview'), '1.0.0', true );
-		}	
-	}
-	
+		
 	
 	/**
 	 * get settings for the current theme from the file in theme-styles directory

@@ -141,7 +141,7 @@ function charmeem_colors( $wp_customize ) {
 
 	// EnQueueing JS file for live previewing 
 	// This js file is needed when we change transport = postMessage above to have fast preview in customizer
-	if ( $wp_customize->is_preview() && ! is_admin() ){
+	if ( $wp_customize->is_preview() ){
 	//add_action( 'wp_footer', 'color_picker_preview_js', 20);
 	add_action( 'customize_preview_init', 'color_picker_preview_js' );
 	function color_picker_preview_js() {
