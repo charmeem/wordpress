@@ -2,47 +2,43 @@
 /**
  * Add a listener to the Color Scheme control to update other color controls to new values/defaults.
  * Also trigger an update of the Color Scheme CSS when a color is changed.
+ *
  */
 
+ 
 ( function( api ) {
-	var cssTemplate = wp.template( 'charmeem-color-scheme' ),
-		colorSchemeKeys = [
+	var cssTemplate = wp.template( 'mm-cm-color-scheme' ),
+		colorSchemeKeys = colorSample,
+		/*
+		    6colors in colorscheme control element in customizer panel
+			'inner_background',
+			'outer_background',
 			'box_background',
-			'menu',
-			'post'
-		],
-		colorSettings = [
-			'box_background',
-			'menu',
-			'post'
-		];
+			'text',
+			'header_textcolor',
+			'sidebar'
+		*/
+		colorSettings = colorSetting;
+		/*
+		 *    other control elements in the customizer panel based on selected theme
+		 */
         
 	api.controlConstructor.select = api.Control.extend( {   
-	// select points to control type defined for this control in customizer.php file @mmm
-	//extends , extends Control of customize by overriding ready function in initializer	@mmm
+	// This function triggers only when color scheme changes from front panel
+	//It update/set the control elements to the new / changed values
+	//extends Control of customize by overriding ready function in initializer
+	
 	ready: function() {
-			if ( 'color_scheme' === this.id ) {// this function triggers only when color scheme changes from front panel
+			if ( 'color_scheme' === this.id ) {
 				this.setting.bind( 'change', function( value ) {
-					// Update Background Color.
-					api( 'box_background' ).set( colorScheme[value].colors[0] );
-					// here colorScheme is new object created by wp_localize_script function
-					// in file customizer_nonclassify.php, see the comments there..
-					
-					api.control( 'box_background' ).container.find( '.color-picker-hex' )
-						.data( 'data-default-color', colorScheme[value].colors[0] )
-						.wpColorPicker( 'defaultColor', colorScheme[value].colors[0] );
-
-					// Update Header/Sidebar Background Color.
-					api( 'menu' ).set( colorScheme[value].colors[1] );
-					api.control( 'menu' ).container.find( '.color-picker-hex' )
-						.data( 'data-default-color', colorScheme[value].colors[1] )
-						.wpColorPicker( 'defaultColor', colorScheme[value].colors[1] );
-
-					// Update Header/Sidebar Text Color.
-					//api( 'post' ).set( colorScheme[value].colors[4] );
-					api.control( 'post' ).container.find( '.color-picker-hex' )
-						.data( 'data-default-color', colorScheme[value].colors[4] )
-						.wpColorPicker( 'defaultColor', colorScheme[value].colors[4] );
+				// here colorSetting and colorScheme is new object created by wp_localize_script function
+				// in file customizer_nonclassify.php, see the comments there..
+				for ( var i =0; i < colorSetting.length; i++ ) {
+					api( colorSetting[i] ).set( colorScheme[value].colors[i] );
+					api.control( colorSetting[i] ).container.find( '.color-picker-hex' )
+						.data( 'data-default-color', colorScheme[value].colors[i] )
+						.wpColorPicker( 'defaultColor', colorScheme[value].colors[i] );
+					}
 				} );
 			}
 		}
