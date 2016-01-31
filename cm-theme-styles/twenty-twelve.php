@@ -48,7 +48,7 @@ add_theme_support( 'colorizer', array(
 ) );
 					
 function mm_cm_get_color_scheme_css( $colors ) {
-//if(!isset($colors['text'])){
+
 	$css = <<<CSS
 	/* Color Scheme */
 	
@@ -63,18 +63,14 @@ function mm_cm_get_color_scheme_css( $colors ) {
 	
 	.post {
 		background: {$colors['box_background']};
-		
 		color: {$colors['text']};
-		
-			
 	}
 	.nav-menu {
-		background: {$colors['header_textcolor']};
-		
+		background: {$colors['sidebar']};
 	}
 	.nav-menu li a{
 		color: {$colors['sidebar']};
-		}
+	}
 		
 	aa {
 		color: {$colors['box_background']};
@@ -88,9 +84,9 @@ function mm_cm_get_color_scheme_css( $colors ) {
 	
 	 
 CSS;
-    //var_dump($css);
+    
 	return $css;
-//	}
+
 }
 
 

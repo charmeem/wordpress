@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Default
+ * Theme: graphy
  * 
  */
 
@@ -51,7 +51,6 @@ add_theme_support( 'colorizer', array(
 ) );
 					
 function mm_cm_get_color_scheme_css( $colors ) {
-//if ( !isset ( $colors [ 'graphy_link_color' ] ) ) {
 
 	$css = <<<CSS
 	/* Color Scheme */

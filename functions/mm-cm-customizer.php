@@ -59,8 +59,7 @@ function mm_cm_customizer_setup( $wp_customize ) {
 		$theme_name = $current_theme->get( 'Name' );
 		$theme_name = strtolower( $theme_name );
 		$theme_name = str_replace( ' ', '-', $theme_name );//replace space in theme name with '-'
-		//var_dump($theme_name);
-
+		
 		if ( $theme_name !== 'customizr')
 			// Adaptation for Theme 'customizr' which has its own customize function  in a separate theme file
 	
@@ -104,8 +103,7 @@ function mm_cm_customizer_setup( $wp_customize ) {
 			if ( ! empty( $settings[ 'colors' ] ) ) {
 
 			foreach( $settings[ 'colors' ] as $key => $color ) {
-			
-			//var_dump($key);		
+					
 					$wp_customize->add_setting( $key, array(
 						'default' => $color[ 'default' ],
 						'capability' => 'edit_theme_options',
@@ -129,23 +127,6 @@ function mm_cm_customizer_setup( $wp_customize ) {
 
 				}
 	
-	/* Adding Background color Setting and Control if the theme does not support this feature by default
-	if(!current_theme_supports('custom-background')){
-	$wp_customize->add_setting( 'background_color', array(
-		'type' => 'option',
-		'capability' => 'edit_theme_options',
-		'default' => '#e2ad00', // setting default title color to black
-		'transport' => 'postMessage', // change to postMessage if using js
-		'sanitize_callback' => '',
-		'sanitize_js_callback' => '',
-	) );
-	
-	$wp_customize->add_control( new WP_customize_Color_Control( $wp_customize, 'body_color', array(
-		'label' => 'Background Color',
-		'section' => 'colors',  // ID of already existing color section.
-		'settings' => 'background_color',
-	) ) );
-	} */
 			}
 		 }
 	 	
@@ -331,15 +312,8 @@ global $cm_color_sample;
 	$color_scheme = mm_cm_get_color_scheme();
 	$colors = array_combine($cm_color_sample,$color_scheme); // Combines two index arrays to form one associative array.
 	
-	// Convert main and sidebar text hex color to rgba.
-	//$color_textcolor_rgb         = mm_cm_hex2rgb( $color_scheme[3] );
-	//$color_sidebar_textcolor_rgb = mm_cm_hex2rgb( $color_scheme[4] );
-	
-	//var_dump($colors);	
 	$color_scheme_css = mm_cm_get_color_scheme_css( $colors );
 	
-	// Load theme's style and link it to the 'wp_add_inline_style' function
-	// Without this line the change in the plugin is overriden by the current theme style
 	wp_enqueue_style( 'mm_cm-style', get_stylesheet_uri() );
 	
 	//Adding extra CSS on top of default CSS of the current theme.
@@ -347,8 +321,6 @@ global $cm_color_sample;
 	
 }
 add_action( 'wp_enqueue_scripts', 'mm_cm_color_scheme_css', 999 );
-	// important! 999 is low priority that makes sure
-     // that our plugin css is loaded after theme default CSS is loaded
 	
 /**
  * Enqueues front-end CSS for other control elements UI.
@@ -390,18 +362,11 @@ add_action( 'wp_enqueue_scripts', 'mm_cm_other_controls_css', 9999 );
  * @since Colorizer 1.0
  */
 function mm_cm_customize_control_js() {
-	// Following paths does not work. hence js file does not embed into the script and not shown in F12 debugger
-	//	wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/js/cm-color-scheme-control.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20141216', true );
-	// wp_enqueue_script( 'color-scheme-control', plugin_dir_path(__FILE__) . '/js/cm-color-scheme-control.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20141216', true );
-	
-	// This one works...
-	
+	global $cm_color_setting, $cm_color_sample ;
+		
 	//taking values of 6 colors in color_scheme control element from theme file to be used in 'cm-color-scheme-control.js'
 	wp_enqueue_script( 'color-scheme-control', plugins_url('../js/cm-color-scheme-control.js', __FILE__), array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20141216', true);
 	wp_localize_script( 'color-scheme-control', 'colorScheme',  mm_cm_get_color_schemes() );
-	
-	//taking names of  other control panel elements from theme file to be used in 'cm-color-scheme-control.js'
-	global $cm_color_setting, $cm_color_sample ;
 	
 	wp_localize_script( 'color-scheme-control', 'colorSetting',  $cm_color_setting );
 	wp_localize_script( 'color-scheme-control', 'colorSample',  $cm_color_sample );
@@ -423,8 +388,6 @@ function mm_cm_customize_preview_js() {
 	}
 add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
 
-
-
 /**
  * get name of setting/controls to be used in customizer UI from the file in theme-styles directory
  * @uses get_theme_support()  Fetches color element from array defined by add_theme_support in respective theme file
@@ -435,9 +398,7 @@ add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
 		$settings = get_theme_support( 'colorizer' );
 		if ( isset( $settings[0] ) ) {
 			$settings = $settings[0];
-		
 		}
-		
 		// check request for key
 		if ( null !== $key ) {
 		
@@ -447,12 +408,8 @@ add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
 				return false;
 			}
 		}
-
 		return $settings;
-
 	}
-
-	
 	
 /**
  * Output an Underscore template for generating CSS for the color scheme.
@@ -467,26 +424,15 @@ function mm_cm_color_scheme_css_template() {
 	$settings =  get_setting();
 	$colors = $settings['template']; // I have customized the theme style by moving the templete array into
 									// respective theme file , e.g. in twenty-twelve.php
-	
-	
-/**
- * This script is called from js file 'color-scheme-control' through a template function wp.template
- * this template function is assigned to a variable cssTemplate with parameter 'mm_cm-color-scheme'
- * that points to this script id.
- * Now that variable which is actualy a function carries data from js in a parametr 'colors' into php file
- * This 'colors' parameter contains data through _.object function which when rendered here will replace
- * the {{ data. }} values of $colors array above with the values imported into js through wp_localize_script function above
- * so it is a type of back and forth data exchage between php and js scripts
- */
+
 	?>
-	<script type="text/html" id="tmpl-mm-cm-color-scheme">
+	<script type="text/html" id="tmpl-mm-cm-color-scheme"> // See wp.template function in JS file 'cm-color-scheme-control'
 		<?php echo  mm_cm_get_color_scheme_css( $colors ); ?>
 	</script>
 		
 	<?php
-	//var_dump($colors);
+	
 }
 add_action( 'customize_controls_print_footer_scripts', 'mm_cm_color_scheme_css_template' );
-// This is a action hook defined in wp-admin/customize.php
 
 	
