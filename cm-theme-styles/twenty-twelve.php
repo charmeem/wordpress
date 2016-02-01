@@ -51,8 +51,7 @@ function mm_cm_get_color_scheme_css( $colors ) {
 
 	$css = <<<CSS
 	/* Color Scheme */
-	
-	
+		
 	body.custom-background {
 		background: {$colors['outer_background']};
 		}
@@ -66,7 +65,7 @@ function mm_cm_get_color_scheme_css( $colors ) {
 		color: {$colors['text']};
 	}
 	.nav-menu {
-		background: {$colors['sidebar']};
+		background: {$colors['text']};
 	}
 	.nav-menu li a{
 		color: {$colors['sidebar']};
@@ -82,9 +81,8 @@ function mm_cm_get_color_scheme_css( $colors ) {
 		color: {$colors['outer_background']};
 	}
 	
-	 
 CSS;
-    
+   
 	return $css;
 
 }

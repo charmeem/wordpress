@@ -20,7 +20,7 @@ global $cm_color_setting;
 					'inner_background',
 					'outer_background',
 					'box_background',
-					'header_textcolor', //this control is already included in the theme by default
+					'header_textcolor', 
 					);
 
 add_theme_support( 'colorizer', array( 

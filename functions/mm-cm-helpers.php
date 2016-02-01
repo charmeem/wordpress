@@ -32,7 +32,7 @@ function colorizer_sanitize_hex_color( $color ) {
  * @param string $color The original color, in 3- or 6-digit hexadecimal form.
  * @return array Array containing RGB (red, green, and blue) values for the given
  *               HEX code, empty array otherwise.
- */
+ /*
 function mm_cm_hex2rgb( $color ) {
 	$color = trim( $color, '#' );
 
@@ -50,3 +50,4 @@ function mm_cm_hex2rgb( $color ) {
 
 	return array( 'red' => $r, 'green' => $g, 'blue' => $b );
 }
+*/

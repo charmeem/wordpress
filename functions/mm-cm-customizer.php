@@ -103,12 +103,12 @@ function mm_cm_customizer_setup( $wp_customize ) {
 			if ( ! empty( $settings[ 'colors' ] ) ) {
 
 			foreach( $settings[ 'colors' ] as $key => $color ) {
-					
-					$wp_customize->add_setting( $key, array(
-						'default' => $color[ 'default' ],
-						'capability' => 'edit_theme_options',
-						'transport' => 'postMessage', // change to postMessage if using js
-						'sanitize_callback' => 'colorizer_sanitize_hex_color', // function defined in helper.php file
+			
+				$wp_customize->add_setting( $key, array(
+					'default' => $color[ 'default' ],
+					'capability' => 'edit_theme_options',
+					'transport' => 'postMessage', // change to postMessage if using js
+					'sanitize_callback' => 'colorizer_sanitize_hex_color', // function defined in helper.php file
 					) );
 					$wp_customize->add_control(
 						new WP_Customize_Color_Control(
@@ -362,11 +362,11 @@ add_action( 'wp_enqueue_scripts', 'mm_cm_other_controls_css', 9999 );
  * @since Colorizer 1.0
  */
 function mm_cm_customize_control_js() {
-	global $cm_color_setting, $cm_color_sample ;
-		
-	//taking values of 6 colors in color_scheme control element from theme file to be used in 'cm-color-scheme-control.js'
+	
 	wp_enqueue_script( 'color-scheme-control', plugins_url('../js/cm-color-scheme-control.js', __FILE__), array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20141216', true);
 	wp_localize_script( 'color-scheme-control', 'colorScheme',  mm_cm_get_color_schemes() );
+	
+	global $cm_color_setting, $cm_color_sample ;
 	
 	wp_localize_script( 'color-scheme-control', 'colorSetting',  $cm_color_setting );
 	wp_localize_script( 'color-scheme-control', 'colorSample',  $cm_color_sample );
@@ -388,6 +388,8 @@ function mm_cm_customize_preview_js() {
 	}
 add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
 
+
+
 /**
  * get name of setting/controls to be used in customizer UI from the file in theme-styles directory
  * @uses get_theme_support()  Fetches color element from array defined by add_theme_support in respective theme file
@@ -398,7 +400,9 @@ add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
 		$settings = get_theme_support( 'colorizer' );
 		if ( isset( $settings[0] ) ) {
 			$settings = $settings[0];
+		
 		}
+		
 		// check request for key
 		if ( null !== $key ) {
 		
@@ -408,8 +412,12 @@ add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
 				return false;
 			}
 		}
+
 		return $settings;
+
 	}
+
+	
 	
 /**
  * Output an Underscore template for generating CSS for the color scheme.
@@ -424,9 +432,10 @@ function mm_cm_color_scheme_css_template() {
 	$settings =  get_setting();
 	$colors = $settings['template']; // I have customized the theme style by moving the templete array into
 									// respective theme file , e.g. in twenty-twelve.php
-
+	
+	
 	?>
-	<script type="text/html" id="tmpl-mm-cm-color-scheme"> // See wp.template function in JS file 'cm-color-scheme-control'
+	<script type="text/html" id="tmpl-mm-cm-color-scheme">
 		<?php echo  mm_cm_get_color_scheme_css( $colors ); ?>
 	</script>
 		
@@ -434,5 +443,6 @@ function mm_cm_color_scheme_css_template() {
 	
 }
 add_action( 'customize_controls_print_footer_scripts', 'mm_cm_color_scheme_css_template' );
+// This is a action hook defined in wp-admin/customize.php
 
 	

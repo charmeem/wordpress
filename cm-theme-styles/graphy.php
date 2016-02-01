@@ -83,7 +83,7 @@ function mm_cm_get_color_scheme_css( $colors ) {
 	}
 	 
 CSS;
-    //var_dump($css);
+    
 	return $css;
 		
 }
