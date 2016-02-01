@@ -1,9 +1,6 @@
 # colorizer
-A simple plugin to create customize Color scheme through WordPress Customizer.
-
-#=== colorizer ===
 **Contributors: charmeem
-**Tags**: customizer,plugin, themes, colors
+**Tags: customizer,plugin, themes, colors
 Donate link: 
 Requires at least: 4.2
 Tested up to: 4.4
