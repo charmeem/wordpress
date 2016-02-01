@@ -4,10 +4,15 @@
 **Tags:** customizer,plugin, themes, colors
 
 **Donate link:** 
+
 **Requires at least:** 4.2
-**Tested up to: 4.4
+
+**Tested up to:** 4.4
+
 **Stable tag:** 1.0
+
 **License:** GPLv2 or later
+
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 A simple plugin to create customize Color scheme through WordPress Customizer.
@@ -40,8 +45,7 @@ For configuration instructions please visit the [site to come]
 
 ## Changelog ##
 
-### 1.0. ###
-
+##### 1.0. #####
 January 31, 2016
 
 * Initial version
