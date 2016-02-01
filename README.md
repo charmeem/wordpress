@@ -39,9 +39,12 @@ Search for "colorizer" and install it.
 Once you install it, activate it.
 For configuration instructions please visit the [site to come]
 
+## Frequently Asked questions ##
 
-## Sample Theme ##
 
+## Screenshots ##
+
+## Upgrade Notice ##
 
 ## Changelog ##
 
