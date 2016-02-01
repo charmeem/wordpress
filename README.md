@@ -40,12 +40,12 @@ Once you install it, activate it.
 For configuration instructions please visit the [site to come]
 
 ## Frequently Asked questions ##
-
+So far none.
 
 ## Screenshots ##
-
+The samples of the plugin is included in the same path.
 ## Upgrade Notice ##
-
+New update plan will follow soon
 ## Changelog ##
 
 ##### 1.0. #####
