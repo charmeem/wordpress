@@ -8,17 +8,18 @@
  
 ( function( api ) {
 	var cssTemplate = wp.template( 'mm-cm-color-scheme' );
+	// wp.template corresponds to _.template underscore java function
+	// Read _.template underscore JS function for more details 
 		        
 	api.controlConstructor.select = api.Control.extend( {   
-	// This function triggers only when color scheme changes from front panel
-	//It update/set the control elements to the new / changed values
-	//extends Control of customize by overriding ready function in initializer
 	
 	ready: function() {
 			if ( 'color_scheme' === this.id ) {
 				this.setting.bind( 'change', function( value ) {
+				
 				// Here colorSetting and colorScheme are new objects created by wp_localize_script function
 				// in file 'mm-cm-customizer.php'.
+				
 				for ( var i =0; i < colorSetting.length; i++ ) {
 					api( colorSetting[i] ).set( colorScheme[value].colors[i] );
 					api.control( colorSetting[i] ).container.find( '.color-picker-hex' )
@@ -33,16 +34,19 @@
 	// Generate  CSS for current Color Scheme.Base color
 	function updateCSS() {
 		
-		var scheme = api( 'color_scheme' )(), css,
+		var scheme = api( 'color_scheme' )(), css;
 			colors = _.object( colorSample, colorScheme[ scheme ].colors );
+			// This _object underscore function converts 2 arrays 'colorSample' and 'colorScheme' into one object.
+			// this object will be used as an argument in js template variable below.
 				
 		_.each( colorSetting, function( setting ) {
 			colors[ setting ] = api( setting )();
-			//console.log(colors);
+			
 		});
 
 		css = cssTemplate( colors );
-
+		// colors is an object from above that is passed as an argument to this template variable
+		
 		api.previewer.send( 'update-color-scheme-css', css );
 	}
 
