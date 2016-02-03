@@ -37,13 +37,12 @@ Modular Design approach helps developer to add more themes with minumum effort.
 From your dashboard go to Plugins => Add New.
 Search for "colorizer" and install it.
 Once you install it, activate it.
-For configuration instructions please visit the [site to come]
 
 ## Frequently Asked questions ##
 So far none.
 
 ## Screenshots ##
-The samples of the plugin is included in the same path.
+The Screenshots can be found @ https://github.com/charmeem/colorizer
 ## Upgrade Notice ##
 New update plan will follow soon
 ## Changelog ##

@@ -11,7 +11,7 @@ License: GPLv2 or later.
 */
 
 /*	
-Copyright 2016  Mubashir Mufti  (email : mmufti@charmeem.com)
+Copyright 2016  Mubashir Mufti  (email : mmufti@hotmail.com)
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2,
 as published by the Free Software Foundation.
