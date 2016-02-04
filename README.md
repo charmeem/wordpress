@@ -1,10 +1,16 @@
 # colorizer #
 **Contributors:** charmeem
+
 **Tags:** customizer,plugin, themes, colors
+
 **Donate link:** 
+
 **Requires at least:** 4.2
+
 **Tested up to:** 4.4
-**Stable tag:** 1.0
+
+**Stable tag:** 1.1
+
 **License:** GPLv2 or later
 
 
@@ -45,9 +51,11 @@ New update plan will follow soon
 
 ##### 1.0. #####
 January 31, 2016
+
 * Initial version
 
 ##### 1.1 #####
 Feb. 04, 2016
+
 * Support added for Twenty thirteen and Twenty Fourteen themes
 
