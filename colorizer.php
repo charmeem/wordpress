@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: Colorizer
-Plugin URI: http://www.charmeen.com/wordpress-plugin/colorizer
+Plugin URI: http://www.charmeem.com/colorizer
 Description: Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve and Graphy and more to come.
-Version: 1.0
+Version: 1.1
 Author: Mubashir Mufti
 Author URI: http://www.charmeem.com
 License: GPLv2 or later. 
@@ -52,14 +52,10 @@ if ( !is_admin() ) 													//If we’re not in the admin, load any translat
 $plugin_version = '1.0';											// for use on admin pages
 $plugin_file = plugin_basename(__FILE__);							// plugin file for reference
 define( 'THEME_COLOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );	// define the absolute plugin path for includes
-//$theme_color_options = get_option('theme_color_settings');			// retrieve our plugin settings from the options table
 
 /********************************************
 * INCLUDES - keeping it modular
 ********************************************/
-//include_once( THEME_COLOR_PLUGIN_PATH . 'functions/color-customizer.php' );	// Adds control settings in customizer menu
-//include_once( THEME_COLOR_PLUGIN_PATH . 'functions/customizer_classify.php' );	// Adds control settings in customizer menu
 include_once( THEME_COLOR_PLUGIN_PATH . 'functions/mm-cm-customizer.php' );	// Adds control settings in customizer menu
 include_once( THEME_COLOR_PLUGIN_PATH . 'functions/mm-cm-helpers.php' );			// Sanitizing
-//include_once( THEME_COLOR_PLUGIN_PATH . 'functions/header-divider.php' ); // Divides header into 2 parts, title and branding
 ?>

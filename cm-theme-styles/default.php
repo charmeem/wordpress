@@ -1,6 +1,7 @@
 <?php
 /**
  * Theme: Default
+ * Supports: Twenty-thirteen, Twenty-fourteen
  * 
  */
 
@@ -38,7 +39,7 @@ add_theme_support( 'colorizer', array(
 			'default' => '#2cd6d6',
 		),
 	),
-	'themeStyle' => array(
+	'template' => array(
 		$cm_color_sample[0] => '{{ data.inner_background }}',
 		$cm_color_sample[1] => '{{ data.outer_background}}',
 		$cm_color_sample[2] => '{{ data.box_background }}',
@@ -56,7 +57,7 @@ function mm_cm_get_color_scheme_css( $colors ) {
 	/* Color Scheme */
 	
 	
-	body, body.custom-background {
+	body, body.custom-background,#secondary, .header-main {
 		background: {$colors['outer_background']};
 		}
 		
@@ -64,7 +65,7 @@ function mm_cm_get_color_scheme_css( $colors ) {
 		background: {$colors['inner_background']};
 		}
 	
-	.post {
+	.post, .post-thumbnail {
 		background: {$colors['box_background']};
 		color: {$colors['text']};
 	}
@@ -83,9 +84,11 @@ function mm_cm_get_color_scheme_css( $colors ) {
 	.main-navigation li a:hover{
 		color: {$colors['outer_background']};
 	}
-	 
+	.site-title,.site-description { 
+		color: {$colors['header_textcolor']};
+	}
 CSS;
-    //var_dump($css);
+    
 	return $css;
 	
 }

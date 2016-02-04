@@ -24,7 +24,7 @@
 		$theme_name = strtolower( $theme_name );
 		
 		$theme_name = str_replace( ' ', '-', $theme_name );//replace space in theme name with '-'
-
+		
 		$file = plugin_dir_path( __FILE__ ) . '../cm-theme-styles/' . $theme_name . '.php';
 
 		// if there's no template file for the current theme then load the default
@@ -33,7 +33,7 @@
 		}
 
 		include( $file );
-
+		
 	}
 add_action( 'after_setup_theme', 'mm_cm_check_theme' ); 
  
@@ -49,7 +49,7 @@ add_action( 'after_setup_theme', 'mm_cm_check_theme' );
  * @ uses mm_cm_get_color_scheme()   Get the current color scheme
  * @ uses get_setting()   A function that fetches names of setting/control UI from a separate theme file
  * @ 
- * @since Colorizer 1.0
+ * @since Colorizer 1.1
  *
  * @param WP_Customize_Manager $wp_customize Customizer object.
  */
@@ -60,20 +60,18 @@ function mm_cm_customizer_setup( $wp_customize ) {
 		$theme_name = strtolower( $theme_name );
 		$theme_name = str_replace( ' ', '-', $theme_name );//replace space in theme name with '-'
 		
-		if ( $theme_name !== 'customizr')
+	if ( $theme_name !== 'customizr')
 			// Adaptation for Theme 'customizr' which has its own customize function  in a separate theme file
 	
-	$color_scheme = mm_cm_get_color_scheme();
-	
-	$wp_customize->get_setting( 'blogname' )		 ->transport  = 'postMessage'; // Changing to fast preview
-	$wp_customize->get_setting( 'blogdescription' )  ->transport  = 'postMessage'; //   '''''
 	if ( $theme_name == 'graphy') {
 	$wp_customize->get_setting( 'graphy_link_color' )->transport  = 'postMessage'; // for graphy theme
 	$wp_customize->remove_control( 'graphy_link_hover_color' ); // remove buit in Graphy control UI
 	}
-	$wp_customize->get_section( 'colors' )           ->title      = 'Colorizer'; // Changing name of Section 'colors'
 	
-	$wp_customize->remove_control( 'background_color' ); // Remove the core background control UI
+	$wp_customize->get_setting( 'blogname' )		 ->transport  = 'postMessage'; // Changing to fast preview
+	$wp_customize->get_setting( 'blogdescription' )  ->transport  = 'postMessage'; //   '''''
+	$wp_customize->get_section( 'colors' )           ->title      = 'Colorizer'; // Changing name of Section 'colors' to 'colorizer'
+	$wp_customize->remove_control( 'background_color' ); // Remove the core background control UI from all the themes
 		
 	
 	// Add color scheme setting and control.
@@ -104,6 +102,8 @@ function mm_cm_customizer_setup( $wp_customize ) {
 
 			foreach( $settings[ 'colors' ] as $key => $color ) {
 			
+			
+
 				$wp_customize->add_setting( $key, array(
 					'default' => $color[ 'default' ],
 					'capability' => 'edit_theme_options',
@@ -129,6 +129,14 @@ function mm_cm_customizer_setup( $wp_customize ) {
 	
 			}
 		 }
+	
+		// modifications for default themes
+		 if ( $theme_name == 'twenty-fourteen') {
+			$wp_customize->get_control( 'inner_background' )	->label = 'Post divider color';	//Twenty Fourteen
+				}
+		if ( $theme_name == 'twenty-thirteen') {
+			$wp_customize->remove_control( 'outer_background' );								//Twenty thirteenteen
+				}
 	 	
 	} // end of function	
 	
