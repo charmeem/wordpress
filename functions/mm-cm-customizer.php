@@ -16,28 +16,34 @@
  * @uses wp_get_theme() To fetche information about the active theme
  */
 	 
-	 function mm_cm_check_theme() {
+function mm_cm_check_theme() {
 
-		$current_theme = wp_get_theme();
+	$current_theme = wp_get_theme();
 
-		$theme_name = $current_theme->get( 'Name' );
-		$theme_name = strtolower( $theme_name );
+	$theme_name = $current_theme->get( 'Name' );
+	$theme_name = strtolower( $theme_name );
 		
-		$theme_name = str_replace( ' ', '-', $theme_name );//replace space in theme name with '-'
+	$theme_name = str_replace( ' ', '-', $theme_name );//replace space in theme name with '-'
 		
-		$file = plugin_dir_path( __FILE__ ) . '../cm-theme-styles/' . $theme_name . '.php';
+	return $theme_name;
+}
 
-		// if there's no template file for the current theme then load the default
-		if ( ! file_exists( $file ) ) {
-			$file = plugin_dir_path( __FILE__ ) . '../cm-theme-styles/default.php';
-		}
+add_action( 'after_setup_theme', 'mm_cm_include_file' ); 		
+function mm_cm_include_file() {
+	
+	$cm_theme_name = mm_cm_check_theme();
 
-		include( $file );
+	$file = plugin_dir_path( __FILE__ ) . '../cm-theme-styles/' . $cm_theme_name . '.php';
+	// if there's no template file for the current theme then load the default
+	if ( ! file_exists( $file ) ) {
+		$file = plugin_dir_path( __FILE__ ) . '../cm-theme-styles/default.php';
+	}
+
+	include( $file );
 		
 	}
-add_action( 'after_setup_theme', 'mm_cm_check_theme' ); 
- 
- 
+
+  
 /**
  * Setting UI for the Customizer 
  *
@@ -55,25 +61,16 @@ add_action( 'after_setup_theme', 'mm_cm_check_theme' );
  */
 function mm_cm_customizer_setup( $wp_customize ) {
 	
-		$current_theme = wp_get_theme();
-		$theme_name = $current_theme->get( 'Name' );
-		$theme_name = strtolower( $theme_name );
-		$theme_name = str_replace( ' ', '-', $theme_name );//replace space in theme name with '-'
+	$cm_theme_name = mm_cm_check_theme();
 		
-	if ( $theme_name !== 'customizr')
+	if ( $cm_theme_name !== 'customizr')
 			// Adaptation for Theme 'customizr' which has its own customize function  in a separate theme file
-	
-	if ( $theme_name == 'graphy') {
-	$wp_customize->get_setting( 'graphy_link_color' )->transport  = 'postMessage'; // for graphy theme
-	$wp_customize->remove_control( 'graphy_link_hover_color' ); // remove buit in Graphy control UI
-	}
 	
 	$wp_customize->get_setting( 'blogname' )		 ->transport  = 'postMessage'; // Changing to fast preview
 	$wp_customize->get_setting( 'blogdescription' )  ->transport  = 'postMessage'; //   '''''
 	$wp_customize->get_section( 'colors' )           ->title      = 'Colorizer'; // Changing name of Section 'colors' to 'colorizer'
 	$wp_customize->remove_control( 'background_color' ); // Remove the core background control UI from all the themes
 		
-	
 	// Add color scheme setting and control.
 	$wp_customize->add_setting( 'color_scheme', array(
 		'default'           => 'default',
@@ -86,58 +83,74 @@ function mm_cm_customizer_setup( $wp_customize ) {
 		'section'  => 'colors',
 		'type'     => 'select',
 		'choices'  =>  mm_cm_get_color_scheme_choices(),
-		'priority' => 1,
+		'priority' => 20,
 	) );
-
+	
 	$settings =  get_setting(); // A function defined below 
 	
-		if ( $settings ) {
-
-			// include custom controls if any
-			include_once( 'custom-controls.php' );
-
-			$priority = 2;
-			
-			if ( ! empty( $settings[ 'colors' ] ) ) {
-
+	if ( $settings ) {
+		// include custom controls if any
+		include_once( 'custom-controls.php' );
+		$priority = 30;
+		
+		if ( ! empty( $settings[ 'colors' ] ) ) {
 			foreach( $settings[ 'colors' ] as $key => $color ) {
 			
-			
-
 				$wp_customize->add_setting( $key, array(
 					'default' => $color[ 'default' ],
 					'capability' => 'edit_theme_options',
 					'transport' => 'postMessage', // change to postMessage if using js
 					'sanitize_callback' => 'colorizer_sanitize_hex_color', // function defined in helper.php file
 					) );
-					$wp_customize->add_control(
-						new WP_Customize_Color_Control(
-							$wp_customize,
-							$key,
-							array(
-								'label' => __($color[ 'label' ]),
-								'section' => 'colors',
-								'settings' => $key,
-								'priority' => $priority,
-							)
+				$wp_customize->add_control(
+					new WP_Customize_Color_Control(
+					$wp_customize,
+					$key,
+					array(
+					'label' => __($color[ 'label' ]),
+					'section' => 'colors',
+					'settings' => $key,
+					'priority' => $priority,
 						)
-					);
+					)
+				);
 
 					$priority ++;
-
-				}
-	
 			}
-		 }
-	
-		// modifications for default themes
-		 if ( $theme_name == 'twenty-fourteen') {
+		}
+	}
+	if ( $cm_theme_name == 'graphy') {
+		$wp_customize->get_setting( 'graphy_link_color' )->transport  = 'postMessage'; // for graphy theme
+		$wp_customize->remove_control( 'graphy_link_hover_color' ); // remove buit in Graphy control UI
+		//$wp_customize->remove_control( 'inner_background' );
+	}
+		// modifications for twentythirteen and fourteen themes
+		 if ( $cm_theme_name == 'twenty-fourteen') {
 			$wp_customize->get_control( 'inner_background' )	->label = 'Post divider color';	//Twenty Fourteen
-				}
-		if ( $theme_name == 'twenty-thirteen') {
+		}
+		if ( $cm_theme_name == 'twenty-thirteen') {
 			$wp_customize->remove_control( 'outer_background' );								//Twenty thirteenteen
-				}
+		}
 	 	
+	/*	
+		$wp_customize->add_setting('notice', array(
+		'default'           => '',
+		//'type'				=> 'text',
+		//'sanitize_callback' => 'mm_cm_sanitize_color_scheme',
+		//'transport'         => 'postMessage',
+	) );
+
+	$wp_customize->add_control(	//new cm_theme_support_message(
+			//$wp_customize,
+			'notice', array(
+				'label' => __( 'blueband', 'mm_cm' ),
+				//'type'  => 'text',
+				'section'  => 'colors',
+				'settings' => 'notice',
+				'priority' => 100,
+	 ) );
+	*/	
+		
 	} // end of function	
 	
 add_action( 'customize_register', 'mm_cm_customizer_setup' , 11);	

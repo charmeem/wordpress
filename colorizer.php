@@ -3,7 +3,7 @@
 /*
 Plugin Name: Colorizer
 Plugin URI: http://www.charmeem.com/colorizer
-Description: Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve, twentythirteen, twentyfourteen and Graphy and more to come.
+Description: Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve, twentythirteen, twentyfourteen and Graphy while more to come.
 Version: 1.1
 Author: Mubashir Mufti
 Author URI: http://www.charmeem.com

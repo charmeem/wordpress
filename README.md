@@ -14,12 +14,11 @@
 **License:** GPLv2 or later
 
 
-A simple plugin that creates Cool Color schemes using WordPress Customizer.
-
+Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve, twenty thirteen, twenty fourteen and Graphy while more to come.
 
 ## Description ##
 
-Utilizes WorPress Customizer Functionality
+Utilizes WorPress Customizer Functionality.
 
 Give websites unique look by generating cool color schemes in the live preview window without need to load the webpage.
 

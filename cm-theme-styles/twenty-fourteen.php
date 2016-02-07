@@ -21,6 +21,7 @@ global $cm_color_setting;
 					'inner_background',
 					'outer_background',
 					'box_background',
+					'header_textcolor', 
 					);
 
 add_theme_support( 'colorizer', array( 
@@ -48,60 +49,6 @@ add_theme_support( 'colorizer', array(
 		),
 
 ) );
-
-
-
-
-
-function m_cm_customizer_setup($wp_customize){
-
-/**
- * Class to create a custom  control
- */
-
-class cm_theme_support_message extends WP_Customize_Control 
-{
-	public $type = 'text';
-	public function __construct($manager, $id, $args = array()) {
-		parent::__construct($manager, $id, $args);
-	}
-	
-	public function render_content() {
-		?>
-		
-		<span class="cm-notice">
-		 <strong>Note:</strong><em>Colorizer is not yet tested with your theme therefore might not give desired result.</em>
-		 <a href = "http://charmeem.com/request" target = "_blank">
-		  Click here and send request to test and add your theme.
-		  <br><br>
-		  <span class = "cm-notice-link"></span>
-		 </a>
-		</span>
-		
-		<?php
-	}
-}
-
-
-// Add color scheme setting and control.
-	$wp_customize->add_setting('notice', array(
-		'default'           => '',
-		'transport'         => 'postMessage',
-	) );
-
-	$wp_customize->add_control(	
-		new cm_theme_support_message(
-			$wp_customize,
-			'notice', array(
-				'label' => __( 'blueband', 'mm_cm' ),
-				//'type'  => 'text',
-				'section'  => 'colors',
-				'settings' => 'notice',
-				'priority' => 1,
-	 ) ) );
-}
-add_action( 'customize_register', 'm_cm_customizer_setup' , 13); //important: priority of hook here MUST be lower then the
-																 //priority of same action hook defind in main file mm-cm-customizer.php 	
 					
 function mm_cm_get_color_scheme_css( $colors ) {
 
@@ -114,7 +61,11 @@ function mm_cm_get_color_scheme_css( $colors ) {
 		background: {$colors['outer_background']};
 		}
 		
-	.post {
+	.site {
+		background: {$colors['inner_background']};
+		}
+	
+	.post, .post-thumbnail {
 		background: {$colors['box_background']};
 		color: {$colors['text']};
 	}
@@ -124,11 +75,18 @@ function mm_cm_get_color_scheme_css( $colors ) {
 	.nav-menu li a{
 		color: {$colors['sidebar']};
 	}
-	
+	aa {
+		color: {$colors['box_background']};
+	}
+	aa:hover {
+		color: {$colors['box_background']};
+	}
+	.main-navigation li a:hover{
+		color: {$colors['outer_background']};
+	}
 	.site-title,.site-description { 
 		color: {$colors['header_textcolor']};
 	}
-	
 CSS;
     
 	return $css;
