@@ -3,7 +3,7 @@
 		
 /**
  * mm_cm plugin Customizer Main File
- * This plugin is tested on Twenty twelvw, Graphy and Customizr themes
+ * This plugin is tested on Twenty twelve, Twenty thirteen, Twenty fourteen, Graphy and Customizr themes
  */
  
 /**
@@ -59,6 +59,7 @@ function mm_cm_include_file() {
  *
  * @param WP_Customize_Manager $wp_customize Customizer object.
  */
+add_action( 'customize_register', 'mm_cm_customizer_setup' , 11);
 function mm_cm_customizer_setup( $wp_customize ) {
 	
 	$cm_theme_name = mm_cm_check_theme();
@@ -83,14 +84,14 @@ function mm_cm_customizer_setup( $wp_customize ) {
 		'section'  => 'colors',
 		'type'     => 'select',
 		'choices'  =>  mm_cm_get_color_scheme_choices(),
-		'priority' => 20,
+		'priority' => 1,
 	) );
 	
 	$settings =  get_setting(); // A function defined below 
 	
 	if ( $settings ) {
 		// include custom controls if any
-		include_once( 'custom-controls.php' );
+		//include_once( 'custom-controls.php' );
 		$priority = 30;
 		
 		if ( ! empty( $settings[ 'colors' ] ) ) {
@@ -129,31 +130,12 @@ function mm_cm_customizer_setup( $wp_customize ) {
 			$wp_customize->get_control( 'inner_background' )	->label = 'Post divider color';	//Twenty Fourteen
 		}
 		if ( $cm_theme_name == 'twenty-thirteen') {
-			$wp_customize->remove_control( 'outer_background' );								//Twenty thirteenteen
+			$wp_customize->remove_control( 'outer_background' );								//Twenty thirteen
 		}
 	 	
-	/*	
-		$wp_customize->add_setting('notice', array(
-		'default'           => '',
-		//'type'				=> 'text',
-		//'sanitize_callback' => 'mm_cm_sanitize_color_scheme',
-		//'transport'         => 'postMessage',
-	) );
-
-	$wp_customize->add_control(	//new cm_theme_support_message(
-			//$wp_customize,
-			'notice', array(
-				'label' => __( 'blueband', 'mm_cm' ),
-				//'type'  => 'text',
-				'section'  => 'colors',
-				'settings' => 'notice',
-				'priority' => 100,
-	 ) );
-	*/	
-		
 	} // end of function	
 	
-add_action( 'customize_register', 'mm_cm_customizer_setup' , 11);	
+
 
 /**
  * Register color schemes for Colorizer.
@@ -341,7 +323,7 @@ global $cm_color_sample;
 	wp_add_inline_style( 'mm_cm-style', $color_scheme_css );
 	
 }
-add_action( 'wp_enqueue_scripts', 'mm_cm_color_scheme_css', 999 );
+add_action( 'wp_enqueue_scripts', 'mm_cm_color_scheme_css', 888 );
 	
 /**
  * Enqueues front-end CSS for other control elements UI.
@@ -371,7 +353,7 @@ foreach ($cm_color_setting as $setting) {
 	wp_add_inline_style( 'mm_cm-style', $color_scheme_css );
 	
 }
-add_action( 'wp_enqueue_scripts', 'mm_cm_other_controls_css', 9999 );	
+add_action( 'wp_enqueue_scripts', 'mm_cm_other_controls_css', 999 );	
 
 /**
  * Binds JS listener to make Customizer color_scheme control.
@@ -464,6 +446,6 @@ function mm_cm_color_scheme_css_template() {
 	
 }
 add_action( 'customize_controls_print_footer_scripts', 'mm_cm_color_scheme_css_template' );
-// This is a action hook defined in wp-admin/customize.php
+// This is an action hook defined in wp-admin/customize.php
 
 	

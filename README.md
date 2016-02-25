@@ -1,20 +1,20 @@
 # colorizer #
-**Contributors:** charmeem
+**Contributors: charmeem
 
-**Tags:** customizer,plugin, themes, colors
+**Tags: customizer,plugin, themes, colors
 
-**Donate link:** 
+**Donate link: 
 
-**Requires at least:** 4.2
+**Requires at least:4.2
 
-**Tested up to:** 4.4
+**Tested up to:4.4.2
 
-**Stable tag:** 1.1
+**Stable tag: 1.2
 
-**License:** GPLv2 or later
+**License: GPLv2 or later
 
 
-Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve, twenty thirteen, twenty fourteen and Graphy while more to come.
+Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes support can be added easily.
 
 ## Description ##
 
@@ -23,6 +23,8 @@ Utilizes WorPress Customizer Functionality.
 Give websites unique look by generating cool color schemes in the live preview window without need to load the webpage.
 
 Supports multiple themes. So far tested with following themes:
+
+* Corpbiz
 
 * Twenty Twelve, Twenty Thirteen, Twenty Fourteen
 
@@ -43,7 +45,11 @@ Once you install it, activate it.
 So far none.
 
 ## Screenshots ##
-The Screenshots can be found @ https://github.com/charmeem/colorizer
+1. Twenty Fourteen one
+2. Twenty Fourteen two
+3. Twenty Twelve Theme
+4. Customizr Theme
+
 ## Upgrade Notice ##
 New update plan will follow soon
 ## Changelog ##
@@ -57,4 +63,9 @@ January 31, 2016
 Feb. 04, 2016
 
 * Support added for Twenty thirteen and Twenty Fourteen themes
+
+##### 1.2 #####
+Feb. 25, 2016
+
+* Support added for corpbiz theme
 

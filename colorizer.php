@@ -4,7 +4,7 @@
 Plugin Name: Colorizer
 Plugin URI: http://www.charmeem.com/colorizer
 Description: Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve, twentythirteen, twentyfourteen and Graphy while more to come.
-Version: 1.1
+Version: 1.2
 Author: Mubashir Mufti
 Author URI: http://www.charmeem.com
 License: GPLv2 or later. 
@@ -49,7 +49,7 @@ if ( !is_admin() ) 													//If we’re not in the admin, load any translat
 /********************************************
 * GLOBAL VARIABLES
 ********************************************/
-$plugin_version = '1.0';											// for use on admin pages
+$plugin_version = '1.2';											// for use on admin pages
 $plugin_file = plugin_basename(__FILE__);							// plugin file for reference
 define( 'THEME_COLOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );	// define the absolute plugin path for includes
 

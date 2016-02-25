@@ -1,7 +1,6 @@
 <?php
 /**
  * Theme: Default
- * Supports: Twenty-thirteen, Twenty-fourteen
  * 
  */
 
@@ -49,10 +48,8 @@ add_theme_support( 'colorizer', array(
 
 ) );
 
-
-
-
-
+add_action( 'customize_register', 'm_cm_customizer_setup' , 13); //important: priority of hook here MUST be lower then the
+																 //priority of same action hook defind in main file mm-cm-customizer.php 	
 function m_cm_customizer_setup($wp_customize){
 
 /**
@@ -68,16 +65,15 @@ class cm_theme_support_message extends WP_Customize_Control
 	
 	public function render_content() {
 		?>
-		
-		<span class="cm-notice">
-		 <strong>Note:</strong><em>Colorizer is not yet tested with your theme therefore might not give desired result.</em>
+		<div style = "border:1px solid black; padding-left:2px">
+		<span >
+		 <em><strong>Note:Colorizer is not yet tested with your theme therefore might not give desired result.</em></strong>
 		 <a href = "http://charmeem.com/request" target = "_blank">
 		  Click here and send request to test and add your theme.
 		  <br><br>
-		  <span class = "cm-notice-link"></span>
 		 </a>
 		</span>
-		
+		</div>
 		<?php
 	}
 }
@@ -93,15 +89,13 @@ class cm_theme_support_message extends WP_Customize_Control
 		new cm_theme_support_message(
 			$wp_customize,
 			'notice', array(
-				'label' => __( 'blueband', 'mm_cm' ),
+				'label' => __( 'notice', 'mm_cm' ),
 				//'type'  => 'text',
 				'section'  => 'colors',
 				'settings' => 'notice',
-				'priority' => 1,
+				'priority' => 0,  // to give notice top place in the section
 	 ) ) );
 }
-add_action( 'customize_register', 'm_cm_customizer_setup' , 13); //important: priority of hook here MUST be lower then the
-																 //priority of same action hook defind in main file mm-cm-customizer.php 	
 					
 function mm_cm_get_color_scheme_css( $colors ) {
 

@@ -1,7 +1,6 @@
 <?php
 /**
- * Theme: Default
- * Supports: Twenty-thirteen, Twenty-fourteen
+ * Theme: Twenty-fourteen
  * 
  */
 

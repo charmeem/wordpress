@@ -1,6 +1,6 @@
 <?php
-/***
- * Theme: Twenty-thirteen
+/**
+ * Theme: corpbiz
  * 
  */
 
@@ -19,8 +19,7 @@ global $cm_color_setting;
  $cm_color_setting = array(                // other control elements in customizer panel
 					'inner_background',
 					'outer_background',
-					'box_background',
-					'header_textcolor', 
+					'text',
 					);
 
 add_theme_support( 'colorizer', array( 
@@ -33,9 +32,10 @@ add_theme_support( 'colorizer', array(
 			'label' => __( 'Outer Background', 'colorizer' ),
 			'default' => '#26b5b0',
 		),
-		$cm_color_sample[2] => array(
-			'label' => __( 'Post background', 'colorizer' ),
-			'default' => '#2cd6d6',
+		
+		$cm_color_sample[3] => array(
+			'label' => __( 'Text Color', 'colorizer' ),
+			'default' => '#000',
 		),
 	),
 	'template' => array(
@@ -56,36 +56,20 @@ function mm_cm_get_color_scheme_css( $colors ) {
 	/* Color Scheme */
 	
 	
-	body, body.custom-background,#secondary, .header-main {
+	.home {
 		background: {$colors['outer_background']};
 		}
 		
-	.site {
+	#menu-header, #main-header{
 		background: {$colors['inner_background']};
 		}
-	
-	.post, .post-thumbnail {
-		background: {$colors['box_background']};
+	.navbar .navbar-nav > li > a{
 		color: {$colors['text']};
 	}
-	.nav-menu {
-		background: {$colors['text']};
+	.service_heading_title h1, .corpo_heading_title h1 {
+		color: {$colors['text']};
 	}
-	.nav-menu li a{
-		color: {$colors['sidebar']};
-	}
-	aa {
-		color: {$colors['box_background']};
-	}
-	aa:hover {
-		color: {$colors['box_background']};
-	}
-	.main-navigation li a:hover{
-		color: {$colors['outer_background']};
-	}
-	.site-title,.site-description { 
-		color: {$colors['header_textcolor']};
-	}
+	
 CSS;
     
 	return $css;
