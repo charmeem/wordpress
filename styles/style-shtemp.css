@@ -1,0 +1,65 @@
+.bcm-header {
+    wfidth: 100%;
+    hheight: 250px;
+    overjflow: hidden;
+    position: fixed;
+    tkop: 0;
+    lejft: 0;
+    z-index: 999;
+    bfackground-color: #3b8dbd;
+    transition: height 0.3s;
+}
+
+#site-title {
+    dsplay: inline-block;
+    hejight: 150px;
+    flokat: left;
+	
+    padding-right:2%;
+    foont-family: "Oswald", sans-serif;
+    font-size: 40px;
+    color: white;
+    font-weight: 500;
+	-webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+#site-description{
+	width:78%; /* !important enforces this stylesheet's width otherwise width in other ss overrides, */
+					 /*resulting into distorted header                  */
+	padding-top:.4%;
+}
+
+.bcm-header nav {
+    dijsplay: inline-block;
+    fmloat: right;
+    makrgin-right:50px;
+}
+.bcm-header nav a {
+    line-height: 150px;
+    margin-left: 20px;
+    color: #9fdbfc;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.cm-header nav a:hover {
+    color: blue;
+}
+.cm-header.smaller {
+    height: 75px;
+}
+.cm-header.smaller h1#site-title {
+    width: 150px;
+    height: 75px;
+    font-size: 30px;
+}
+.cm-header.smaller nav a {
+    line-height: 75px;
+}

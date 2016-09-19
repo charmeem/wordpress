@@ -1,0 +1,44 @@
+/* Styling for Adding Search Widget in Navigation Menu 
+ *
+ * PLUS adding css3 animation to hide Search box and replace it with the icon that will open the box when clicked
+ *
+ */
+/*Stop the display of the Search button*/
+c.cm-nav-menu-search #searchsubmit {
+    display: none;
+}
+
+
+c.searchform{
+	padding-top:20px;
+	}
+.searchform {
+	background-image: url(images/mag_glass.png);
+	}
+.,cm-nav-menu-search .searchform{
+	odpacity:0;
+    background: transparent;
+	
+	background-image: url(images/mag_glass.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size:    18px 18px;
+    bacckground-size:18px 18px;
+	
+    biorder: none;
+    -webkit-box-shadow:    none;
+    -moz-box-shadow:       none;
+    box-shadow:            none;
+    cursor: pointer;
+    height: 126px;
+    margin: 2px 10px 12px 0;
+    padding: 0px 50px 50px 36px;
+    position: relative;
+	transition: all 700ms linear;
+    -webkit-transition: width 400ms ease;
+    -moz-transition:width 400ms ease;
+    -o-transition:width 400ms ease;
+    transition:width 400ms ease;
+	ttransform: translate3d(500px, 0px, 0px);
+    weidth: 0px;
+}

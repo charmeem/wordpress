@@ -1,0 +1,90 @@
+
+#cm-effect {
+	width:100%;
+	position: fixed;
+	z-index: 999;
+	color: white;
+    font-size: 17px;
+	font-weight: 500;
+	-webkit-transition: all .3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all .3s;
+    -o-transition: all 0.3s;
+    transition: height .3s;
+}
+#site-description {
+	font-size:180%;
+	}
+
+#site-title{
+	padding-right:20px;
+	height:60px;
+	line-height:60px;  /* s2-center the text vertically*/
+	transition: all .3s;
+}
+#mainNav {
+	z-index:999;
+	font-size: 14px;   
+    height:60px;
+}
+
+/*
+.cm-header nav a {
+    line-height: 150px;
+    margin-left: 20px;
+    color: #9fdbfc;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+*/
+
+.cm-header nav a:hover {
+    color: blue;
+}
+.cm-header.smaller #mainNav, .cm-header.smaller #site-title, .cm-header.smaller #post-title-in-header span{ /* Adjusting height of the header */
+    height: 40px;
+}
+.cm-header.smaller #mainNav li a{ /* adjusting Menu */
+    line-height: 40px;
+}
+.cm-header.smaller .image-holder, .cm-header.smaller .cm-nav-menu-search #searchsubmit, 
+.cm-header.smaller .cm-nav-menu-search #s { /* adjusting position of my icon */
+	top:10px;
+	}
+.cm-header.smaller #site-title {
+    font-size: 35px;
+	line-height:40px; /* s2-align the text verticaly*/
+}
+.cm-header.smaller #post-title-in-header{
+    font-size: 130%;
+	padding-bottom:16.5px;
+}
+.cm-header.smaller .ticker { /* Theme version 1.1 */
+    display:none;
+}
+
+/*
+.cm-header.smaller #site-description { /* Theme version 1.2 
+	width:30%;
+	pposition:relative;
+    top:10px;
+	right:200px;
+	float:right;
+}
+
+.cm-header.smaller #mainNav { /* Theme version 1.2 
+    wridth: 150px;
+    hheight: 35px;
+    fontf-size: 25px;
+	spadding:0;
+	
+}
+.cm-header.smaller nav a {
+    line-height: 75px;
+}
+*/

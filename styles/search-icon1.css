@@ -1,0 +1,61 @@
+/* Styling for Adding Search Widget in Navigation Menu 
+ *
+ * PLUS adding css3 animation to hide Search box and replace it with the icon that will open the box when clicked
+ *
+ * All implemented with CSS3, without Jquery
+ */
+
+.searchform{  /* search box in the menu*/
+	padding-top:16px;
+	}
+.cm-nav-menu-search #searchsubmit { /* Hiding Search submit button */
+	display: none;
+}
+/* The "Search for" text is needed for screen readers, but we move it off screen, so we won't see it
+.cm-nav-menu-search .searchform .screen-reader-text {
+    position: absolute;
+    left: -9999px;
+    overflow: hidden;
+}
+*/
+/* Style the search input textbox */
+.cm-nav-menu-search #s {
+    background: transparent;
+    border: none;
+    -webkit-box-shadow:    none;
+    -moz-box-shadow:       none;
+    box-shadow:            none;
+    cursor: pointer;
+    height: 26px;
+    margin: 2px 0 2px 0;
+    padding: 0 0 0 36px;
+    position: relative;
+    -webkit-transition: width 400ms ease;
+    -moz-transition:width 400ms ease;
+    -o-transition:width 400ms ease;
+    transition:width 400ms ease;
+    width: 0px;
+}
+/* Expand the search box when you click it */
+.cm-nav-menu-search #s:focus,.cm-nav-menu-search #s:active {
+    color: #5a5a5a;
+    /* change the colour above if you are working with a dark navbar background */
+    border: 2px solid #c3c0ab;
+    cursor: text;
+    outline: 0;
+    width: 70px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:    none;
+    box-shadow:         none;
+    margin: 0;
+}
+/* Add a magnifying glass background */
+.cm-nav-menu-search .searchform:after {
+    font-family: 'Genericons';
+    content: '\f400';
+    position: absolute; /* this is the key to put it visually inside the search field */
+    font-size: 19px;
+    font-weight: normal;
+    top: 5px; /* tune this vertical alignment inside the search field, as needed */
+    left: 5px; /* tune this horizontal alignment inside the search field, as needed */
+}

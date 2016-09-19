@@ -1,0 +1,45 @@
+.cm-header #mainNav ul {
+	float:right;
+}
+.cm-header #mainNav li  { 
+    display: block;
+    line-height: 60px; /* this should be the same as your #mainNav height */ 
+    hdeight: 60px; /* this should be the same as your #main-nav height */ 
+    margin: 0; 
+	padding: 0; /* only needed if you don't have a reset */ 
+    position: relative; /* this is needed in order to position sub menus */ 
+} 
+
+
+.cm-header #mainNav li a { 
+    display: block; 
+    hdeight: 60px; 
+    line-height: 60px; 
+    padding: 0 15px; 
+} 
+
+.cm-header #mainNav .current-menu-item a, #mainNav .current_page_item a, #mainNav a:hover { 
+    color: #000; 
+    background: #ccc; 
+} 
+
+.cm-header #mainNav ul ul { /* targets all the submenus*/
+	display:none;	/* hide all sub menus from view */
+	position:absolute;
+	top:60px; /* this should be the same height as the top level menu -- height + padding + borders */
+	}
+.cm-header #mainNav ul ul li{
+	float:none;
+	width:150px;/* set to the width you want your sub menus to be. This needs to match the value we set below */
+	}
+.cm-header #mainNav ul ul li a{ /* target all sub menu item links */
+	padding:5px 10px; /* give our sub menu links a nice button feel */
+	}
+.cm-header #mainNav ul li:hover > ul { /* show sub menus when hovering over a parent */
+	display:block;
+	}
+
+.cm-header #mainNav ul ul li ul {/* target all second, third, and deeper level sub menus */ 
+    left: 150px; /* this needs to match the sub menu width set above -- width + padding + borders */ 
+    top: 0; /* this ensures the sub menu starts in line with its parent item */ 
+} 

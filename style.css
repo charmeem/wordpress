@@ -1,0 +1,867 @@
+/*
+Theme Name: Charmeem
+Theme URI: http://charmeem.com
+Author: Muhammad Mubashir mufti
+Author URI: http://charmeem.com/about-us
+Description: My first theme from scratch with the help of Book" Word press Theme Development, 3rd edition"
+Version: 0.0
+Tags:
+*/
+/* Style Revisions:
+ * 1. Title and description in one line- Menu on 2nd line.
+ */
+
+/*
+---------------------------------------------------
+|NOTE: This style sheet leverages: layout-core.css. |
+---------------------------------------------------
+*/
+@import url(styles/layout-core.css);
+
+/*------------------TYPOGRAPHY -------------------*/
+/*
+Set font stacks here
+Assign default colors only. Otherwise color is handled at BOTTOM
+of sheet.
+*/
+.screen-reader-text{
+	position: absolute;
+	left: -5000em;
+}
+body	{
+	font-family: Verdana,'Trebuchet MS', Helvetica, Arial,  sans-serif;
+	font-size: 0.9em;
+	coloor: #333;
+}
+h2, h3, h4, h5, h6 {
+	margin: 20px 0 10px 0;
+}
+h1, h3, h5{
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	line-height: 120%;
+	color: #595C57;
+}
+
+h2, h4, h6{
+	font-family: Verdana, 'Helvetica Neue', Helvetica, 'Arial Condensed', Arial,sans-serif;
+	line-height: 110%;
+	color: #fff;
+	word-spacing:-4px;
+}
+
+a {
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	color: #000;
+	font-weight: 100;
+	text-decoration: none;
+}
+
+pre, code{
+	font-family: Courier, monospace;
+	font-size: 100%;
+	margin-bottom:10px;
+}
+h1 {
+	font-size: 230%; /* 100% = 16px = 1em*/
+					 /* original set to 280% */
+	font-weight: 500; /* orig. set to 600 */
+	}
+	
+
+h2 {
+	font-size: 200%; /* orig 220% */
+	bborder-bottom: 1px solid #ccc;
+	}
+	
+h3 {
+	font-size: 180%;
+}
+h4	{
+	font-size: 200%;
+	color: #999
+}
+h5	{
+	font-size: 115%;
+}
+h6	{
+	font-size: 100%;
+}
+p 	{
+	line-height: 150%;
+	margin-bottom: 0px; /* creates vertical space between the posts*/
+	color:#000;
+}
+/*------------------ STANDARD STYLING -------------------*/
+/* -- Main Components for Full width LAnding Page:
+/* --Header
+/* --stickyRotate( slider) defined in .js
+/* --first post not sticky '.post:not(.sticky):first' defined in .js
+/* --article.post THis determinies post height------------*/
+
+
+#across{
+	margin: 0;
+	width:100%;
+	background-color: #111;
+}/*for a stretched bottom only*/
+h2.thisMonth{
+	font-size: 260%;
+}
+.content{
+	mbargin-top: -20px; /*originaly 250 to accomodate background image in #container2*/
+	
+
+}
+
+.sidebar{
+	margin-top: 250px;
+}
+.sidebar div{
+	margin-top: 30px;
+	padding-bottom: 10px;
+}
+.sidebar h2{
+	margin-left:20px;
+}
+
+aside li {
+	list-style-type:none;
+	}
+
+/* hide home page title 
+.home h2.post-title {
+display: none;
+}
+*/
+#container2 {  /* to cater for the odd looking left margin */
+	max-width:1420px;
+	}
+/*------------------MODIFYING FRONT POST PAGE-------------------*/
+#site-title, #mainNav{
+	background-color:#fff;
+}
+	
+#site-title { /* making consistent with post title */
+	font-family:"Libre Baskerville",serif;
+	font-weight:900;
+	color:#333;
+	letter-spacing:-2px; /* reduce letter spacing*/
+	word-spacing:-2px;	/* reduce word spacing*/
+	
+}
+
+
+.ticker { /* Wrapper for animated text in the header */
+	font-family:"Libre Baskerville",serif;
+	fdont-size:100%;
+	font-size:13.5px;
+	font-weight:900;
+	background-color:white;
+	border: 1px solid #dcdcdc;
+	border-radius:0px;
+	text-align:center;
+	letter-spacing:-1px;
+	mmargin-right:10px;
+	wword-spacing:-2px;
+	}
+
+.ticker h1{ /* This will animate only the text inside ticker wrapper*/
+ color:black;
+/* Starting position */
+ -moz-transform:translateX(50%);
+ -webkit-transform:translateX(50%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: scroll-right 15s linear infinite;
+ -webkit-animation: scroll-right 15s linear infinite;
+ animation: scroll-right 60s linear infinite;
+ /*animation-timing-function: cubic-bezier(1, .03, 1, .115); Fast animation */
+ -webkit-animation-timing-function:cubic-bezier(0, .91, 0.89, .21);
+ -moz-animation-timing-function:cubic-bezier(0, .91, 0.89, .21);
+ animation-timing-function:cubic-bezier(0, .91, 0.89, .21);
+	
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-right {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(0%); }
+}
+@-webkit-keyframes scroll-right {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(0%); }
+}
+@keyframes scroll-right {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%); 		
+ 
+ }
+ 3%,90% { /* A Trick to create delay */
+		  /* transform from 100% to 0% in 1% of the time and stays there until 99% of time passes*/
+ -moz-transform: translateX(0%); /* Browser bug fix */
+ -webkit-transform: translateX(0%); /* Browser bug fix */
+ transform: translateX(0%); 
+ }
+ 100% { 
+ -moz-transform: translateX(-50%); /* Browser bug fix */
+ -webkit-transform: translateX(-50%); /* Browser bug fix */
+ transform: translateX(-50%); 
+ 
+ }
+}	
+/* FIXING Bug WHile reloading the Page:
+ Initialy setting Opacity 0 to clear the screen on reload before starting the sliding animation,
+ Then within 2 secs turning opacity to 1 using transition property so that slider on sticky posts
+ shows the posts with opacity 1 */
+  
+.sticky{
+		opacity:0;
+		transition: opacity 2s ease ;
+		}
+#stickyRotate .sticky {
+	opacity:1;
+	}
+#sstickyRotate {
+	position: absolute; 
+	height: 400px; 
+	width: 100%; 
+	overflow:hidden;
+	ppadding:0px 0 0px 0;
+	margin:0;
+	bnorder:1px solid blue;
+	}
+
+/* moving bgimage of sticky up */
+#stickyRotate .bgimage {
+	padding-top:105px;
+	}
+	
+#stickyNav {
+	position: relative;
+	padding: 10px 0 0 0;
+	text-align: center;
+	top:300px;
+	}
+.sN {
+	display: inline;
+	border: 1px solid #999;
+	padding: 2px 5px;
+	border:1px solid orange;
+	}
+article{
+	bbackground-blend-mode: screen;
+	wiidth:20%; /* can vary width to make multiple column post*/
+	
+	padding: 20% 0% 20% 0%; /*removing padding of article give other child element control over width and height
+							 * BUT cannot remove it otherwise articles without image will just collapse!
+							 * In order to restrict padding only to the article that donot have image(to avaoid fat post)
+							 * I give .has function in my java file.*/
+	
+	mmargin:3px; /* can make posts beutiful*/
+	bnorder:1px solid blue;/*Just for testing to see the border on screen*/
+}	
+#stickyRotate article{
+	padding: 0% 0% 0% 0%; /* Bringing bgimage up in the article by reducing article top padding*/
+						  /* REMOVING 5% Top margin to remove background space on top of sticky rotate */
+}
+
+
+.bgimage {
+/* controlling size of image*/
+/* Size of the image is 230 x 90 px  for the current post size*/	
+	padding: 20% 0% 20% 0%;
+	bbackground:center no-repeat;
+	zbackground-size:50% auto;
+	bbackground-size:50% auto;
+	background-size:cover;
+	background-position:center center;
+	oopacity:.9;
+/* controlling position of image */
+	thop:55px;
+	mcargin-top:-50px;
+	fdloat:left;
+
+	}
+	
+/* Adjusting Position of post title and meta content*/
+/* Make parent postion :relative and child position:absolute*/ 
+
+.post{
+	position:relative;
+	}
+.post-title a{
+	font-size:200%;
+	font-family:"Libre Baskerville",serif;
+	font-weight:900;
+	color:#ccc;
+	letter-spacing:-2px;
+	text-align:center;
+	}
+
+.post .post-title{
+	position:absolute;
+	top:60px;
+	left:90px;
+}
+.entry-meta span{
+	font-family:"Libre Baskerville",serif;
+	font-weight:400;
+	color:#fff;
+	}
+.entry-meta {
+	font-family:Lato,sans-serif;
+	font-weight:700;
+	color:#ccc;
+	line-height:2.2;
+	position:absolute;
+	top:120px;
+	left:90px;
+}
+.bgbdr{
+	border:2px solid orange;
+}
+
+
+/*------------------STYLING FOR MY SINGLE PAGE/POST ARTICLE-------------------*/
+/*
+	.content3 {
+	margin-top: 50px;
+	adding multiple columns in content
+	-moz-column-count: 2;
+	-moz-column-gap: 10px;
+	-moz-column-rule: none;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 10px;
+	-webkit-column-rule: none;
+	column-count: 2;
+	column-gap: 10px;
+	column-rule: none;*/
+}
+/*
+.content3 p {
+	padding-left : 30px;
+	padding-rightf: 30px;
+	color: black;
+	font-family:"Libre Baskerville";
+	font-style:italic;
+	font-size:2.2em;
+	line-height:1.4;
+	
+}*/
+/*-------------------STYLING MULTICOLMN PLUGIN ------------------------------*/
+.csColumn p {
+	baackground-color: pink;
+	padding : 0 30px 0 30px;
+	maargin-top:20px;
+	color: #999;
+	font-family:"Libre Baskerville";
+	font-style:italic;
+	font-size:2.2em;
+	line-height:1.2;
+	border-radius:10px;
+}
+.excerpt{
+	padding : 0 50px 0 50px;
+	margin-left:40px;
+	color:#fff;
+	font-family:"Libre Baskerville";
+	font-style:italic;
+	font-size:2.2em;
+	line-height:1.2;
+	doisplay:inline-block;
+	bjox-sizing:border-box;
+	position:absolute;
+	top:150px;
+	opacity:.4;
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+	column-count:2;
+	-webkit-column-gap: 2em; /* Chrome, Safari, Opera */
+    -moz-column-gap: 2em; /* Firefox */
+    column-gap: 2em;
+	column-rule: 1px dotted black;
+
+	}
+/*------------------CSS3 Animation/effects-----------------------------------
+.bgimage{
+	opacity:0.8;
+	transition:background-size 4s linear, opacity .15s linear;
+}
+.bgimage:hover{
+	bbackground-size:100%;
+	opacity:1;
+}
+.post-title{
+	opacity:0.7;
+	transition:background-size 4s linear, opacity .55s linear, font-size 500ms linear;
+}
+.post-title:hover{
+	bbackground-size:100%;
+	opacity:1;
+	font-size:203%;
+}
+*/
+
+/*------------------REUSABLE GRAPHIC TREATMENTS -------------------*/
+/*main background colorscheme*/
+.bg-main{
+	background-color: #222;
+}
+.bg-secondary{
+	background-color: #666;
+}
+.bg-tertiary{
+	background-color: #999;
+}
+.bg-light{
+	background-color: #fff;
+}
+.bg-light1{
+	background-color: #eee;
+}
+.bg-light2{
+	background-color: #ddd;
+}
+.bg-dark1{
+	background-color: #000;
+}
+.bg-dark2{
+	background-color: #444;
+}
+.grd-vt-main{
+	background: linear-gradient(top, #333, #000);
+}
+.grd-vt-secondary{
+	background: linear-gradient(top, #555, #222);
+}
+.grd-vt-tertiary{
+	background: linear-gradient(top, #ddd, #999);
+}
+/*borders*/
+.bdr{
+	border: 1px solid;
+}
+/*apply thickness*/
+.bdr-2px{
+	border: 2px solid;
+}
+/*pick a side*/
+.bdr-top{
+	border-left:none;
+	border-right: none;
+	border-bottom: none;
+}
+.bdr-left{
+border-top:none;
+border-right: none;
+border-bottom: none;
+}
+.bdr-right{
+border-left:none;
+border-top: none;
+border-bottom: none;
+}
+.bdr-bottom{
+border-left:none;
+border-right: none;
+border-top: none;
+}
+/*leverage selectors for border colors-be sure to apply your rules in this order*/
+.bg-main.bdr{
+	border-color: #aaa;
+}
+.bg-secondary.bdr{
+	border-color: #999;
+}
+.bg-tertiary.bdr{
+	border-color: #eee;
+}
+/*rounded corners*/
+.rnd{
+	border-radius: 5px;
+}
+/*only two corners*/
+.rnd-top{
+	border-radius: 5px 5px 0 0;
+}
+.rnd-left{
+	border-radius: 5px 0 0 5px;
+}
+.rnd-right{
+	border-radius: 0 5px 5px 0;
+}
+.rnd-bottom{
+	border-radius: 0 0 5px 5px;
+}
+/*box-shadows*/
+.shdw-centered{
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+.shdw-offset{
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+#date {
+	color:#aaa;
+}
+
+/*-----------------My Page Builder Using gridster Jquery plugin
+ */
+ .ggridster-box-width-one {
+	padding:0 50px 0 50px;
+	font-size: 40px;
+	}
+
+
+/*------------------ RESPONSIVE STYLING -------------------
+ *------------------COMMON DEVICE SIZES -------------------
+ * ------------- 960-1024-1280-1366-1440-1680 -------------
+ */
+
+@media (min-width: 1366px) {
+
+}
+@media (min-width:1280px) and (max-width: 1365px) {
+/*for netbook/tablet screens*/
+	#mainNav{
+		position:absolute;
+		top: 33px;
+		width: 100%;
+		maax-width:1350px;
+		bbackground-color:#999;
+	}
+	.ticker{
+	margin-top:5px;
+	width:77%;
+	}
+	#stickyNav{
+	margin: 270px 0 0 0px;
+	}
+}
+@media (min-width:1024px) and (max-width: 1279px) {
+/*for netbook/tablet screens*/
+	#mainNav{
+		position:absolute;
+		top: 33px;
+		width: 100%;
+	}
+	.ticker{
+	margin-top:3px;
+	width:74%;
+	}
+	#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+	#stickyRotate article{
+	padding-bottom:72px;
+	}
+}
+@media (min-width: 960px) and (max-width: 1023px) {
+	header{
+		height: 100px;
+		background-position: 0 -220px;
+	}
+	.ticker{
+		width:74%;
+		margin-top:3px;
+	}
+	#site-title{
+		wiidth:50%;
+		font-size:30px;
+	}
+	
+	#mainNav{
+		top:30px;
+		width: 100%;
+	}
+	#stickyNav{
+	margin: 260px 0 0 0px;
+	}	
+	#stickyRotate article{
+	padding-bottom:72px;
+	}
+}
+
+@media  (min-width: 680px) and (max-width: 959px) {
+
+
+.ticker{
+		margin-top:3px;
+		width:70%;
+		font-size:25px;
+	}
+#site-title{
+	font-size:28px;
+}
+
+#stickyRotate{
+	margin-top:6px;
+	}
+#stickyRotate article{
+	padding-bottom:9px;
+	height:305px
+	}
+#mainNav{
+	top:33px;
+	width: 100%;
+}
+#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+}
+@media (min-width:580px) and (max-width: 679px) {
+
+	.ticker{
+	margin-top:3px;
+	font-size:23px;
+	width:68%;
+	}
+	#site-title{
+		font-size:25px;
+		clear:right;
+	}
+	#stickyRotate{
+		margin-top:9px;
+		}
+	#stickyRotate article{
+		padding-bottom:7px;
+		height:305px;
+	}
+	#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+}
+
+@media (min-width:483px) and (max-width: 579px) {
+
+	.ticker{
+	margin-top:3px;
+	font-size:20px;
+	width:63%;
+	}
+	#site-title{
+		font-size:23px;
+		cclear:right;
+	}
+	#stickyRotate{
+	margin-top:12px;
+	}
+	#stickyRotate article{
+		padding-bottom:2px;
+		height:307px;
+	}
+	#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+	.bgimage{
+	background-size:90% auto;
+	}
+}
+
+@media (max-width: 482px) {
+
+header{
+	height: 70px;
+	background-position: 0 -425px;
+}
+
+.ticker{
+	width:100%;
+	font-size:22px;
+	margin-top:-37px;
+	
+}
+#site-title{
+	font-size:25px;
+	
+}
+#mainNav{
+	margin-top:15px;
+	width: 100%;
+	float:left;
+}
+
+#stickyRotate{
+	margin-top:12px;
+	}
+	
+#stickyRotate article{
+	padding-bottom:5px;
+	height:304px;
+	}
+
+	
+#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+.bgimage{
+	background-size:90% auto;
+	}
+
+
+}
+
+/* JQUERY learning -snazzy navigation -  */
+#ufo{
+position: absolute; 
+margin-top: 12px; 
+margin-left: -7px;
+width: 37px; 
+height: 20px;
+background: url(images/nagar41.jpg) no-repeat 50% 50%;
+}
+
+
+/* Styling a Search BoX in the menu
+ *
+ * Takes 3 steps: 
+ * 
+ * 1. Moving Search widget to the Top Navigation Menu - impld. in functions.php
+ * 2. Styling using CSS3 Animation                    - impld. in style.css
+ * 3. Jquery event addition for click on the icon     - impld. in mm-cm-search.menu.js
+ */
+
+ 
+.cm-nav-menu-search {
+width:0%;
+min-width:150px;
+}
+.image-holder, .cm-nav-menu-search #searchsubmit, .cm-nav-menu-search #s { /* setting all elements position same on top of each other */
+	position:absolute;
+	top:20px;
+	right:21px;
+	width:24px;
+	height:22px;
+	cursor:pointer;
+}
+.image-holder {
+	display:block; /* gives dimensions to the object that help to click/hover */
+	background-image: url(images/mag_glass.svg);
+	background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size:    20px 18px;
+    background-size:20px 18px;
+	background-color:#23acda;
+	coslor:transparent;
+	border-radius:5px;
+	z-index:90;
+	ldine-height:30px;
+}
+
+
+.cm-nav-menu-search #searchsubmit {
+	lsine-height:40px;
+	background-color:#fff;
+    opacity:0;
+	csolor:transparent;
+	bsorder:none;
+	z-index:-1;
+	paadding:10px;
+	}
+
+
+	
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+	font-family:"Roboto", sans-serif;
+	font-size:16px;
+	font-weight:500;
+	-webkit-transition:0.2s ease all;
+	-o-transition:0.2s ease all;
+	transition:0.2s ease all;
+	}
+.cm-nav-menu-search #s { /* input text */
+visibility:hidden;
+opacity:0;
+border:1px solid #eee;
+border-radius:5px;
+-webkit-backface-visibility: hidden;
+transition:width 0.6s, border-radius 0.6s, background 0.6s;
+}
+
+/* Now when image is clicked a new class '.cm-search-open' is added through js, See: mm-cm-search-menu.js 
+ * consequently Target search box '#s' will be open...Note 0 space between class selectors
+ */
+.cm-nav-menu-search.cm-search-open #s {
+	visibility:visible;
+	opacity:1;
+	width:80%;
+	height:15.4px;
+	border-top: 2px solid #dcdcdc;
+	border-left: 2px solid #dcdcdc;
+	border-bottom: 2px solid #dcdcdc;
+	border-radius:5px;
+    cursor: text;
+	-webkit-transition:width 0.6s cubic-bezier(0, .91, 0.89, .21), border-radius 0.6s, background 0.6s;
+	transition:width 0.6s cubic-bezier(0, .91, 0.89, .21), border-radius 0.6s, background 0.6s;
+	
+	}
+	
+/* STYLING NAVIGATION MENU
+ * Style : 1
+ *
+ */
+.cm-header #mainNav ul {
+	float:right;
+	}
+.cm-header #mainNav li  { 
+    display: block;
+    line-height: 60px; /* this should be the same as your #mainNav height */ 
+    hdeight: 60px; /* this should be the same as your #main-nav height */ 
+    position:relative; /* this is needed in order to position sub menus */ 
+} 
+
+
+.cm-header #mainNav li a { 
+	display: block; 
+    line-height: 60px; 
+    padding: 0 15px; 
+	font-family:"Libre Baskerville", Arial, sans-serif;
+	font-size:16px;
+	color:#333;
+	border:none;
+	
+} 
+
+}
+.cm-header #mainNav  ul li:hover > a  { 
+    color: #bada55; 
+	
+} 
+
+.cm-header #mainNav ul ul { /* targets all the submenus*/
+	display:none;	/* hide all sub menus from view */
+	position:absolute;
+	top:60px; /* this should be the same height as the top level menu -- height + padding + borders */
+	}
+.cm-header #mainNav ul ul li{
+	display:block;
+	float:none;
+	width:200px;/* set to the width you want your sub menus to be. This needs to match the value we set below */
+	
+	}
+.cm-header #mainNav ul ul li a{ /* target all sub menu item links */
+	display:inline-block; /* inline-block not block gives desired padding */
+	font-family:"Roboto", Arial, sans-serif;
+	font-size:14px;
+	line-height:20px;
+	ppadding:5px 10px; /* give our sub menu links a nice button feel */
+	white-space:nowrap;
+	padding-left:20px;
+	}
+.cm-header #mainNav ul li:hover > ul { 
+	display:block; /* show sub menus when hovering over a parent */
+	background:white;
+	bbackground: #f5f5f5;
+	}
+.cm-header #mainNav ul ul li:hover > a { /* only underling first submenu when hovering */
+bvackground: #f5f5f5;
+text-decoration:underline;
+dirsplay:inline-block;
+}
+
+.cm-header #mainNav ul ul li ul {/* target all second, third, and deeper level sub menus */ 
+    left:60px; /* this needs to match the sub menu width set above -- width + padding + borders */ 
+    top:14px; /* this ensures the sub menu starts in line with its parent item */ 
+	overflow:hidden;
+} 

@@ -1,0 +1,255 @@
+
+/* -------------------------------------Styling My Header------------------------
+
+ * Rev.2: Title and description on one line while menu on second. 
+ 
+ */
+
+#mainNav{
+	position:absolute;
+	top: 33px;
+	width: 100%;
+	bbackground-color:brown;
+}
+#mainNav li a{
+	
+	line-height: 100%;
+	size: 120%;
+	}
+
+
+#cm-effect{
+	background-color:#999;
+	height:45px;
+	}
+	
+#site-title{
+width:20%;
+	}
+#site-description{
+width:80%;
+padding-top:4px;
+	}
+
+#stickyRotate {
+	top:78px;
+	}
+	
+#mainNav{
+	/* defined below under responsive section*/
+}	
+/* Rest of the Header settings are done in 
+ * #stickyRotate height and first non sticky post's top margin in .js file
+ */
+
+ 
+ 
+/*------------------ RESPONSIVE STYLING -------------------
+ *------------------COMMON DEVICE SIZES -------------------
+ * ------------- 960-1024-1280-1366-1440-1680 -------------
+ */
+
+@media (min-width: 1366px) {
+
+#mainNav{
+	position:absolute;
+	top: 40px;
+	width: 100%;
+	bxackground-color:brown;
+	}	
+}
+@media (min-width:1280px) and (max-width: 1365px) {
+/*for netbook/tablet screens*/
+	#mainNav{
+		position:absolute;
+		top: 33px;
+		width: 100%;
+		maax-width:1350px;
+		bbackground-color:#999;
+	}
+	#site-description{
+	margin-top:5px;
+	width:77%;
+	}
+	#stickyNav{
+	margin: 270px 0 0 0px;
+	}
+}
+@media (min-width:1024px) and (max-width: 1279px) {
+/*for netbook/tablet screens*/
+	#mainNav{
+		position:absolute;
+		top: 33px;
+		width: 100%;
+	}
+	#site-description{
+	margin-top:3px;
+	width:74%;
+	}
+	#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+	#stickyRotate article{
+	padding-bottom:72px;
+	}
+}
+@media (min-width: 960px) and (max-width: 1023px) {
+	header{
+		height: 100px;
+		background-position: 0 -220px;
+	}
+	#site-description{
+		width:74%;
+		margin-top:3px;
+	}
+	#site-title{
+		wiidth:50%;
+		font-size:30px;
+	}
+	
+	#mainNav{
+		top:30px;
+		width: 100%;
+	}
+	#stickyNav{
+	margin: 260px 0 0 0px;
+	}	
+	#stickyRotate article{
+	padding-bottom:72px;
+	}
+}
+
+@media  (min-width: 680px) and (max-width: 959px) {
+
+
+#site-description{
+		margin-top:3px;
+		width:70%;
+		font-size:25px;
+	}
+#site-title{
+	font-size:28px;
+}
+
+#stickyRotate{
+	margin-top:6px;
+	}
+#stickyRotate article{
+	padding-bottom:9px;
+	height:305px
+	}
+#mainNav{
+	top:33px;
+	width: 100%;
+}
+#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+}
+@media (min-width:580px) and (max-width: 679px) {
+
+	#site-description{
+	margin-top:3px;
+	font-size:23px;
+	width:68%;
+	}
+	#site-title{
+		font-size:25px;
+		clear:right;
+	}
+	#stickyRotate{
+		margin-top:9px;
+		}
+	#stickyRotate article{
+		padding-bottom:7px;
+		height:305px;
+	}
+	#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+}
+
+@media (min-width:483px) and (max-width: 579px) {
+
+	#site-description{
+	margin-top:3px;
+	font-size:20px;
+	width:63%;
+	}
+	#site-title{
+		font-size:23px;
+		cclear:right;
+	}
+	#stickyRotate{
+	margin-top:12px;
+	}
+	#stickyRotate article{
+		padding-bottom:2px;
+		height:307px;
+	}
+	#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+	.bgimage{
+	background-size:90% auto;
+	}
+}
+
+@media (max-width: 482px) {
+
+header{
+	height: 70px;
+	background-position: 0 -425px;
+}
+
+#site-description{
+	width:100%;
+	font-size:22px;
+	margin-top:-37px;
+	
+}
+#site-title{
+	font-size:25px;
+	
+}
+#mainNav{
+	margin-top:15px;
+	width: 100%;
+	float:left;
+}
+
+#stickyRotate{
+	margin-top:12px;
+	}
+	
+#stickyRotate article{
+	padding-bottom:5px;
+	height:304px;
+	}
+
+	
+#stickyNav{
+	margin: 250px 0 0 0px;
+	}
+.bgimage{
+	background-size:90% auto;
+	}
+
+
+}
+
+/* JQUERY learning -snazzy navigation -  */
+#ufo{
+position: absolute; 
+margin-top: 12px; 
+margin-left: -7px;
+width: 37px; 
+height: 20px;
+background: url(images/nagar41.jpg) no-repeat 50% 50%;
+}
+
+/* ------------TEST BORDERS----------*/
+
+//* {
+	border:1px solid orange !important;
+}
