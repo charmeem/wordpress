@@ -5,11 +5,71 @@
  *
  */
  
- 
+add_action( 'wp_enqueue_scripts', 'charmeem_scripts' );
+//NOTE: Need wp_head hook in header.php file
+function charmeem_scripts() {
+	
+	// --- JS-JQuery files ---
+	// Fading slider file
+	if(!is_single()) {  
+	// Bypassing slider for single post
+		wp_enqueue_script('mm-cm-slider', get_bloginfo('stylesheet_directory') . '/js/mm-cm-slider-latest.js', array('jquery'),'20160419' ); 
+	}
+	//scroll header--header resizes while scrolling
+	wp_enqueue_script('mm-cm-header', get_bloginfo('stylesheet_directory') . '/js/mm-cm-header.js', array('jquery'),'20160419' ); 
+		
+	//scroll Animation
+	wp_enqueue_script('mm-cm-animation', get_bloginfo('stylesheet_directory') . '/js/mm-cm-scroll-animation.js', array('jquery'),'20160425' ); 
+		
+	//Search box in menu Animation
+	wp_enqueue_script('mm-cm-search', get_bloginfo('stylesheet_directory') . '/js/mm-cm-search-menu.js', array('jquery'),'20160506' ); 
+		
+	//Jquery Built-in EFFECTS plug-ins	
+	
+	// One liner Registering Built-in plug-ins for Color, UI both core and specific as well as dependencies
+	// wp_enqueue_script("jquery-color","jquery-ui-core", "jquery-effects-core", "jquery-effects-blind", "jquery-effects-clip","jquery-effects-drop","jquery-effects-highlight","jquery-effects-puff","jquery-effects-scale","jquery-effects-size","jquery-effects-slide");
+	wp_enqueue_script("jquery-ui-core");
+	wp_enqueue_script("jquery-color");
+	wp_enqueue_script("jquery-effects-blind");
+	wp_enqueue_script("jquery-effects-clip");
+	wp_enqueue_script("jquery-effects-drop");
+	wp_enqueue_script("jquery-effects-highlight");
+	wp_enqueue_script("jquery-effects-size");
+	wp_enqueue_script("jquery-effects-puff");
+	wp_enqueue_script("jquery-effects-scale");
+	wp_enqueue_script("jquery-effects-slide");
+	wp_enqueue_script("jquery-effects-pulsate");
+	wp_enqueue_script("jquery-effects-easing");
+	
+	// --- CSS Files ---
+	// Load our main default stylesheet.
+	wp_enqueue_style( 'mm-cm-style', get_stylesheet_uri() );
+	
+	//Style1- Title,Menu on one line- Description on second
+	wp_enqueue_style( 'mm-cm-title1', get_template_directory_uri() . '/styles/style-1.css', array( 'mm-cm-style' ), '20160910' );
+	
+	//Style2- Title,Description on one line- Menu on second
+	//wp_enqueue_style( 'mm-cm-title1', get_template_directory_uri() . '/styles/style-2.css', array( 'mm-cm-style' ), '20160910' );
+	
+	//scroll header
+	wp_enqueue_style( 'mm-cm-sch', get_template_directory_uri() . '/styles/style-sh.css', array( 'mm-cm-style' ), '20160910' );
+	
+	//scroll animation
+	wp_enqueue_style( 'mm-cm-sca', get_template_directory_uri() . '/styles/style-scroll-animation.css', array( 'mm-cm-style' ), '20160910' );
+	
+	//search icon in header with animation
+	//wp_enqueue_style( 'mm-cm-sca', get_template_directory_uri() . '/styles/style-search-icon3.css', array( 'mm-cm-style' ), '20160910' );
+	
+}		 
+
 //Selecting seperate stylesheets for different posts based on Categories.Can use seperate file later.
+
 //add_action( 'wp_enqueue_scripts', 'load_script_styles' );
+
 //wp_enqueue_scripts hook does not work here  
-//This is the right filter to use for category conditions. 
+
+//following is the right filter to use for category conditions.
+ 
 add_filter( 'body_class', 'load_script_styles' );
 function load_script_styles() {
 	//if (is_page_template('single.php')) {  This does not work because page_template only work for post type= page not post or custom post types
@@ -19,11 +79,6 @@ function load_script_styles() {
 	wp_enqueue_style("single-dawah", get_bloginfo('stylesheet_directory') . '/styles/single-dawah.css');
 	}
  }
- 
-/*--scroll header--header resizes while scrolling*/
-
-//wp_enqueue_script('mm-cm-header', get_bloginfo('stylesheet_directory') . '/js/mm-cm-header.js', array('jquery'),'20160419' ); 
-		 
  
 /**
  * Registering New menu and showing Menu link on appearance panel
