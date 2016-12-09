@@ -1,6 +1,14 @@
 /* Related STYLE Sheet : /styles/style-scroll-animation.css */
 
-(function($) { 
+/* Ways of Working
+ *
+ * 1. Patterns or Best practices are followed as per Book: Professional JQuery
+ *
+ * 2. One of them is .widget UI that I will try to use here 
+ *
+ */
+
+ (function($) { 
 
 var $window = $(window);	
 //

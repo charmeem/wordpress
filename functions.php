@@ -15,13 +15,13 @@ function charmeem_scripts() {
 	// Bypassing slider for single post
 		wp_enqueue_script('mm-cm-slider', get_bloginfo('stylesheet_directory') . '/js/mm-cm-slider-latest.js', array('jquery'),'20160419' ); 
 	}
-	//scroll header--header resizes while scrolling
+	//scroll header-header resizes while scrolling
 	wp_enqueue_script('mm-cm-header', get_bloginfo('stylesheet_directory') . '/js/mm-cm-header.js', array('jquery'),'20160419' ); 
 		
-	//scroll Animation
+	//scroll Animation - different types of animations while scrolling
 	wp_enqueue_script('mm-cm-animation', get_bloginfo('stylesheet_directory') . '/js/mm-cm-scroll-animation.js', array('jquery'),'20160425' ); 
 		
-	//Search box in menu Animation
+	//Animated Search box in menu
 	wp_enqueue_script('mm-cm-search', get_bloginfo('stylesheet_directory') . '/js/mm-cm-search-menu.js', array('jquery'),'20160506' ); 
 		
 	//Jquery Built-in EFFECTS plug-ins	
@@ -45,7 +45,7 @@ function charmeem_scripts() {
 	// Load our main default stylesheet.
 	wp_enqueue_style( 'mm-cm-style', get_stylesheet_uri() );
 	
-	//Style1- Title,Menu on one line- Description on second
+	//Style1- Title,Menu on one line- sliding description on second
 	wp_enqueue_style( 'mm-cm-title1', get_template_directory_uri() . '/styles/style-1.css', array( 'mm-cm-style' ), '20160910' );
 	
 	//Style2- Title,Description on one line- Menu on second
@@ -62,13 +62,14 @@ function charmeem_scripts() {
 	
 }		 
 
-//Selecting seperate stylesheets for different posts based on Categories.Can use seperate file later.
+//Selecting separate style sheets for different posts based on Categories.Can use separate file later.
 
 //add_action( 'wp_enqueue_scripts', 'load_script_styles' );
 
 //wp_enqueue_scripts hook does not work here  
 
 //following is the right filter to use for category conditions.
+// more condition tags can be used in the same function for different posts types.
  
 add_filter( 'body_class', 'load_script_styles' );
 function load_script_styles() {
@@ -78,9 +79,11 @@ function load_script_styles() {
 	// posts with 'dawah' ( case sensitive) category has unique stylesheet named 'single-dawah' 'is_category' will not work here
 	wp_enqueue_style("single-dawah", get_bloginfo('stylesheet_directory') . '/styles/single-dawah.css');
 	}
- }
+ } 
+ // body_class can be used to assign classes to different pages types. see related file in my_web directory
+
  
-/**
+ /**
  * Registering New menu and showing Menu link on appearance panel
  *
  */
@@ -225,7 +228,23 @@ function add_excerpt_class( $excerpt )
 add_filter( "the_excerpt", "add_excerpt_class" );
 
 
-/* Adding Search box in the Menu BUT not Exactly the way as other li items 
+/* Adding Search box in the Menu 
+ * BUT not Exactly the way as other li items
+ */
+
+// As of 3.1.10, Customizr doesn't output an html5 form.
+//add_theme_support( 'html5', array( 'searchform' ) );
+add_filter('wp_nav_menu_items', 'add_search_form_to_menu', 10, 2);
+function add_search_form_to_menu($items, $args) {
+  // If this isn't equal to 'header-menu' set up by function 'wp_nav_menu' in functions.php file, do nothing
+  // It avaoids duplicate search form appended in the footer li section !!
+    if( !($args->theme_location == 'header-menu') ) 
+  	return $items;
+  // On main menu: put styling around search and append it to the menu items
+  return $items . '<li class="cm-nav-menu-search">' . get_search_form(false) . '</li>';
+	  }
+
+/* 
 add_filter('wp_nav_menu_items','add_search_box', 10, 2);
 function add_search_box($items, $args) {
         ob_start();
@@ -238,19 +257,6 @@ function add_search_box($items, $args) {
     return $items;
 }
 */
-// As of 3.1.10, Customizr doesn't output an html5 form.
-add_theme_support( 'html5', array( 'searchform' ) );
-add_filter('wp_nav_menu_items', 'add_search_form_to_menu', 10, 2);
-function add_search_form_to_menu($items, $args) {
-  // If this isn't equal to 'header-menu' set up by function 'wp_nav_menu' in functions.php file, do nothing
-  // It avaoids duplicate search form appended in the footer li section !!
-    if( !($args->theme_location == 'header-menu') ) 
-  	return $items;
-  // On main menu: put styling around search and append it to the menu items
-  return $items . '<li class="cm-nav-menu-search">' . get_search_form(false) . '</li>';
-	  }
-
-
 
 /**PAGE BUILDER
  *
@@ -264,11 +270,8 @@ function add_search_form_to_menu($items, $args) {
 	
  
 // Workaround for not able to save the POST in case of empty Post Title or content
-
 // If the post content, title and excerpt are empty WordPress will prevent the insertion of the post.
- 
 // You can trick WordPress by first filtering the input array so empty values are set to something else,
-
 // and then later resetting these values back to empty strings. This will bypass the standard check.
 
 add_filter('pre_post_title', 'wpse28021_mask_empty');
@@ -311,7 +314,7 @@ function wpse28021_unmask_empty($data)
 add_action("add_meta_boxes", "my_custom_meta_box");
 function my_custom_meta_box() {  
 	
-// First removing default post edit meta box */
+	// First removing default post edit meta box 
 	global $_wp_post_type_features;
 	if(isset($_wp_post_type_features['post']['editor'])) {
 		unset ($_wp_post_type_features['post']['editor']);
@@ -325,16 +328,13 @@ function meta_box_callback($object) { // Call back from add_meta_box function ab
 	wp_nonce_field(basename(__FILE__), 'page-builder');
 
     ?>	<!-- needs to change the following bad practice in href.-->
-         <a class = "button" href="javascript:add_widget();">Add Box</a><br>
-
-         <div style="background-color: #dde3e5; width: 1000px;" class="gridster">
+         <a class = "button" href="javascript:add_widget();" >Add Box</a><br>
+         <div class="gridster" style="background-color: #dde3e5; width: 840px;" >
 			<ul></ul>
          </div>
-
          <input type="text" name="complete_layout_data" id="complete_layout_data" style="display: none">
-		 
-		<a class = " button-primary " href="javascript:save_edit();">Save Content</a><br/>
-		
+		 <a class = " button-primary " href="javascript:save_edit();" style="position: absolute; top:0; left:100px; " >Save Content</a><br/>
+		 <!--Styling to bring save button up with the add button -->
 		<!-- Renders an editor in my custom meta box -->
 		<?php wp_editor("", "gridster_edit", array("tinymce" => true)); ?> <br> 
 		
