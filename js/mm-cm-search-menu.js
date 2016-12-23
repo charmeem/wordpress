@@ -1,9 +1,34 @@
+/*! Note: By Mubashir Mufti
+*  Trying to convert this into plug-in on modular pattern using UMD
+*  Universal module definition, which is a module pattern
+*  compatible with multiple module systems like
+*  AMD, CommonJS, Node, RequireJS or plain JS script */
+
+
+
 /* This function is included(.attr function see below) in the html attribute in search field
  * Aim is to bring saerchh submit button on top( click enabled) when input field is not empty
  * Otherwise icon picture element (.image-holder) is enabled 
  */
-;(function($) {
+ 
+ ;(function(root, factory) {
+	'use strict';
+	// if Node Module or commonJS like
+    if(typeof exports === 'object') {
+        module.exports = factory(require('jquery'));
+    }
+	// if AMD
+    else if (typeof define === 'function' && define.amd) {
+        define('cm-search', ['jquery'], factory);
+    } else {
+	// Browser globals (root is window)
+       root.CharmeemSearch = factory(root.$ || root.jQuery);
+    }
 
+}(this, function($) {
+	'use strict';
+	
+	
 function keyUp(){
          var input = jQuery('#s').val(); 
             input = jQuery.trim(input).length;
@@ -41,4 +66,4 @@ function keyUp(){
 
 }); //end doc ready
 
-})(jQuery);
+}));
