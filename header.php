@@ -20,7 +20,7 @@
 			        However if i add enqueue script here directly then it works even without wp_head() hook. -->
 	</head>
 	<body <?php body_class('bg-main'); ?>> <!--this filter tag is used by add_filter e.g in function.php for loading category based stylesheet-->
-		<div id="container"><!--layout container- not used so far-->
+		<div id="container"><!--defined in -layout-core.css  -->
 			<header class="cm-header">
 				<div id="cm-effect">
 					<h1 class = "left" id="site-title"><?php bloginfo('name'); ?></h1>

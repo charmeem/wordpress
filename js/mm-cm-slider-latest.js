@@ -14,8 +14,13 @@
  * Since we want to optimize the code by replacing jQuery by $ this will not work here
  * instead we have to choose following approach
  */
+/* Can covert into a JQuery Plug-in
+ * Name: slider
+ */
+//jQuery.noConflict();
+;(function($) {  // Best practice following 'professional jquery"
 
- jQuery(document).ready(function($){
+ $(function(){
  var $sticky = $('.sticky'); //Assigning jQuery selection to variables for better performance and speed
 							 // $ sign FOR THE VARIABLES IS ONLY USED AS CONVENTION..To show that it holds jQuery selection
  
@@ -103,3 +108,4 @@ function loopStickies(duration) {
 	});//end each
 	
 } //end loopStickies
+})(jQuery);

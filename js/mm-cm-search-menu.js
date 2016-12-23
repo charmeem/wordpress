@@ -2,6 +2,7 @@
  * Aim is to bring saerchh submit button on top( click enabled) when input field is not empty
  * Otherwise icon picture element (.image-holder) is enabled 
  */
+;(function($) {
 
 function keyUp(){
          var input = jQuery('#s').val(); 
@@ -38,4 +39,6 @@ function keyUp(){
             }
     });
 
-});
+}); //end doc ready
+
+})(jQuery);

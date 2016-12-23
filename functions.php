@@ -29,6 +29,7 @@ function charmeem_scripts() {
 	// One liner Registering Built-in plug-ins for Color, UI both core and specific as well as dependencies
 	// wp_enqueue_script("jquery-color","jquery-ui-core", "jquery-effects-core", "jquery-effects-blind", "jquery-effects-clip","jquery-effects-drop","jquery-effects-highlight","jquery-effects-puff","jquery-effects-scale","jquery-effects-size","jquery-effects-slide");
 	wp_enqueue_script("jquery-ui-core");
+	wp_enqueue_script("jquery-ui-widget");
 	wp_enqueue_script("jquery-color");
 	wp_enqueue_script("jquery-effects-blind");
 	wp_enqueue_script("jquery-effects-clip");

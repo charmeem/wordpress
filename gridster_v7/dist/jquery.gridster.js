@@ -2,14 +2,23 @@
 * https://dsmorse.github.io/gridster.js/
 * Copyright (c) 2016 ducksboard; Licensed MIT */
 
+/*! Note: By Mubashir Mufti
+*  This plug-in is designed on modular pattern using UMD
+*  Universal module definition, which is a module pattern
+*  compatible with multiple module systems like
+*  AMD, CommonJS, Node, RequireJS or plain JS script */ 
+
 ;(function(root, factory) {
 	'use strict';
+	// if Node Module or commonJS like
     if(typeof exports === 'object') {
         module.exports = factory(require('jquery'));
     }
+	// if AMD
     else if (typeof define === 'function' && define.amd) {
         define('gridster-coords', ['jquery'], factory);
     } else {
+	// Browser globals (root is window)
        root.GridsterCoords = factory(root.$ || root.jQuery);
     }
 
