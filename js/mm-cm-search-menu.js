@@ -28,19 +28,8 @@
 }(this, function($) {
 	'use strict';
 	
-	
-function keyUp(){
-         var input = jQuery('#s').val(); 
-            input = jQuery.trim(input).length;
-            if(input !== 0){
-                jQuery('#searchsubmit').css('z-index','99');
-            } else{
-                jQuery('#s').val(''); 
-                jQuery('#searchsubmit').css('z-index','-999');
-            }
-    }
-    
-    jQuery(document).ready(function($){
+  
+    $(function(){
 	// A new class is added here to use as place holder for my mag_glass image..
 	$('.cm-nav-menu-search #searchsubmit').after("<span class='image-holder'></span>");
 	
@@ -64,6 +53,17 @@ function keyUp(){
             }
     });
 
+function keyUp(){
+         var input = jQuery('#s').val(); 
+            input = jQuery.trim(input).length;
+            if(input !== 0){
+                jQuery('#searchsubmit').css('z-index','99');
+            } else{
+                jQuery('#s').val(''); 
+                jQuery('#searchsubmit').css('z-index','-999');
+            }
+    }	
+	
 }); //end doc ready
 
 }));

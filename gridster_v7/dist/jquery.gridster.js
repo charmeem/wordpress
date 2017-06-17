@@ -50,10 +50,10 @@
     }
 
 
-    var fn = Coords.prototype;
+    var fn = Coords.prototype  // fn becomes prototype of 'Coords'
 
 
-    fn.init = function(){
+    fn.init = function(){	//init method added to prototype of 'Coords'
         this.set();
         this.original_coords = this.get();
     };
@@ -124,13 +124,13 @@
     };
 
     //jQuery adapter
-    $.fn.coords = function() {
-        if (this.data('coords') ) {
+    $.fn.coords = function() {          // creating jQuery function prototype that can be called from externally
+        if (this.data('coords') ) {     // Checking if data with key name 'coords' already exists
             return this.data('coords');
         }
 
-        var ins = new Coords(this);
-        this.data('coords', ins);
+        var ins = new Coords(this);  // Creating instance of Coords
+        this.data('coords', ins);    // storing newly created instance to key name 'coords'
         return ins;
     };
 
