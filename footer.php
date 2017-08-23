@@ -13,7 +13,8 @@
 		</aside>
 
 </footer>
-</div><!--//#across-->
+</div>
+<!--#across-->
 		
 <?php wp_footer(); ?> <!--hook for plugin supports-->
 </body>

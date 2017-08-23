@@ -8,7 +8,7 @@
 ?>
 
 <?php get_header();?>
-<!-- Begin #container2 this holds the content and sidebars-->
+<!-- Begin #container2 this holds the contenttttttt and sidebars-->
 	<div id="container2" class="bdr bdr-top">
 	<!-- Begin first section holds the left content columns-->
 		<div class="content left full">

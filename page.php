@@ -1,5 +1,17 @@
-<?php get_header(); ?>
-<!-- Begin #container2 this holds the content and sidebars-->
+<?php 
+/**
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ */
+get_header(); ?>
+<!-- Begin #container2 this holds the cononontent and sidebars-->
 	<div id="container2" class="bdr bdr-top">
 	<!-- Begin first section holds the left content columns-->
 		<div class="content left two-thirds">

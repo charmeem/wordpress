@@ -60,7 +60,7 @@ var intervalDuration = duration2 * $('.sticky').length; //create total interval 
 
 loopStickies(duration1); // Function needs to run once before the setInterval kicks in
 
-setInterval( 'loopStickies("'+duration2+'")', intervalDuration ); // setInterval will kick off slide in longer interval, duration2
+setInterval( loopStickies("+duration2+"), intervalDuration ); // setInterval will kick off slide in longer interval, duration2
 
 /* Creating slider numbers 
  */

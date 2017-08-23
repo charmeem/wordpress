@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-
-<!-- TEMPLATE FLOW - index.php-header.php-functions.php
--->
-<?php get_header(); ?>
-<!-- Begin #container2 this holds the content -->
+<?php
+/**
+ * Template flow as per WP Theme handbook
+ * For Static page setting-- front-page.php for both front page and posts list
+ * If that not found then page.php for posts and home.php for posts
+ * index.php is the fallback in all cases
+ *
+ */
+ 
+ get_header(); ?>
+<!-- Begin #container2 this holds the contennnnnnt -->
 	<div id="container2" class=" bdr-top">
 		<!-- changing front to full width-->
 		<div class="content left full ">
@@ -47,6 +53,6 @@
 			</div><!--//#container2-->
 		</div><!--//container-from header file->
 		<div id="across" class = "bdr grd-vt-main rnd shdw-centered">
-			<?php get_footer();
+<?php get_footer();
 			//wp_localize_script( 'cm-bgimage', 'bgImage',  $image_url );
 		?>

@@ -12,7 +12,7 @@ function charmeem_scripts() {
 	// --- JS-JQuery files ---
 	// Fading slider file
 	if(!is_single()) {  
-	// Bypassing slider for single post
+		// Bypassing slider for single post
 		wp_enqueue_script('mm-cm-slider', get_bloginfo('stylesheet_directory') . '/js/mm-cm-slider-latest.js', array('jquery'),'20160419' ); 
 	}
 	//scroll header-header resizes while scrolling
@@ -91,8 +91,9 @@ function load_script_styles() {
 add_action( 'init', 'register_cm_menu' );
 function register_cm_menu() {
 	register_nav_menus(
-		array('header-menu' => __('Header Menu'))
-	);
+		array('header-menu' => __('Charmeem Menu')
+		     // 'logged-in' => __('Logged-In Menu')
+	));
 }
 
 /* Registering Widget areas and showing widget link on appearance Panel */	
