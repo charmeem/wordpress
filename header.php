@@ -1,22 +1,36 @@
-<html lang="en" class='no-js'>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Who is our Lord</title>
-		
-		<!--Setting Viewport for mobile devices -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<!-- Temporarily commenting out
-		<link rel="apple-touch-icon" sizes="57x57" href="images/pngs/apple-touch-icon-57x57.png"/>
-		<link rel="apple-touch-icon" sizes="72x72" href="images/pngs/apple-touch-icon-72x72.png"/>
-		<link rel="apple-touch-icon" sizes="114x114" href="images/pngs/apple-touch-icon-114x114.png"/>
-		-->
-		<meta name="description" content="Description of content that contains top keyword phrases">
-		<meta name="keywords" content="Key words and phrases, comma separated, not directly used in content - google ignores this tag but used in other engines as a fall back">
+<?php
+/**
+ * The header for our theme , using thematic & twentyseventeen as a startup
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ */
 
-		<?php
-		wp_head(); ?> 
+?><!DOCTYPE html>
+
+<html <?php language_attributes(); ?> class="no-js no-svg">
+<!-- 
+    language_attribute Builds set of html attributes containing text direction and language information for the page
+	class=no-js&no-svg used for sites does not support js and svg , separate css layouts are used for these sites
+    if js and svg are used then js script in functions.php file is used to replace no-js to js and no-svg to svg
+-->
+	
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>"> 
+<!-- avaoiding unknown characters-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- resetting any default zoom for mobile devices, useful for responsive layouts-->
+
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<!-- XFN™ (XHTML Friends Network) is a simple way to represent human relationships using hyperlinks-->
+
+<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+<!--Using WordPress pingbacks is a good way to get more links to your blog.-->
+
+<?php wp_head(); ?> 
 		 
 		 <!-- Hook for plugin supports
 		  NOTE: Without this, the enqueue scripts function that I have added in function.php DOES not Work
@@ -28,10 +42,13 @@
 			 and wp_enqueue_scripts is call back function equivalent to  do_action( 'wp_enqueue_scripts' );
 			 Thats why we see that wp_enqueue_scripts DOESNOT WORK without wp_head()
  		  -->
-	</head>
-	<body <?php body_class('bg-main'); ?>> <!--this filter tag is used by add_filter e.g in function.php for loading category based stylesheet-->
-		<div id="container"><!--defined in -layout-core.css  -->
-			<header class="cm-header">
+</head>
+
+<body <?php body_class('bg-main'); ?>> 
+<!--this filter tag is used by add_filter e.g in function.php for loading category based stylesheet-->
+
+<div id="container"><!--defined in -layout-core.css  -->
+	<header class="cm-header">
 				<div id="cm-effect">
 					<h1 class = "left" id="site-title"><?php bloginfo('name'); ?></h1>
 					<?php if( !is_single() && !is_page() ) { 

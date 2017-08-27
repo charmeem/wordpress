@@ -71,7 +71,7 @@ function charmeem_scripts() {
 
 //following is the right filter to use for category conditions.
 // more condition tags can be used in the same function for different posts types.
- 
+/* 
 add_filter( 'body_class', 'load_script_styles' );
 function load_script_styles() {
 	//if (is_page_template('single.php')) {  This does not work because page_template only work for post type= page not post or custom post types
@@ -80,7 +80,8 @@ function load_script_styles() {
 	// posts with 'dawah' ( case sensitive) category has unique stylesheet named 'single-dawah' 'is_category' will not work here
 	wp_enqueue_style("single-dawah", get_bloginfo('stylesheet_directory') . '/styles/single-dawah.css');
 	}
- } 
+ }
+*/ 
  // body_class can be used to assign classes to different pages types. see related file in my_web directory
 
  
