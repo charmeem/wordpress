@@ -44,7 +44,7 @@
  		  -->
 </head>
 
-<body <?php body_class('bg-main'); ?>> 
+<body <?php body_class(); ?>> 
 <!--this filter tag is used by add_filter e.g in function.php for loading category based stylesheet-->
 
 <div id="container"><!--defined in -layout-core.css  -->
