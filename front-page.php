@@ -10,6 +10,11 @@
  *
  */
  get_header(); ?>
+ 
+ <div id="primary" class="content-area">
+ <!-- Content are is enclosed in container class 'content-area' and comes before sidebar or other widgets
+  this is search engine friendly approach and also makes CSS styling into multiple column easier -->
+ 
 <!-- Begin #container2 this holds the cononontent and sidebars-->
 	<div id="container2" class="bdr bdr-top">
 	<!-- Begin first section holds the left content columns-->
@@ -36,8 +41,6 @@
 		<!-- Second section holds the right columns- the sidebar-->
 		<?php get_sidebar(); ?>
 				
-		</div><!--//container-->
-		
 		<div id="across">
 		
 		<?php get_footer();?>

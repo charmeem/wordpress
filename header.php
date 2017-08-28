@@ -45,10 +45,17 @@
 </head>
 
 <body <?php body_class(); ?>> 
-<!--this filter tag is used by add_filter e.g in function.php for loading category based stylesheet-->
+<!--automatically generating classes for the body elements -->
 
-<div id="container"><!--defined in -layout-core.css  -->
-	<header class="cm-header">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyseventeen' ); ?></a>
+    <!-- for screen reader , go directly to the content -->
+
+    <header id="masthead" class="site-header" role="banner">
+    <!-- role attribute makes navigation easier for those using assistive devices -->
+	
+	<?php get_template_part( 'template-parts/header/header', 'image' ); ?>
+	
 				<div id="cm-effect">
 					<h1 class = "left" id="site-title"><?php bloginfo('name'); ?></h1>
 					<?php if( !is_single() && !is_page() ) { 
