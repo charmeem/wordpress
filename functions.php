@@ -91,10 +91,11 @@ function load_script_styles() {
  */
 add_action( 'init', 'register_cm_menu' );
 function register_cm_menu() {
-	register_nav_menus(
-		array('header-menu' => __('Charmeem Menu')
-		     // 'logged-in' => __('Logged-In Menu')
-	));
+	register_nav_menus(	array(
+	    'top'   => __('Top Menu', 'charmeem'),
+		'below' => __('Low Menu', 'charmeem'),
+		'social'=> __('Social Menu', 'charmeem'),
+	) );
 }
 
 /* Registering Widget areas and showing widget link on appearance Panel */	
@@ -273,5 +274,11 @@ function add_search_box($items, $args) {
  */
  include_once( get_stylesheet_directory() . '/inc/mm-cm-customizer.php');
  //include_once can be replaced by require_once if the included file is integral part of the project not optional.
+ 
+ 
+/**
+ * Implement the Custom Header feature.
+ */
+require get_parent_theme_file_path( '/inc/custom-header.php' );
  
 ?>

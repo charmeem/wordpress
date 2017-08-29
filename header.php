@@ -55,20 +55,8 @@
     <!-- role attribute makes navigation easier for those using assistive devices -->
 	
 	<?php get_template_part( 'template-parts/header/header', 'image' ); ?>
-	
-				<div id="cm-effect">
-					<h1 class = "left" id="site-title"><?php bloginfo('name'); ?></h1>
-					<?php if( !is_single() && !is_page() ) { 
-					//Excluding Ticker for Single post and page types
-					//and including post-title in the header by defining new id post-title...
-					?>
-						<div class = "ticker" >
-							<h1 class="" id="site-description"><?php bloginfo( 'description' ); ?></h1>
-						</div> 
-					<?php }
-					else { ?>
-						<h1 id="post-title-in-header"><span><?php the_title();?></span></h1>
-					<?php } ?>
+	<!--Relevent custom-header Code is added in functions.php file-->
+				
 					
 					<nav id="mainNav" class="grd-vt-tertiary shdw-centered">
 						<h2 class="screen-reader-text">Main Navigation:</h2>

@@ -2,6 +2,8 @@
 /**
  * Displays header media
  *
+ * Relevent custom-header Code is added in functions.php file
+ *
  * @package WordPress
  * @subpackage Charmeem
  *
