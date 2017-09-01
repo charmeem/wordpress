@@ -57,15 +57,14 @@
 	<?php get_template_part( 'template-parts/header/header', 'image' ); ?>
 	<!--Relevent custom-header Code is added in functions.php file-->
 				
-					
-					<nav id="mainNav" class="grd-vt-tertiary shdw-centered">
-						<h2 class="screen-reader-text">Main Navigation:</h2>
-						<!--//Adding navigation menu that is already register with register_nav_menu in functions.php file-->
-						<?php wp_nav_menu(array('theme_location' => 'header-menu', 'container_class' => 'sfTab')); ?>
-					</nav><!--//top_navlist-->
-					
-				</div>	<!--//cm-effect-->
+	<?php if ( has_nav_menu( 'top' ) ) : ?>
+			<div class="navigation-top">
+				<div class="wrap">
+					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>
+				</div><!-- .wrap -->
+			</div><!-- .navigation-top -->
+		<?php endif; ?>
 
-			</header>	<!--//header-->
+	</header><!-- #masthead -->
 		
 		
