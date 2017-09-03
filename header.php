@@ -55,8 +55,9 @@
     <!-- role attribute makes navigation easier for those using assistive devices -->
 	
 	<?php get_template_part( 'template-parts/header/header', 'image' ); ?>
-	<!--Relevent custom-header Code is added in functions.php file-->
-				
+	<!--Adding custom header, relevant custom-header Code is added in functions.php file-->
+	
+    <!-- Now comes navigation menu -->	
 	<?php if ( has_nav_menu( 'top' ) ) : ?>
 			<div class="navigation-top">
 				<div class="wrap">
