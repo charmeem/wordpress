@@ -1,305 +1,567 @@
 <?php
+/**
+ * Twenty Seventeen functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ */
 
 /**
- * Enqueue Scripts and Styles
- *
+ * Twenty Seventeen only works in WordPress 4.7 or later.
  */
- 
-add_action( 'wp_enqueue_scripts', 'charmeem_scripts' );
-//NOTE: Need wp_head hook in header.php file
-function charmeem_scripts() {
-	
-	// --- JS-JQuery files ---
-	// Fading slider file
-	if(!is_single()) {  
-		// Bypassing slider for single post
-		wp_enqueue_script('mm-cm-slider', get_bloginfo('stylesheet_directory') . '/js/mm-cm-slider-latest.js', array('jquery'),'20160419' ); 
-	}
-	//scroll header-header resizes while scrolling
-	wp_enqueue_script('mm-cm-header', get_bloginfo('stylesheet_directory') . '/js/mm-cm-header.js', array('jquery'),'20160419' ); 
-		
-	//scroll Animation - different types of animations while scrolling
-	wp_enqueue_script('mm-cm-animation', get_bloginfo('stylesheet_directory') . '/js/mm-cm-scroll-animation.js', array('jquery'),'20160425' ); 
-		
-	//Animated Search box in menu
-	wp_enqueue_script('mm-cm-search', get_bloginfo('stylesheet_directory') . '/js/mm-cm-search-menu.js', array('jquery'),'20160506' ); 
-		
-	//Jquery Built-in EFFECTS plug-ins	
-	
-	// One liner Registering Built-in plug-ins for Color, UI both core and specific as well as dependencies
-	// wp_enqueue_script("jquery-color","jquery-ui-core", "jquery-effects-core", "jquery-effects-blind", "jquery-effects-clip","jquery-effects-drop","jquery-effects-highlight","jquery-effects-puff","jquery-effects-scale","jquery-effects-size","jquery-effects-slide");
-	wp_enqueue_script("jquery-ui-core");
-	wp_enqueue_script("jquery-ui-widget");
-	wp_enqueue_script("jquery-color");
-	wp_enqueue_script("jquery-effects-blind");
-	wp_enqueue_script("jquery-effects-clip");
-	wp_enqueue_script("jquery-effects-drop");
-	wp_enqueue_script("jquery-effects-highlight");
-	wp_enqueue_script("jquery-effects-size");
-	wp_enqueue_script("jquery-effects-puff");
-	wp_enqueue_script("jquery-effects-scale");
-	wp_enqueue_script("jquery-effects-slide");
-	wp_enqueue_script("jquery-effects-pulsate");
-	wp_enqueue_script("jquery-effects-easing");
-	
-	// --- CSS Files ---
-	// Load our main default stylesheet.
-	wp_enqueue_style( 'mm-cm-style', get_stylesheet_uri() );
-	
-	//Style1- Title,Menu on one line- sliding description on second
-	wp_enqueue_style( 'mm-cm-title1', get_template_directory_uri() . '/styles/style-1.css', array( 'mm-cm-style' ), '20160910' );
-	
-	//Style2- Title,Description on one line- Menu on second
-	//wp_enqueue_style( 'mm-cm-title1', get_template_directory_uri() . '/styles/style-2.css', array( 'mm-cm-style' ), '20160910' );
-	
-	//scroll header
-	wp_enqueue_style( 'mm-cm-sch', get_template_directory_uri() . '/styles/style-sh.css', array( 'mm-cm-style' ), '20160910' );
-	
-	//scroll animation
-	wp_enqueue_style( 'mm-cm-sca', get_template_directory_uri() . '/styles/style-scroll-animation.css', array( 'mm-cm-style' ), '20160910' );
-	
-	//search icon in header with animation
-	//wp_enqueue_style( 'mm-cm-sca', get_template_directory_uri() . '/styles/style-search-icon3.css', array( 'mm-cm-style' ), '20160910' );
-	
-}		 
+if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
+	require get_template_directory() . '/inc/back-compat.php';
+	return;
+}
 
-//Selecting separate style sheets for different posts based on Categories.Can use separate file later.
-
-//add_action( 'wp_enqueue_scripts', 'load_script_styles' );
-
-//wp_enqueue_scripts hook does not work here  
-
-//following is the right filter to use for category conditions.
-// more condition tags can be used in the same function for different posts types.
-/* 
-add_filter( 'body_class', 'load_script_styles' );
-function load_script_styles() {
-	//if (is_page_template('single.php')) {  This does not work because page_template only work for post type= page not post or custom post types
-	//if (is_single ()) {  This works but I want to be more specific based on the categories
-	if (is_single() && in_category('dawah')) {  
-	// posts with 'dawah' ( case sensitive) category has unique stylesheet named 'single-dawah' 'is_category' will not work here
-	wp_enqueue_style("single-dawah", get_bloginfo('stylesheet_directory') . '/styles/single-dawah.css');
-	}
- }
-*/ 
- // body_class can be used to assign classes to different pages types. see related file in my_web directory
-
- 
- /**
- * Registering New menu and showing Menu link on appearance panel
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
  *
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
  */
-add_action( 'init', 'register_cm_menu' );
-function register_cm_menu() {
-	register_nav_menus(	array(
-	    'top'   => __('Top Menu', 'charmeem'),
-		'below' => __('Low Menu', 'charmeem'),
-		'social'=> __('Social Menu', 'charmeem'),
+function charmeem_setup() {
+	/*
+	 * Make theme available for translation.
+	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/charmeem
+	 * If you're building a theme based on Twenty Seventeen, use a find and replace
+	 * to change 'charmeem' to the name of your theme in all the template files.
+	 */
+	load_theme_textdomain( 'charmeem' );
+
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+	/*
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	 */
+	add_theme_support( 'post-thumbnails' );
+
+	add_image_size( 'charmeem-featured-image', 2000, 1200, true );
+
+	add_image_size( 'charmeem-thumbnail-avatar', 100, 100, true );
+
+	// Set the default content width.
+	$GLOBALS['content_width'] = 525;
+
+	// This theme uses wp_nav_menu() in two locations.
+	register_nav_menus( array(
+		'top'    => __( 'Top Menu', 'charmeem' ),
+		'social' => __( 'Social Links Menu', 'charmeem' ),
+	) );
+
+	/*
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support( 'html5', array(
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+	) );
+
+	/*
+	 * Enable support for Post Formats.
+	 *
+	 * See: https://codex.wordpress.org/Post_Formats
+	 */
+	add_theme_support( 'post-formats', array(
+		'aside',
+		'image',
+		'video',
+		'quote',
+		'link',
+		'gallery',
+		'audio',
+	) );
+
+	// Add theme support for Custom Logo.
+	add_theme_support( 'custom-logo', array(
+		'width'       => 250,
+		'height'      => 250,
+		'flex-width'  => true,
+		'flex-height' => true, // mmm
+	) );
+
+	// Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	/*
+	 * This theme styles the visual editor to resemble the theme style,
+	 * specifically font, colors, and column width.
+ 	 */
+	add_editor_style( array( 'assets/css/editor-style.css', charmeem_fonts_url() ) );
+
+	// Define and register starter content to showcase the theme on new sites.
+	$starter_content = array(
+		'widgets' => array(
+			// Place three core-defined widgets in the sidebar area.
+			'sidebar-1' => array(
+				'text_business_info',
+				'search',
+				'text_about',
+			),
+
+			// Add the core-defined business info widget to the footer 1 area.
+			'sidebar-2' => array(
+				'text_business_info',
+			),
+
+			// Put two core-defined widgets in the footer 2 area.
+			'sidebar-3' => array(
+				'text_about',
+				'search',
+			),
+		),
+
+		// Specify the core-defined pages to create and add custom thumbnails to some of them.
+		'posts' => array(
+			'home',
+			'about' => array(
+				'thumbnail' => '{{image-sandwich}}',
+			),
+			'contact' => array(
+				'thumbnail' => '{{image-espresso}}',
+			),
+			'blog' => array(
+				'thumbnail' => '{{image-coffee}}',
+			),
+			'homepage-section' => array(
+				'thumbnail' => '{{image-espresso}}',
+			),
+		),
+
+		// Create the custom image attachments used as post thumbnails for pages.
+		'attachments' => array(
+			'image-espresso' => array(
+				'post_title' => _x( 'Espresso', 'Theme starter content', 'charmeem' ),
+				'file' => 'assets/images/espresso.jpg', // URL relative to the template directory.
+			),
+			'image-sandwich' => array(
+				'post_title' => _x( 'Sandwich', 'Theme starter content', 'charmeem' ),
+				'file' => 'assets/images/sandwich.jpg',
+			),
+			'image-coffee' => array(
+				'post_title' => _x( 'Coffee', 'Theme starter content', 'charmeem' ),
+				'file' => 'assets/images/coffee.jpg',
+			),
+		),
+
+		// Default to a static front page and assign the front and posts pages.
+		'options' => array(
+			'show_on_front' => 'page',
+			'page_on_front' => '{{home}}',
+			'page_for_posts' => '{{blog}}',
+		),
+
+		// Set the front page section theme mods to the IDs of the core-registered pages.
+		'theme_mods' => array(
+			'panel_1' => '{{homepage-section}}',
+			'panel_2' => '{{about}}',
+			'panel_3' => '{{blog}}',
+			'panel_4' => '{{contact}}',
+		),
+
+		// Set up nav menus for each of the two areas registered in the theme.
+		'nav_menus' => array(
+			// Assign a menu to the "top" location.
+			'top' => array(
+				'name' => __( 'Top Menu', 'charmeem' ),
+				'items' => array(
+					'link_home', // Note that the core "home" page is actually a link in case a static front page is not used.
+					'page_about',
+					'page_blog',
+					'page_contact',
+				),
+			),
+
+			// Assign a menu to the "social" location.
+			'social' => array(
+				'name' => __( 'Social Links Menu', 'charmeem' ),
+				'items' => array(
+					'link_yelp',
+					'link_facebook',
+					'link_twitter',
+					'link_instagram',
+					'link_email',
+				),
+			),
+		),
+	);
+
+	/**
+	 * Filters Twenty Seventeen array of starter content.
+	 *
+	 * @since Twenty Seventeen 1.1
+	 *
+	 * @param array $starter_content Array of starter content.
+	 */
+	$starter_content = apply_filters( 'charmeem_starter_content', $starter_content );
+
+	add_theme_support( 'starter-content', $starter_content );
+}
+add_action( 'after_setup_theme', 'charmeem_setup' );
+
+/**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
+function charmeem_content_width() {
+
+	$content_width = $GLOBALS['content_width'];
+
+	// Get layout.
+	$page_layout = get_theme_mod( 'page_layout' );
+
+	// Check if layout is one column.
+	if ( 'one-column' === $page_layout ) {
+		if ( charmeem_is_frontpage() ) {
+			$content_width = 644;
+		} elseif ( is_page() ) {
+			$content_width = 740;
+		}
+	}
+
+	// Check if is single post and there is no sidebar.
+	if ( is_single() && ! is_active_sidebar( 'sidebar-1' ) ) {
+		$content_width = 740;
+	}
+
+	/**
+	 * Filter Twenty Seventeen content width of the theme.
+	 *
+	 * @since Twenty Seventeen 1.0
+	 *
+	 * @param $content_width integer
+	 */
+	$GLOBALS['content_width'] = apply_filters( 'charmeem_content_width', $content_width );
+}
+add_action( 'template_redirect', 'charmeem_content_width', 0 );
+
+/**
+ * Register custom fonts.
+ */
+function charmeem_fonts_url() {
+	$fonts_url = '';
+
+	/**
+	 * Translators: If there are characters in your language that are not
+	 * supported by Libre Franklin, translate this to 'off'. Do not translate
+	 * into your own language.
+	 */
+	$libre_franklin = _x( 'on', 'Libre Franklin font: on or off', 'charmeem' );
+
+	if ( 'off' !== $libre_franklin ) {
+		$font_families = array();
+
+		$font_families[] = 'Libre Franklin:300,300i,400,400i,600,600i,800,800i';
+
+		$query_args = array(
+			'family' => urlencode( implode( '|', $font_families ) ),
+			'subset' => urlencode( 'latin,latin-ext' ),
+		);
+
+		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	}
+
+	return esc_url_raw( $fonts_url );
+}
+
+/**
+ * Add preconnect for Google Fonts.
+ *
+ * @since Twenty Seventeen 1.0
+ *
+ * @param array  $urls           URLs to print for resource hints.
+ * @param string $relation_type  The relation type the URLs are printed.
+ * @return array $urls           URLs to print for resource hints.
+ */
+function charmeem_resource_hints( $urls, $relation_type ) {
+	if ( wp_style_is( 'charmeem-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+		$urls[] = array(
+			'href' => 'https://fonts.gstatic.com',
+			'crossorigin',
+		);
+	}
+
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'charmeem_resource_hints', 10, 2 );
+
+/**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function charmeem_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Sidebar', 'charmeem' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'charmeem' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Footer 1', 'charmeem' ),
+		'id'            => 'sidebar-2',
+		'description'   => __( 'Add widgets here to appear in your footer.', 'charmeem' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Footer 2', 'charmeem' ),
+		'id'            => 'sidebar-3',
+		'description'   => __( 'Add widgets here to appear in your footer.', 'charmeem' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
 	) );
 }
+add_action( 'widgets_init', 'charmeem_widgets_init' );
 
-/* Registering Widget areas and showing widget link on appearance Panel */	
-	add_action( 'init', 'register_cm_widget' );
-	function register_cm_widget() {
-		register_sidebar (array(
-							'name' => __('Sidebar','charmeem'),
-							'id' => "sidebar-widget-area",
-							'before_widget' => '<li id="%1$s" class="widget %2$s">',
-							'after_widget' => '</li>',
-							'before_title' => '<h2 class="widgettitle">',
-							'after_title' => '</h2>' )
-		);
-		register_sidebar (array(
-							'name' => __('Left Footer','charmeem'),
-							'id' => "footer-left-widget-area",
-							'before_widget' => '<li id="%1$s" class="widget %2$s">',
-							'after_widget' => '</li>',
-							'before_title' => '<h2 class="widgettitle">',
-							'after_title' => '</h2>' )
-		);
-		register_sidebar (array(
-							'name' => __('Right Footer','charmeem'),
-							'id' => "footer-right-widget-area",
-							'before_widget' => '<li id="%1$s" class="widget %2$s">',
-							'after_widget' => '</li>',
-							'before_title' => '<h2 class="widgettitle">',
-							'after_title' => '</h2>' )
-		);
-		// Defining My own widget Area on top of header
-		register_sidebar (array(
-							'name' => __('Right Above Header','charmeem'),
-							'id' => "above-header-right-area",
-							'before_widget' => '<li id="%1$s" class="widget %2$s">',
-							'after_widget' => '</li>',
-							'before_title' => '<h2 class="widgettitle">',
-							'after_title' => '</h2>' )
-		);
-		register_sidebar (array(
-							'name' => __('Left Above Header','charmeem'),
-							'id' => "above-header-left-area",
-							'before_widget' => '<li id="%1$s" class="widget %2$s">',
-							'after_widget' => '</li>',
-							'before_title' => '<h2 class="widgettitle">',
-							'after_title' => '</h2>' )
-		);
-	}
-	
-// Place the widget before the header
-add_action ('wp_head', 'add_my_widget');
-function add_my_widget() {
-	if ( is_active_sidebar( 'above-header-right-area' ) ) : ?>
-		<div class="right two-thirds">
-		<?php dynamic_sidebar( 'above-header-right-area' ); ?>
-		</div>
-		<div class="push"></div>
-	<?php endif;
-	
-}
-
-
-// Adding Featured image support
-add_theme_support( 'post-thumbnails' );
-
-/* Using Featured image as a post background image
- * By default featured image appears as <img> tag not as background
-
- //add_action( 'wp_head', 'cm_set_featured_background', 999);
-	function cm_set_featured_background() {
-	if(is_single()) {
-		global $post;
-		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), small, false );
-		if ($image_url[0]) {
-			?>
-			<style>
-			html,body {
-				height:100%;
-				margin:0!important;
-			}
-			body {
-				background:url(<?php echo $image_url[0]; ?>) #000 left top no-repeat;
-				background-size: 100% 100%;	
-			}
-			</style>
-			<?php
-		}
-		}
-	}
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with ... and
+ * a 'Continue reading' link.
+ *
+ * @since Twenty Seventeen 1.0
+ *
+ * @return string 'Continue reading' link prepended with an ellipsis.
  */
- 
-/* Customizer modification as per book
- * NOT WORKING AT THE MOMENT
- * I might use my own js method later
+function charmeem_excerpt_more( $link ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 
-function add_theme_customizer( $wp_customize ) {
-// SETTINGS
-	$wp_customize->add_setting( 'content_link_color', array(
-	'default' => '#088fff',
-	'transport' => 'refresh',
-	) );
-// CONTROLS
-	$wp_customize->add_control( new WP_Customize_Color_Control(
-	$wp_customize, 'content_link_color', array(
-	'label' => 'Content Link Color',
-	'section' => 'colors',
-	) ) );
+	$link = sprintf( '<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
+		esc_url( get_permalink( get_the_ID() ) ),
+		/* translators: %s: Name of current post */
+		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'charmeem' ), get_the_title( get_the_ID() ) )
+	);
+	return ' &hellip; ' . $link;
 }
-add_action( 'customize_register', ' add_theme_customizer');
+add_filter( 'excerpt_more', 'charmeem_excerpt_more' );
 
-function theme_customize_css() {
-	?>
-	<style type="text/css">a { color:<?php echo get_theme_mod( 'content_link_color' ); ?>; }
+/**
+ * Handles JavaScript detection.
+ *
+ * Adds a `js` class to the root `<html>` element when JavaScript is detected.
+ *
+ * @since Twenty Seventeen 1.0
+ */
+function charmeem_javascript_detection() {
+	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+}
+add_action( 'wp_head', 'charmeem_javascript_detection', 0 );
+
+/**
+ * Add a pingback url auto-discovery header for singularly identifiable articles.
+ */
+function charmeem_pingback_header() {
+	if ( is_singular() && pings_open() ) {
+		printf( '<link rel="pingback" href="%s">' . "\n", get_bloginfo( 'pingback_url' ) );
+	}
+}
+add_action( 'wp_head', 'charmeem_pingback_header' );
+
+/**
+ * Display custom color CSS.
+ */
+function charmeem_colors_css_wrap() {
+	if ( 'custom' !== get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
+		return;
+	}
+
+	require_once( get_parent_theme_file_path( '/inc/color-patterns.php' ) );
+	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
+?>
+	<style type="text/css" id="custom-theme-colors" <?php if ( is_customize_preview() ) { echo 'data-hue="' . $hue . '"'; } ?>>
+		<?php echo charmeem_custom_colors_css(); ?>
 	</style>
-	<?php
-}
-add_action( 'wp_head', 'theme_customize_css');
+<?php }
+add_action( 'wp_head', 'charmeem_colors_css_wrap' );
 
-*/
+/**
+ * Enqueue scripts and styles.
+ */
+function charmeem_scripts() {
+	// Add custom fonts, used in the main stylesheet.
+	wp_enqueue_style( 'charmeem-fonts', charmeem_fonts_url(), array(), null );
 
+	// Theme stylesheet.
+	wp_enqueue_style( 'charmeem-style', get_stylesheet_uri() );
 
-/* Changing excerpt() length */
-function custom_excerpt_length( $length ) 
-{
-    return 100; // limit length to 20 words
-}
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-
-
-/* Adding a Class 'excerpt' to the_excerpt() paragraph <p>  */
-function add_excerpt_class( $excerpt )
-{
-    $excerpt = str_replace( "<p", "<p class=\"excerpt\"", $excerpt );
-    return $excerpt;
+	// Load the dark colorscheme.
+	if ( 'dark' === get_theme_mod( 'colorscheme', 'light' ) || is_customize_preview() ) {
+		wp_enqueue_style( 'charmeem-colors-dark', get_theme_file_uri( '/assets/css/colors-dark.css' ), array( 'charmeem-style' ), '1.0' );
 	}
-add_filter( "the_excerpt", "add_excerpt_class" );
 
+	// Load the Internet Explorer 9 specific stylesheet, to fix display issues in the Customizer.
+	if ( is_customize_preview() ) {
+		wp_enqueue_style( 'charmeem-ie9', get_theme_file_uri( '/assets/css/ie9.css' ), array( 'charmeem-style' ), '1.0' );
+		wp_style_add_data( 'charmeem-ie9', 'conditional', 'IE 9' );
+	}
 
-/* Adding Search box in the Menu 
- * BUT not Exactly the way as other li items
- */
+	// Load the Internet Explorer 8 specific stylesheet.
+	wp_enqueue_style( 'charmeem-ie8', get_theme_file_uri( '/assets/css/ie8.css' ), array( 'charmeem-style' ), '1.0' );
+	wp_style_add_data( 'charmeem-ie8', 'conditional', 'lt IE 9' );
 
-// As of 3.1.10, Customizr doesn't output an html5 form.
-//add_theme_support( 'html5', array( 'searchform' ) );
-add_filter('wp_nav_menu_items', 'add_search_form_to_menu', 10, 2);
-function add_search_form_to_menu($items, $args) {
-  // If this isn't equal to 'header-menu' set up by function 'wp_nav_menu' in functions.php file, do nothing
-  // It avaoids duplicate search form appended in the footer li section !!
-    if( !($args->theme_location == 'header-menu') ) 
-  	return $items;
-  // On main menu: put styling around search and append it to the menu items
-  return $items . '<li class="cm-nav-menu-search">' . get_search_form(false) . '</li>';
-	  }
+	// Load the html5 shiv.
+	wp_enqueue_script( 'html5', get_theme_file_uri( '/assets/js/html5.js' ), array(), '3.7.3' );
+	wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
 
-/* 
-add_filter('wp_nav_menu_items','add_search_box', 10, 2);
-function add_search_box($items, $args) {
-        ob_start();
-        get_search_form();
-        $searchform = ob_get_contents();
-        ob_end_clean();
- 
-        $items .= '<li>' . $searchform . '</li>';
- 
-    return $items;
+	wp_enqueue_script( 'charmeem-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
+
+	$charmeem_l10n = array(
+		'quote'          => charmeem_get_svg( array( 'icon' => 'quote-right' ) ),
+	);
+
+	if ( has_nav_menu( 'top' ) ) {
+		wp_enqueue_script( 'charmeem-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array(), '1.0', true );
+		$charmeem_l10n['expand']         = __( 'Expand child menu', 'charmeem' );
+		$charmeem_l10n['collapse']       = __( 'Collapse child menu', 'charmeem' );
+		$charmeem_l10n['icon']           = charmeem_get_svg( array( 'icon' => 'angle-down', 'fallback' => true ) );
+	}
+
+	wp_enqueue_script( 'charmeem-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery' ), '1.0', true );
+
+	wp_enqueue_script( 'jquery-scrollto', get_theme_file_uri( '/assets/js/jquery.scrollTo.js' ), array( 'jquery' ), '2.1.2', true );
+
+	wp_localize_script( 'charmeem-skip-link-focus-fix', 'charmeemScreenReaderText', $charmeem_l10n );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
-*/
+add_action( 'wp_enqueue_scripts', 'charmeem_scripts' );
 
-
-/* Page builder
+/**
+ * Add custom image sizes attribute to enhance responsive image functionality
+ * for content images.
  *
+ * @since Twenty Seventeen 1.0
+ *
+ * @param string $sizes A source size value for use in a 'sizes' attribute.
+ * @param array  $size  Image size. Accepts an array of width and height
+ *                      values in pixels (in that order).
+ * @return string A source size value for use in a content image 'sizes' attribute.
  */
-//include_once( get_stylesheet_directory() . '/inc/page_builder.php');	
+function charmeem_content_image_sizes_attr( $sizes, $size ) {
+	$width = $size[0];
 
-/* Customizer functionality
+	if ( 740 <= $width ) {
+		$sizes = '(max-width: 706px) 89vw, (max-width: 767px) 82vw, 740px';
+	}
+
+	if ( is_active_sidebar( 'sidebar-1' ) || is_archive() || is_search() || is_home() || is_page() ) {
+		if ( ! ( is_page() && 'one-column' === get_theme_mod( 'page_options' ) ) && 767 <= $width ) {
+			 $sizes = '(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px';
+		}
+	}
+
+	return $sizes;
+}
+add_filter( 'wp_calculate_image_sizes', 'charmeem_content_image_sizes_attr', 10, 2 );
+
+/**
+ * Filter the `sizes` value in the header image markup.
  *
+ * @since Twenty Seventeen 1.0
+ *
+ * @param string $html   The HTML image tag markup being filtered.
+ * @param object $header The custom header object returned by 'get_custom_header()'.
+ * @param array  $attr   Array of the attributes for the image tag.
+ * @return string The filtered header image HTML.
  */
- include_once( get_stylesheet_directory() . '/inc/mm-cm-customizer.php');
- //include_once can be replaced by require_once if the included file is integral part of the project not optional.
+function charmeem_header_image_tag( $html, $header, $attr ) {
+	if ( isset( $attr['sizes'] ) ) {
+		$html = str_replace( $attr['sizes'], '100vw', $html );
+	}
+	return $html;
+}
+add_filter( 'get_header_image_tag', 'charmeem_header_image_tag', 10, 3 );
 
- 
-/**************************************************
- * Copying from Twentyseventeeeeeeeeeeeeeeeeeeeeen
+/**
+ * Add custom image sizes attribute to enhance responsive image functionality
+ * for post thumbnails.
  *
- **************************************************/
- 
- 
+ * @since Twenty Seventeen 1.0
+ *
+ * @param array $attr       Attributes for the image markup.
+ * @param int   $attachment Image attachment ID.
+ * @param array $size       Registered image size or flat array of height and width dimensions.
+ * @return string A source size value for use in a post thumbnail 'sizes' attribute.
+ */
+function charmeem_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
+	if ( is_archive() || is_search() || is_home() ) {
+		$attr['sizes'] = '(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px';
+	} else {
+		$attr['sizes'] = '100vw';
+	}
+
+	return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'charmeem_post_thumbnail_sizes_attr', 10, 3 );
+
+/**
+ * Use front-page.php when Front page displays is set to a static page.
+ *
+ * @since Twenty Seventeen 1.0
+ *
+ * @param string $template front-page.php.
+ *
+ * @return string The template to be used: blank if is_home() is true (defaults to index.php), else $template.
+ */
+function charmeem_front_page_template( $template ) {
+	return is_home() ? '' : $template;
+}
+add_filter( 'frontpage_template',  'charmeem_front_page_template' );
+
 /**
  * Implement the Custom Header feature.
  */
 require get_parent_theme_file_path( '/inc/custom-header.php' );
 
 /**
- * SVG icons functions and filters.
+ * Custom template tags for this theme.
  */
-require get_parent_theme_file_path( '/inc/icon-functions.php' );
+require get_parent_theme_file_path( '/inc/template-tags.php' );
 
 /**
  * Additional features to allow styling of the templates.
  */
-require get_parent_theme_file_path( '/inc/template-functions.php' ); 
+require get_parent_theme_file_path( '/inc/template-functions.php' );
 
 /**
  * Customizer additions.
  */
 require get_parent_theme_file_path( '/inc/customizer.php' );
 
-?>
+/**
+ * SVG icons functions and filters.
+ */
+require get_parent_theme_file_path( '/inc/icon-functions.php' );

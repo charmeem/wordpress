@@ -1,6 +1,6 @@
 <?php
 /**
- * The header for our theme , using thematic & twentyseventeen as a startup
+ * The header for our theme , using thematic & charmeem as a startup
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
@@ -48,7 +48,7 @@
 <!--automatically generating classes for the body elements -->
 
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyseventeen' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'charmeem' ); ?></a>
     <!-- for screen reader , go directly to the content -->
 
     <header id="masthead" class="site-header" role="banner">
@@ -67,5 +67,16 @@
 		<?php endif; ?>
 
 	</header><!-- #masthead -->
-		
+	
+    <?php
+	// If a regular post or page, and not the front page, show the featured image.
+	if ( has_post_thumbnail() && ( is_single() || ( is_page() && ! charmeem_is_frontpage() ) ) ) :
+		echo '<div class="single-featured-image-header">';
+		the_post_thumbnail( 'charmeem-featured-image' );
+		echo '</div><!-- .single-featured-image-header -->';
+	endif;
+	?>
+
+	<div class="site-content-contain">
+		<div id="content" class="site-content">	
 		

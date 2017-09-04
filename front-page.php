@@ -38,9 +38,8 @@
 		
 		</div><!--content-->
 			
-		<!-- Second section holds the right columns- the sidebar-->
-		<?php get_sidebar(); ?>
+		
 				
-		<div id="across">
+		
 		
 		<?php get_footer();?>

@@ -1,3 +1,6 @@
+
+</div><!-- #content -->
+
 <footer>
 	<h2 class="screen-reader-text">Footer Information:</h2>
 		<aside class="general left two-thirds">
@@ -13,8 +16,11 @@
 		</aside>
 
 </footer>
-</div><!--#across-->
-</div><!-- #page -->		
+
+</div><!-- #page -->
+
+</div><!-- .site-content-contain -->
+
 <?php wp_footer(); ?> <!--hook for plugin supports-->
 </body>
 </html>
