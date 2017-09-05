@@ -15,31 +15,40 @@
  <!-- Content are is enclosed in container class 'content-area' and comes before sidebar or other widgets
   this is search engine friendly approach and also makes CSS styling into multiple column easier -->
  
-<!-- Begin #container2 this holds the cononontent and sidebars-->
-	<div id="container2" class="bdr bdr-top">
-	<!-- Begin first section holds the left content columns-->
-		<div class="content left two-thirds">
-        <main id="main" class="site-main" role="main">
+	<main id="main" class="site-main" role="main">
 
-		<?php  // show frontpage content
-		if (have_posts())	:
-			while (have_posts()) : the_post();
-			    get_template_part( 'template-parts/page/content' , 'front-page' );
-            endwhile;
-		else : ?>
-			<h2 class="center">Not Found</h2>
-			<p class="center">Sorry, but you are looking for something that isn't here.</p>
-			<?php get_search_form();
+		<?php // Show the selected frontpage content.
+		if ( have_posts() ) :
+			while ( have_posts() ) : the_post();
+				get_template_part( 'template-parts/page/content', 'front-page' );
+			endwhile;
+		else : // I'm not sure it's possible to have no posts when this page is shown, but WTH.
+			get_template_part( 'template-parts/post/content', 'none' );
 		endif; ?>
-		
-		<div class="push"></div>
-		
-		</main><!-- #main -->
-		
-		</div><!--content-->
-			
-		
-				
-		
+
+		<?php
+		// Get each of our panels and show the post data.
+		if ( 0 !== charmeem_panel_count() || is_customize_preview() ) : // If we have pages to show.
+
+			/**
+			 * Filter number of front page sections in Twenty Seventeen.
+			 *
+			 * @since Twenty Seventeen 1.0
+			 *
+			 * @param $num_sections integer
+			 */
+			$num_sections = apply_filters( 'charmeem_front_page_sections', 4 );
+			global $charmeemcounter;
+
+			// Create a setting and control for each of the sections available in the theme.
+			for ( $i = 1; $i < ( 1 + $num_sections ); $i++ ) {
+				$charmeemcounter = $i;
+				charmeem_front_page_section( null, $i );
+			}
+
+	endif; // The if ( 0 !== charmeem_panel_count() ) ends here. ?>
+
+	</main><!-- #main -->
+</div><!-- #primary -->
 		
 		<?php get_footer();?>
