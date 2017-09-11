@@ -7,11 +7,10 @@
  * appear.
  * Learn more: https://codex.wordpress.org/Template_Hierarchy
  *
- *
  */
  get_header(); ?>
- 
- <div id="primary" class="content-area">
+ <div class = "wrap">
+     <div id="primary" class="content-area">
  <!-- Content are is enclosed in container class 'content-area' and comes before sidebar or other widgets
   this is search engine friendly approach and also makes CSS styling into multiple column easier -->
  
@@ -49,6 +48,10 @@
 	endif; // The if ( 0 !== charmeem_panel_count() ) ends here. ?>
 
 	</main><!-- #main -->
-</div><!-- #primary -->
-		
+    </div><!-- #primary -->
+	
+	<!-- if want to include sidebar on Front page-->
+	<?php get_sidebar(); ?>
+	
+</div><!--.wrap-->		
 		<?php get_footer();?>

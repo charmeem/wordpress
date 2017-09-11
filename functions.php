@@ -1,12 +1,10 @@
 <?php
 /**
- * Twenty Seventeen functions and definitions
+ * Charmeem functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
  */
 
 /**
@@ -565,3 +563,31 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
+
+
+/**
+ * Adding sidebar functionality support in front-page
+ * other customization done in front-page by adding get_sidebar template tag
+ */
+
+function twentyseventeen_body_classes_child( $classes ){
+if ( is_active_sidebar( 'sidebar-1' ) &&  is_front_page() ) {
+		$classes[] = 'has-sidebar';
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'twentyseventeen_body_classes_child' );
+
+/**
+ * Adding svg social icons
+ * NOT WORKING YET
+ */
+ function childtheme_include_svg_icons() { 
+ // Define SVG sprite file. 
+    $custom_svg_icons = get_theme_file_path( '/assets/images/svg-icons.svg' ); 
+// If it exists, include it.
+     if ( file_exists( $custom_svg_icons ) ) { 
+         require_once( $custom_svg_icons ); 
+     }
+ }
+add_action( 'wp_footer', 'childtheme_include_svg_icons', 99999 );

@@ -1,10 +1,18 @@
-<!-- Second section holds the right columns-->
-							
-<aside class="sidebar right third">
-	<?php if ( is_active_sidebar( 'sidebar-widget-area' ) ) : ?>
-		<div class="bdr grd-vt-main rnd shdw-centered">
-		<?php dynamic_sidebar( 'sidebar-widget-area' ); ?>
-		</div>
-	<?php endif; ?>
+<?php
+/**
+ * The sidebar containing the main widget area
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Charmeem
+ */
 
-</aside><!--//.sidebar1 -->
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	return;
+}
+?>
+
+<aside id="secondary" class="widget-area" role="complementary">
+	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+</aside><!-- #secondary -->

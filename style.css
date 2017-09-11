@@ -48,7 +48,9 @@
 18.0 SVGs Fallbacks
 19.0 Media Queries
 20.0 Print
-21.0 Full Width page
+21.0 Customization   
+   21.1 Full Width page
+   21.2 Content background image
 --------------------------------------------------------------*/ 
  
 /*--------------------------------------------------------------
@@ -1779,7 +1781,7 @@ body:not(.has-header-image):not(.has-header-video) .custom-header-media {
 .charmeem-front-page .site-content {
 	padding: 0;
 	
-}
+	}
 
 .charmeem-panel {
 	overflow: hidden;
@@ -1873,9 +1875,6 @@ body:not(.has-header-image):not(.has-header-video) .custom-header-media {
 
 .site-content {
 	padding: 2.5em 0 0;
-	background-image: url('assets/images/nagar4.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 /*--------------------------------------------------------------
@@ -4251,7 +4250,25 @@ object {
 }
 
 /*--------------------------------------------------------------
-21.0 Full Width Page
+21.0 Customization
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+21.1 Content background image
+--------------------------------------------------------------*/
+/* this part doesnot work from customizer css field */
+.charmeem-front-page .site-content {
+	background-image: url(assets/images/nagar4.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/*this part only works from customizer field*/
+.widget-area  {
+    background-color: rgba( 0, 0, 0, 0.4);
+}
+
+/*--------------------------------------------------------------
+21.2 Full Width Page
 --------------------------------------------------------------*/
 
 /* Two options to implement this
@@ -4292,3 +4309,4 @@ object {
 	}
 }
 */
+

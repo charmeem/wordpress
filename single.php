@@ -1,55 +1,40 @@
 <?php
-// Selecting different template file for my single article POST based on category ID
-//$post = $wp_query->post;
-//if (in_category('1')) {  // Category DAWAH
-//	include(TEMPLATEPATH . '/single-article.php');
-//}
-//else {
-?>
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package WordPress
+ */
 
-<?php get_header();?>
-<!-- Begin #container2 this holds the contenttttttt and sidebars-->
-	<div id="container2" class="bdr bdr-top">
-	<!-- Begin first section holds the left content columns-->
-		<div class="content left full">
-			<?php if (have_posts())	: ?>
-			<?php while (have_posts()) : the_post();?>
-				<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-					<!--moving post-title from here to the header file
-					<h2 class="post-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title();?></a>
-					</h2>
-					<-->
-					<!--  Removing post meta  from single post
-					<p class="entry-meta">by <?php the_author_meta('first_name'); ?> <?php the_author_meta('last_name'); ?> in <?php the_category(", ")?></p>
-					-->
-					<div class="entry-content"><!--//post-->
-					<?php if ( has_post_thumbnail() ) {
-							the_post_thumbnail('large');
-							}
-					 the_content();
-					 ?>
-					</div><!--//.entry-content-->
-					<div class="push"></div>
-				</article>
-					<?php endwhile; ?>
-					<?php else : ?>
-						<h2 class="center">Not Found</h2>
-						<p class="center">Sorry, but you are looking for something that isn't here.</p>
-					<?php get_search_form(); ?>
-				<?php endif; ?>
-				<div class="push"></div>
-			</div><!--content-->
-			
-			<!-- Second section holds the right columns- the sidebar-->
-			<?php get_sidebar(); ?>
-				
-			<div class="push"></div>
-			</div><!--//#container2-->
-			
-		</div><!--//container-->
-		<div id="across">
-		
-		<?php get_footer();
-//		}	//end if article post template
-	
-		?>
+get_header(); ?>
+
+<div class="wrap">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			<?php
+				/* Start the Loop */
+				while ( have_posts() ) : the_post();
+
+					get_template_part( 'template-parts/post/content', get_post_format() );
+
+					// If comments are open or we have at least one comment, load up the comment template.
+					if ( comments_open() || get_comments_number() ) :
+						comments_template();
+					endif;
+
+					the_post_navigation( array(
+						'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'charmeem' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous', 'charmeem' ) . '</span> <span class="nav-title"><span class="nav-title-icon-wrapper">' . charmeem_get_svg( array( 'icon' => 'arrow-left' ) ) . '</span>%title</span>',
+						'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'charmeem' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next', 'charmeem' ) . '</span> <span class="nav-title">%title<span class="nav-title-icon-wrapper">' . charmeem_get_svg( array( 'icon' => 'arrow-right' ) ) . '</span></span>',
+					) );
+
+				endwhile; // End of the loop.
+			?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+	<?php get_sidebar(); ?>
+</div><!-- .wrap -->
+
+<?php get_footer();
