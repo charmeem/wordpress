@@ -146,5 +146,38 @@
 			} );
 		} );
 	} );
+	
+	//My Customization
+	//$test = wp.customize( 'background_header' )();
+	//console.log($test);
+	// Header as background.
+	wp.customize( 'background_header', function( value ) {
+	
+		value.bind( function( to ) {
+//console.log (to);
+			if ( true == to ){
+			    $( '.site-content-contain ' ).css ( "background" , "transparent");
+	        			
+			} 
+			else if( false === to) {
+			    $bckgd_image = wp.customize( 'background_image' )();
+			    $bckgd_color = wp.customize( 'background_color' )();
+	            if ($bckgd_image) {
+				//console.log ($bckgd_image);
+				    $( '.site-content-contain ' ).css ("background-image", "url(" + $bckgd_image + ")" );
+				} else {
+			        wp.customize( 'background_image', function( value ) {	
+				        //console.log(value);
+				        //console.log (to);
+		                value.bind( function( to ) {
+					    //console.log (to);
+					        $( '.site-content-contain ' ).css ("background-image", "url(" + to + ")" );
+						
+				         });	
+	          	    });	
+                  }
+            }				  
+	    });
+	});	
 
 } )( jQuery );

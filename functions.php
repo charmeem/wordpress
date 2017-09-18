@@ -8,7 +8,7 @@
  */
 
 /**
- * Twenty Seventeen only works in WordPress 4.7 or later.
+ * Charmeem only works in WordPress 4.7 or later.
  */
 if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
@@ -26,7 +26,7 @@ function charmeem_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/charmeem
-	 * If you're building a theme based on Twenty Seventeen, use a find and replace
+	 * If you're building a theme based on Charmeem, use a find and replace
 	 * to change 'charmeem' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'charmeem' );
@@ -565,11 +565,23 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
 
-/**
- * Adding sidebar functionality support in front-page
- * other customization done in front-page by adding get_sidebar template tag
- */
 
+/*------------------------------------------------------------------
+Charmeem Customization: Adding new features on top of base theme2017
+
+ 1.0 Sidebar functionality on front page
+ 2.0 svg Social icons
+ 3.0 Customizer
+   3.1 Add  header image as background image.
+   3.2 Static front page settings
+   3.3 Adding background Image section and settings
+---------------------------------------------------*/
+ 
+ 
+/*-------------------------------------------------------
+1.0 Adding sidebar functionality support in front-page
+    other customization done in front-page by adding get_sidebar template tag
+----------------------------------------------------------*/
 function twentyseventeen_body_classes_child( $classes ){
 if ( is_active_sidebar( 'sidebar-1' ) &&  is_front_page() ) {
 		$classes[] = 'has-sidebar';
@@ -578,11 +590,12 @@ if ( is_active_sidebar( 'sidebar-1' ) &&  is_front_page() ) {
 }
 add_filter( 'body_class', 'twentyseventeen_body_classes_child' );
 
-/**
- * Adding svg social icons
- * NOT WORKING YET
- */
- function childtheme_include_svg_icons() { 
+
+/*-----------------------------------
+2.0 Adding svg social icons
+    NOT WORKING YET
+--------------------------------------*/
+function childtheme_include_svg_icons() { 
  // Define SVG sprite file. 
     $custom_svg_icons = get_theme_file_path( '/assets/images/svg-icons.svg' ); 
 // If it exists, include it.
@@ -591,3 +604,118 @@ add_filter( 'body_class', 'twentyseventeen_body_classes_child' );
      }
  }
 add_action( 'wp_footer', 'childtheme_include_svg_icons', 99999 );
+
+
+/*----------------------------------------------------------
+3.1 Add  header image as background image.
+      - Adding new setting and checkbox control in background section
+	  - Front end via get_theme_mod in section 3.3 <STYLE> 
+	  - changing priorities of control elements
+	  - updated js preview file to preview live in customizer
+-------------------------------------------------------------*/
+add_action( 'customize_register', 'charmeem_background_header_register' );
+function charmeem_background_header_register ($wp_customize) {
+
+    // Add new setting
+    $wp_customize->add_setting( 'background_header', array(
+		'transport'         => 'postMessage',
+
+		) );
+		
+    // Add new control 'background_header'
+    $wp_customize->add_control( 'background_header', array(
+			'label'    => __( 'Select header image as Background' ),
+			'description' => __( 'This will supercede background color and image settings'),
+			'section'  => 'background_image',
+			'type'     => 'checkbox',
+		) );
+	
+	$wp_customize->get_setting( 'background_image' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
+	
+	// Changing appearance order of control elements	
+    $wp_customize->get_control('background_header')->priority = 1;
+	$wp_customize->get_control('background_color')->priority = 2;
+	$wp_customize->get_control('background_image')->priority = 3;
+	
+}
+
+  
+    
+add_action( 'customize_register', 'charmeem_customization_register' );
+function charmeem_customization_register ($wp_customize) {
+/*----------------------------------------------------------------
+3.2 Static front page Customizer settings
+    -some changes in labelling names of static front page Section
+----------------------------------------------------------------*/
+    $wp_customize->get_section('static_front_page')->title = __('Homepage Preferences', 'charmeem');
+    $wp_customize->get_section('static_front_page')->priority = 20;
+    $wp_customize->get_control('show_on_front')->label = __('Choose Homepage Preferences', 'charmeem');
+    $wp_customize->get_control('page_on_front')->label = __('Select Homepage', 'charmeem');
+    $wp_customize->get_control('page_for_posts')->label = __('Select Blog Homepage', 'charmeem');
+
+/*----------------------------------------------------------------------------
+3.3 Adding background Image section and settings
+     - see style.css file for adding background image as hard-coded alternate
+	 - uses call back function for re styling 2017 default style
+	  - Customizer gives 3 choices to the user:
+	    a. Use header image as background image as well
+		b. Use some other image as background image or,
+		c. in absence of any image choose color for the background
+	 - Also see updated js preview file to preview live in customizer
+--------------------------------------------------------------------------*/ 
+    // renaming Background section/panel
+    $wp_customize->get_section('background_image')->title = __('Background Styles', 'charmeem');
+
+    //bringing background color control to background section/panel from Color section/panel
+    $wp_customize->get_control('background_color')->section = 'background_image';
+
+    /* not working*/
+    //$wp_customize->get_setting('background_image')->transport = 'postMessage';
+
+}
+
+// Adding theme support
+add_action( 'after_setup_theme', 'cm_custom_back');
+function cm_custom_back() {
+    $args = array(
+           'default-color' => '#e09500',
+	       'default-image' => get_template_directory_uri() . '/assets/images/nagar9.jpg',
+		   'wp-head-callback'   => 'cm_background_style',
+	    );
+    add_theme_support( 'custom-background', $args);
+}
+
+// Call back function that customises and replaces 2017 default background style 
+function cm_background_style() {
+
+    $cm_background_color = get_background_color();
+    $cm_background_image = get_background_image();
+
+    //checking background default color
+    if ( get_theme_support( 'custom-background', 'default-color' ) === $cm_background_color ) {
+        return;
+    } 
+	// get customizer setting user input values from database 
+	// second priority to background image setting
+	// and in case of np background image selected , use color setting value 
+    ?>
+    <style id = "cm-custom-background-style" type = "text/css" >
+	
+        .site-content-contain {
+		    <?php
+			if( get_theme_mod( 'background_header')){ ?>
+			background-color: transparent;
+		          
+		    <?php  
+			} elseif (get_theme_mod( 'background_image')) { ?>
+			background-image: url(<?php echo esc_attr( $cm_background_image ); ?>);
+			<?php 
+			}else  { ?> 
+		      background-color: #<?php echo esc_attr( $cm_background_color ); ?>;
+<?php } ?>			  
+	    }
+    </style>
+    <?php
+
+}

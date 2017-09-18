@@ -3,7 +3,7 @@
 /*
  * UI for customizer
  *
- * Adding New Charmeem Theme Panels and Sections with respective settings and controls
+ * Adding New Charmeem Theme Panels and Sections along with settings and controls
  *
  */
 add_action( 'customize_register', 'cm_th_customizer_setup' , 11);

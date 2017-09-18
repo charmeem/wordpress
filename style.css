@@ -49,8 +49,9 @@
 19.0 Media Queries
 20.0 Print
 21.0 Customization   
-   21.1 Full Width page
-   21.2 Content background image
+   21.1 Content background image
+   21.2 Full Width page
+   21.3 Flexbox
 --------------------------------------------------------------*/ 
  
 /*--------------------------------------------------------------
@@ -2509,6 +2510,7 @@ body:not(.charmeem-front-page) .entry-header {
 
 .widget {
 	padding-bottom: 3em;
+	
 }
 
 h2.widget-title {
@@ -2537,6 +2539,7 @@ h2.widget-title {
 .widget ul {
 	list-style: none;
 	margin: 0;
+	
 }
 
 .widget ul li {
@@ -3295,6 +3298,7 @@ object {
 		max-width: 1000px;
 		padding-left: 3em;
 		padding-right: 3em;
+			
 	}
 
 	.has-sidebar:not(.error404) #primary {
@@ -3442,7 +3446,7 @@ object {
 	}
 
 	.main-navigation ul {
-		background: transparent;
+	    background: transparent;
 		padding: 0;
 	}
 
@@ -4254,8 +4258,11 @@ object {
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 21.1 Content background image
+       There is better way to add back-image which is via customizer
+	   see functions.php file
 --------------------------------------------------------------*/
-/* this part doesnot work from customizer css field */
+/* this part so far only works here- doesnot work from customizer css field */
+/*
 .charmeem-front-page .site-content {
 	background-image: url(assets/images/nagar4.jpg);
     background-repeat: no-repeat;
@@ -4263,10 +4270,11 @@ object {
 }
 
 /*this part only works from customizer field*/
+/*
 .widget-area  {
     background-color: rgba( 0, 0, 0, 0.4);
 }
-
+*/
 /*--------------------------------------------------------------
 21.2 Full Width Page
 --------------------------------------------------------------*/
@@ -4309,4 +4317,30 @@ object {
 	}
 }
 */
+
+/*--------------------------------------------------------------------------------
+21.3 Flexbox
+     
+	 display  : -webkit-flex;  **initiate flexbox and change display from Block to inline
+	 -webkit-justify-content : **align horizontally
+	-webkit-align-items      : **align vertically
+	-webkit-flex-wrap        : **create multiple rows
+	-webkit-flex-direction   : ** change direction of elements flow
+	
+	Example:
+	.widget ul {
+	display: -webkit-flex;
+	-webkit-flex-direction: rrow-reverse;
+	-webkit-justify-content: space-around;
+	-webkit-align-items: center;
+	-webkit-flex-wrap: wrap;
+     }
+----------------------------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------------------------
+21.4 js classes
+ ----------------------------------------------------------------------------------*/
+
 

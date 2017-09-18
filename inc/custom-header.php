@@ -30,6 +30,11 @@ function charmeem_custom_header_setup() {
 	 *     @type string $wp-head-callback       Callback function used to styles the header image and text
 	 *                                          displayed on the blog.
 	 *     @type string $flex-height     		Flex support for height of header.
+	 *
+	 *  Support of svg: svg image cannot be added in custom header customizer due to the cropping
+     *  image notsupported by svg fomat. 
+     *  Solution : To add bin bodhi svg plugin + add flex width and flex height parameter as below.
+     *             This will be resulted appearance of 'Skip Cropping' tab while adding image.	 
 	 * }
 	 */
 	add_theme_support( 'custom-header', apply_filters( 'charmeem_custom_header_args', array(
@@ -38,7 +43,7 @@ function charmeem_custom_header_setup() {
 		'height'             => 1200,
 		'flex-height'        => true,
 		'flex-width'         => true,
-		//'default-text-color' => '000',
+		'default-text-color' => 'ea8a35',
 		'video'              => true,
 		'wp-head-callback'   => 'cm_header_style',
 	) ) );
@@ -120,3 +125,25 @@ function charmeem_video_controls( $settings ) {
 	return $settings;
 }
 add_filter( 'header_video_settings', 'charmeem_video_controls' );
+
+/**
+ * My Customization of Header image section:
+ *   . Renaming name of section
+ *   . Moving header text color from 'color' into header section
+ *   . Changing priority 
+ */
+
+add_action( 'customize_register', 'charmeem_header_image_customization_register' );
+
+function charmeem_header_image_customization_register ($wp_customize) {
+
+// renaming Header Media section to Header Style
+$wp_customize->get_section('header_image')->title = __('Header Styles', 'charmeem');
+
+$wp_customize->get_section('header_image')->priority = 20;
+
+//bringing background color control to header_image section/panel from Color section/panel
+$wp_customize->get_control('header_textcolor')->section = 'header_image';
+
+
+}
