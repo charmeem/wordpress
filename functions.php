@@ -719,3 +719,30 @@ function cm_background_style() {
     <?php
 
 }
+
+/*-----------------------------------------------------------------------------------
+3.4 Woocemmerce Customization
+    Making charmeem theme woovemmrtce compatable
+	as per 'Third party / custom / non-WC theme compatibility' document
+------------------------------------------------------------------------------------*/
+//First unhook the WooCommerce wrappers
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
+//hook in  own functions to display the wrappers charmeem theme requires
+add_action('woocommerce_before_main_content', 'charmeem_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'charmeem_wrapper_end', 10);
+
+function charmeem_wrapper_start() {
+  echo '<section id="main">';
+}
+
+function charmeem_wrapper_end() {
+  echo '</section>';
+}
+
+//Once you’re happy that your theme fully supports WooCommerce, you should declare it in the code to hide the, “Your theme does not declare WooCommerce support” message
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
