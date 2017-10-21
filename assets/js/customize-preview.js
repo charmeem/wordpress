@@ -148,11 +148,8 @@
 	} );
 	
 	//My Customization
-	//$test = wp.customize( 'background_header' )();
-	//console.log($test);
 	// Header as background.
 	wp.customize( 'background_header', function( value ) {
-	
 		value.bind( function( to ) {
 //console.log (to);
 			if ( true == to ){

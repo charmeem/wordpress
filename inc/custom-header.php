@@ -34,7 +34,7 @@ function charmeem_custom_header_setup() {
 	 *  Support of svg: svg image cannot be added in custom header customizer due to the cropping
      *  image notsupported by svg fomat. 
      *  Solution : To add bin bodhi svg plugin + add flex width and flex height parameter as below.
-     *             This will be resulted appearance of 'Skip Cropping' tab while adding image.	 
+     *             This will be resulted appearance of 'Skip Cropping' tab while adding image.	@mmm 
 	 * }
 	 */
 	add_theme_support( 'custom-header', apply_filters( 'charmeem_custom_header_args', array(

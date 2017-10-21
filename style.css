@@ -1,12 +1,12 @@
 /*
-*Theme Name: Charmeem v1.0
-*Theme URI: http://charmeem.com
-*Author: Muhammad Mubashir mufti
-*Author URI: http://charmeem.com/about-us
-*Description: My first theme from scratch with the help of Book" Word press Theme Development, 3rd edition"
-*Version: 1.0
-*Tags:
-* This stylesheet based on 'building web theme book' , wordpress 2017 theme
+Theme Name: Charmeem v1.0
+Theme URI: http://charmeem.com
+Author: Muhammad Mubashir mufti
+Author URI: http://charmeem.com/about-us
+Description: My first theme from scratch with the help of Book" Word press Theme Development". Using 2017 as a base theme. fully responsive seo friendly theme.
+Version: 1.0
+Tags: right-sidebar, custom-header, customize-customizer, responsive-layout, custom-menu, translation-ready
+ 
 */
 
 /*---------------------------------------------------
@@ -52,6 +52,7 @@
    21.1 Content background image
    21.2 Full Width page
    21.3 Flexbox
+   21.4 Woocommerce
 --------------------------------------------------------------*/ 
  
 /*--------------------------------------------------------------
@@ -4254,8 +4255,11 @@ object {
 }
 
 /*--------------------------------------------------------------
-21.0 Customization
+21.0 Charmeem Customization
 --------------------------------------------------------------*/
+
+
+	
 /*--------------------------------------------------------------
 21.1 Content background image
        There is better way to add back-image which is via customizer
@@ -4288,7 +4292,7 @@ object {
 .wrap {
 	/* margin-left: auto; */
 	/* margin-right: auto; */
-	max-width: 100%;
+	/*max-width: 100%; */
 	/* padding-left: 2em; */
 	/* padding-right: 2em; */
 /*
@@ -4337,10 +4341,15 @@ object {
      }
 ----------------------------------------------------------------------------------*/
 
-
-
 /*--------------------------------------------------------------------------------
-21.4 js classes
- ----------------------------------------------------------------------------------*/
+21.4 woocommerce
+-----------------------------------------------------------------------------------*/
+/* Adding paddings to products */
+section#main {
+    padding-left: 2em;
+	padding-right: 2em;
+    }
+
+
 
 

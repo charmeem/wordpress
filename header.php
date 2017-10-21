@@ -19,7 +19,7 @@
 	
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>"> 
-<!-- avaoiding unknown characters-->
+<!-- avoiding unknown characters-->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- resetting any default zoom for mobile devices, useful for responsive layouts-->

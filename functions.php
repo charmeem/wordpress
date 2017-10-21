@@ -721,8 +721,8 @@ function cm_background_style() {
 }
 
 /*-----------------------------------------------------------------------------------
-3.4 Woocemmerce Customization
-    Making charmeem theme woovemmrtce compatable
+3.4 Woocommerce Customization
+    Making charmeem theme woocommerce compatible
 	as per 'Third party / custom / non-WC theme compatibility' document
 ------------------------------------------------------------------------------------*/
 //First unhook the WooCommerce wrappers

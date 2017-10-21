@@ -1,10 +1,9 @@
 <?php
 /**
- * Twenty Seventeen: Customizer
+ * Charmeem: Customizer
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
+ * 
  */
 
 /**
