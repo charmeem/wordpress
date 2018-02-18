@@ -147,8 +147,16 @@
 		} );
 	} );
 	
-	//My Customization
-	// Header as background.
+/**
+ * My Customization
+ * 1.0 Header image as background
+ * 2.0 Title
+ *    2.1 Title position
+ */
+ 
+ /**
+  * 1.0 Header image as background.
+  */
 	wp.customize( 'background_header', function( value ) {
 		value.bind( function( to ) {
 //console.log (to);
@@ -176,5 +184,44 @@
             }				  
 	    });
 	});	
+
+/**
+ * 2.1 Title Position
+ */
+//wp.customize('title_position', function  (value) {
+//    value.bind( function ( to ){
+//	    switch ( to ) {
+//		    case 'topleft':
+//			    $( '.site-title a' ).css ({ "position":"absolute","top":"-450px", "left":"0%"});
+//				break;
+//			case 'topcenter':
+//			    $( '.site-title a' ).css ({ "position":"absolute", "top":"-450px", "left":"30%"});
+//				break;
+//			case 'topright':
+//			    $( '.site-title a' ).css ({ "position":"absolute","top":"-450px", "left":"60%"});
+//				break;
+//			case 'midleft':
+//			    $( '.site-title a' ).css ({ "position":"absolute","top":"-200px", "left":"0%"});
+//				break;
+//			case 'midcenter':
+//			    $( '.site-title a' ).css ({ "position":"absolute", "top":"-200px", "left":"30%"});
+//				break;
+//			case 'midright':
+//			    $( '.site-title a' ).css ({ "position":"absolute","top":"-200px", "left":"60%"});
+//				break;
+//			case 'bottomleft':
+//			    $( '.site-title a' ).css ({ "position":"absolute","top":"0px", "left":"0%"});
+//				break;
+//			case 'bottomcenter':
+//			    $( '.site-title a' ).css ({ "position":"absolute", "top":"0px", "left":"30%"});
+//				break;
+//			case 'bottomright':
+//			    $( '.site-title a' ).css ({ "position":"absolute","top":"0px", "left":"60%"});
+//				break;	
+//		    }
+//		} 
+//	);
+//});
+
 
 } )( jQuery );

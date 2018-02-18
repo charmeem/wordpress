@@ -7,8 +7,23 @@
 
 (function() {
 	wp.customize.bind( 'ready', function() {
+    /* TESTING PLAYGROUND */
+	
+    //////Trying to change title of Section BUT not yet WORKING
+	//console.log(wp.customize.section('title_tagline').params.title);
+	//$babloo = wp.customize.section('title_tagline').params.title;
+	//$babloo = "nonoo";
+	 //console.log($babloo);
+	//console.log(wp.customize.section('title_tagline'));
+	//console.log(wp.customize.control('top-left'));
+    //wp.customize.section('title_tagline').params.title == 'toto';
+	
+	///// Bringing control from one section to another
+	//wp.customize.control('top-left').section('background_image');
+	
+	/* TESTING PLAYGROUND */
 
-		// Only show the color hue control when there's a custom color scheme.
+	// Only show the color hue control when there's a custom color scheme.
 		wp.customize( 'colorscheme', function( setting ) {
 			wp.customize.control( 'colorscheme_hue', function( control ) {
 				var visibility = function() {
@@ -32,5 +47,7 @@
 				wp.customize.previewer.send( 'section-highlight', { expanded: isExpanding });
 			} );
 		} );
+		
+		
 	});
 })( jQuery );

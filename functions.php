@@ -575,6 +575,9 @@ Charmeem Customization: Adding new features on top of base theme2017
    3.1 Add  header image as background image.
    3.2 Static front page settings
    3.3 Adding background Image section and settings
+   3.4 Adding more Title controls
+ 4.0 Woocommerce
+   4.1 Making charmeem theme woocommerce compatible
 ---------------------------------------------------*/
  
  
@@ -605,10 +608,22 @@ function childtheme_include_svg_icons() {
  }
 add_action( 'wp_footer', 'childtheme_include_svg_icons', 99999 );
 
+/*----------------------------------------------------------
+3.0 Customizer customization
+    Some  shuffling done in some sections as well as new settings and
+	controls are added into existing sections and some sections are renamed as well.
+	Further I also add new panels and sections . All are described and docemented below.
+	
+	- How to find existing sections/settings/controls name?
+      Search in wordpress directory the customizer section title.
+	
+	- See for details: wp-include/class-wp-customize-manager.php  
+	
+-------------------------------------------------------------*/
 
 /*----------------------------------------------------------
 3.1 Add  header image as background image.
-      - Adding new setting and checkbox control in background section
+      - Adding new setting and check-box control in background section
 	  - Front end via get_theme_mod in section 3.3 <STYLE> 
 	  - changing priorities of control elements
 	  - updated js preview file to preview live in customizer
@@ -653,8 +668,10 @@ function charmeem_customization_register ($wp_customize) {
     $wp_customize->get_control('show_on_front')->label = __('Choose Homepage Preferences', 'charmeem');
     $wp_customize->get_control('page_on_front')->label = __('Select Homepage', 'charmeem');
     $wp_customize->get_control('page_for_posts')->label = __('Select Blog Homepage', 'charmeem');
+    // Rename section name from 'Site Identity' to 'Title and logo'
+    $wp_customize->get_section('title_tagline')->title = __('Title and Logo', 'charmeem');
 
-/*----------------------------------------------------------------------------
+	/*----------------------------------------------------------------------------
 3.3 Adding background Image section and settings
      - see style.css file for adding background image as hard-coded alternate
 	 - uses call back function for re styling 2017 default style
@@ -721,7 +738,126 @@ function cm_background_style() {
 }
 
 /*-----------------------------------------------------------------------------------
-3.4 Woocommerce Customization
+3.4 Adding new controls to Title section & get_theme_mod for CSS rendering
+    - section name = title_tagline  ( found from: wp-include/class-wp-customize-manager.php )
+	- live preview code is entered in customize-preview.js
+	- Any control object customization is added in customize-control.js
+	
+ ------------------------------------------------------------------------------------*/
+
+//add_action( 'customize_register', 'cm_custom_title');
+//
+//function cm_custom_title($wp_customize) {
+//
+//    // Rename section name from 'Site Identity' to 'Title and logo'
+//   $wp_customize->get_section('title_tagline')->title = __('Title and Logo', 'charmeem');
+//   
+//   // TESTING ONLY TESTING ONLY TESTING ONLY 
+//      // showing static_front_page Section only on front page 
+//   //$wp_customize->get_section('static_front_page')->active_callback = 'is_front_page';
+//   
+//   
+//           
+//        $wp_customize->add_setting( 'title_position', array(
+//		    'default'           => 'midcenter',
+//		    'transport'         => 'postMessage',
+//
+//		) );	
+//    $wp_customize->add_control( 'title_position', array(
+//			'label'    => __( 'Title Position' ),
+//			'section'  => 'title_tagline',
+//			'type'     => 'select',
+//			'choices'  => array(
+//			    'topleft' => 'Top-left',
+//				'topcenter' => 'Top-center',
+//				'topright' => 'Top-right',
+//				'midleft' => 'Mid-left',
+//				'midcenter' => 'Mid-center',
+//				'midright' => 'Mid-right',
+//				'bottomleft' => 'Bottom-left',
+//				'bottomcenter' => 'Bottom-center',
+//				'bottomright' => 'Bottom-right',
+//				)
+//		) );
+//}
+
+
+
+// get_theme_mod for CSS rendering
+
+add_action('wp_head', 'cm_title_position');
+function cm_title_position() {
+   
+   $css_title = cm_title_pos();
+	
+    ?>
+    <style type = 'text/css'>
+	    .site-title a {
+		     position: <?php echo $css_title['position']; ?>;
+			 top : <?php echo $css_title['top']; ?>;
+			 left: <?php echo $css_title['left']; ?>;
+			 } 
+	</style>	
+<?php    
+	
+}
+
+function cm_title_pos() {
+
+    $title_positions = array(
+        'topleft'  => array (
+    	    'position' => 'absolute',
+    		'top'      => '-450px',
+    		'left'     => '0%'
+    	),
+    	'topcenter'  => array (
+    	    'position' => 'absolute',
+    		'top'      => '-450px',
+    		'left'     => '30%'
+    	),
+    	'topright'  => array (
+    	    'position' => 'absolute',
+    		'top'      => '-450px',
+    		'left'     => '50%'
+    	),
+		'midleft'  => array (
+    	    'position' => 'absolute',
+    		'top'      => '-200px',
+    		'left'     => '0%'
+    	),
+    	'midcenter'  => array (
+    	    'position' => 'relative',
+    		'top'      => '-200px',
+    		'left'     => '30%'
+    	),
+    	'midright'  => array (
+    	    'position' => 'absolute',
+    		'top'      => '-200px',
+    		'left'     => '60%'
+    	),
+		'bottomleft'  => array (
+    	    'position' => 'absolute',
+    		'top'      => '0px',
+    		'left'     => '0%'
+    	),
+    	'bottomcenter'  => array (
+    	    'position' => 'relative',
+    		'top'      => '0px',
+    		'left'     => '30%'
+    	),
+    	'bottomright'  => array (
+    	    'position' => 'absolute',
+    		'top'      => '0px',
+    		'left'     => '60%'
+    	),
+    );
+    	
+    $title_position = get_theme_mod( 'title_position' );
+    return $title_css = $title_positions[$title_position];
+    		
+}
+/*-----------------------------------------------------------------------------------
+4.1 Woocommerce Customization
     Making charmeem theme woocommerce compatible
 	as per 'Third party / custom / non-WC theme compatibility' document
 ------------------------------------------------------------------------------------*/
