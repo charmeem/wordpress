@@ -1,0 +1,1 @@
+photoshop files are located in my_web/photoshop/projects/whoisourlord
