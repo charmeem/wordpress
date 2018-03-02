@@ -3,22 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Who is Our Lord</title>
-	<link rel="stylesheet" type = "text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    
+	<div id = "wrap">
+    <div class = "grid">
 	<div id ="header">
-	    <h1><a href="#">Who is Our Lord</a></h1>
+	    <h1><a href="#">wiol</a></h1>
+	    <img src="img/logo.png" alt="Logo" />
+		<img src="img/logo_highlight.png" alt="logo highlight" />
 		<ul>
 			<li><a href="#">HOME</a></li>
 			<li><a href="#">CATEGORIES</a></li>
 			<li><a href="#">LEARNING</a></li>
 			<li><a href="#">ABOUT</a></li>
 			<li id = "search">
-			    <img src="img/search_icon.png" alt="Enter search item" />
-			    <input type="text" name = "s" id ="s" value = "search the site" />
+			    <img src="img/search_icon.png" alt="search" />
+			    <input type="text" name = "s" id ="s" value = "Enter search item" />
 			</li>
 		</ul>
 	</div> <!--end header -->
+	</div> <!--end grid -->
 	
 	<div id ="hero">
 	    <h1><a href="http://localhost/psd_to_html_/whoisourlord/inner1.php"> Who is Our Lord</a></h1>
@@ -32,13 +38,13 @@
 	
 	<div id = "centre">
 	    <div class="article">
-	        <h2>Who is our Lord</h2>
+	        <h2><a>Who is our Lord</a></h2>
             <img src="img/brushg1.png" alt="first article" />
             <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful. <br>Master of the day of judgment.</p>		
 		</div> <!-- end article -->
 		
 		<div class="article">
-	        <h2>Who is Jesus Christ</h2>
+	        <h2><a>Who is Jesus Christ</a></h2>
             <img src="img/imgg2.png" alt="second article" />
             <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful.</p>	
 		</div> <!-- end article -->
@@ -67,6 +73,7 @@
 		
 	</div> <!-- end center-->
 	
+	<div class = "grid">
 	<div id = "lower">
 	    <div class="article">
 	        <h2>Who is our Lord</h2>
@@ -86,10 +93,40 @@
         </div> <!-- end article -->
 		
 	</div> <!-- end lower -->
+	</div> <!-- end grid -->
 	
 	<div id = "footer">
+	    <div class = "grid">
+	    <div id ="wiol">
+		    <h2>Who is our Lord</h2>
+		    <p> Phasellus interdum dignissim nibh, eget egestas velit bibendum vel. Integer aliquet, purus pretium gravida maximus, ante nulla convallis nulla, sit amet pulvinar odio tellus in mauris. Sed egestas varius rhoncus. Fusce sed ultrices erat, et laoreet tortor. Curabitur viverra gravida tellus.</p>
+		</div>
+	    <div id ="kc">
+		    <h2>Keep Connected</h2>
+		    <p>Phasellus interdum :www.facebook.com</p>
+		    <p>nibh, eget egestas ve: www.linkedin.com</p>
+		    <p>it bibendum vel. Int  : www.twitter.com</p>
+		    <p>ger aliquet, purus pre: www.skype.com</p>
+		</div>
+		<div id ="lb">
+		    <h2>Keep Connected</h2>
+		    <p>Phasellus interdum :www.facebook.com</p>
+		    <p>nibh, eget egestas ve: www.linkedin.com</p>
+		    <p>it bibendum vel. Int  : www.twitter.com</p>
+		    <p>ger aliquet, purus pre: www.skype.com</p>
+		</div>
+		<div id ="gallery">
+		    <h3>Gallery</h3>
+			<img src=".png" alt="thumb1" />
+			<img src=".png" alt="thumb2" />
+			<img src=".png" alt="thumb3" />
+			<img src=".png" alt="thumb4" />
+			<img src=".png" alt="thumb5" />
+			<img src=".png" alt="thumb6" />
+		</div>
+	</div> <!-- end grid -->
 	</div> <!-- end footer -->
-	
+	</div> <!-- end wrap -->
 	
 </body>
 </html>
