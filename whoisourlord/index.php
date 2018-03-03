@@ -11,8 +11,7 @@
     <div class = "grid">
 	<div id ="header">
 	    <h1><a href="#">wiol</a></h1>
-	    <img src="img/logo.png" alt="Logo" />
-		<img src="img/logo_highlight.png" alt="logo highlight" />
+	    
 		<ul>
 			<li><a href="#">HOME</a></li>
 			<li><a href="#">CATEGORIES</a></li>

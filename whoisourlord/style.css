@@ -64,7 +64,6 @@ a {
 a:active,
 a:hover {
 	outline-width: 0;
-	color:orange;
 }
 
 abbr[title] {
@@ -261,11 +260,11 @@ ul, ol {
 /*--------------------------------------------------------------
 2.0 Typography
 --------------------------------------------------------------*/
-h1 {
+gh1 {
        font-size:72px;
        font-color:#fff;
 }
-h2 {
+gh2 {
        font-size:48px;
 }
 
@@ -278,14 +277,37 @@ wrap {
 }
 
 .grid {
-    width:1000px;
-	background:red;
+    width:1020px;
+	bvackground:red;
 	margin:auto;
+}
+
+a:active,
+a:hover {
+	color:#3d8ebc;
 }
 
 /*--------------------------------------------------------------
 3.0 Header
 --------------------------------------------------------------*/
+#header h1 {
+    background:url('img/logo.png') no-repeat;
+    width:170px;
+	height:170px;
+	float:left; /* to remove block, i.e lower element , 
+	               the navigation, will not restricted to be below */
+    text-indent:-9999px;
+	
+} 
+
+#header h1 a {
+    width:170px;
+	height:170px;
+	display:block;
+}
+
+
+/* Search input */
 input {
     background:#d1e5ec;
 	border: 1px solid #b4b5b5;
@@ -294,8 +316,39 @@ input {
 	font: bold 14px oswald;
 	text-align:left;
 	padding-left: 22px;
+	padding-top:7px;
+	padding-bottom: 7px;
+	
 }
 
-#header h1 {
-    text-indent:-9999px;
+input:focus, input:hover {
+    background:#3d8ebc;
+	color:#ebebeb;
+}
+
+/* Navigation */
+#header ul {
+    overflow: hidden;
+	padding-left:200px;
+}
+
+
+
+#header ul li {
+    float: left;
+	padding-left:47px;
+	font: bold 16px oswald;
+	margin:85px 0;
+	
+}
+#search {
+    position:absolute;
+    top:10px;
+	right:164px;
+}
+#search img{
+    position:absolute;
+    top:10px;
+	right:4px;
+	
 }
