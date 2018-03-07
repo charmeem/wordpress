@@ -7,8 +7,7 @@
 </head>
 <body>
     
-	<div id = "wrap">
-    <div class = "grid">
+	<div class = "grid">
 	<div id ="header">
 	    <h1><a href="#">wiol</a></h1>
 	    
@@ -125,7 +124,7 @@
 		</div>
 	</div> <!-- end grid -->
 	</div> <!-- end footer -->
-	</div> <!-- end wrap -->
+	
 	
 </body>
 </html>
