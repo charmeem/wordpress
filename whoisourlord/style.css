@@ -275,7 +275,10 @@ html {
     /* Using multiple background features:
 	 * URL of top image no-repeat position/size, colour of lower background
 	 */
-	background:url('img/logo_highlight.png') no-repeat 60px -20px/ 390px 350px, #b1d1dd ;
+	background:url('img/logo_highlight.png') no-repeat 60px -20px/ 390px 350px, 
+	           url('img/hero_background_brush2.png') no-repeat, 
+	           url('img/hero_background_brush1.png') no-repeat,
+			   #a7cbd9 ;
 }
 wrap {
     width:1600px;
@@ -297,8 +300,8 @@ a:hover {
 3.0 Header
 --------------------------------------------------------------*/
 #header h1 {
-   /* Multiple backgrounds */
-    background:url('img/logo.png') no-repeat 0px 12px ;
+   
+    background:url('img/logo.png') no-repeat  ;
 	width:170px;
 	height:180px;
 	float:left; /* to remove block, i.e lower element , 
@@ -320,10 +323,10 @@ input {
 	border: 1px solid #b4b5b5;
 	border-radius: 6px;
 	color: #333333;
-	font: bold 14px oswald;
-	text-align:left;
-	padding-left: 22px;
-	padding-top:7px;
+	font: bold 13px oswald;
+	padding-left: 13px;
+    padding-right: 10px;
+	padding-top:5px;
 	padding-bottom: 7px;
 	
 }
@@ -339,15 +342,19 @@ input:focus, input:hover {
 	padding-left:200px;
 }
 
-
-
 #header ul li {
     float: left;
-	padding-left:47px;
+	padding-left:23px;        /* same as padding-right in li a below to center divider line*/
 	font: bold 16px oswald;
-	margin:85px 0;
-	
+	margin:60px 0 85px 0;
 }
+
+#header ul li a {
+border-right: 1px solid black;  /* to create balck divider line */
+padding-right:23px;             /* to adjust balck divider line */
+}
+
+/*
 #search {
     position:absolute;
     top:10px;
@@ -357,5 +364,61 @@ input:focus, input:hover {
     position:absolute;
     top:10px;
 	right:4px;
-	
 }
+*/
+#search {
+    position:relative;
+    top:-7px;
+    right:-4px;
+}
+#search img{
+    position:relative;
+    top:10px;
+    right:-154px;
+}
+
+/* Hero  */
+
+#hero {
+width:1600px;
+height: 840px;
+background: #87b8cb;
+}
+
+#hero #heading {
+    float:left;
+    margin: 192px 0 0 70px;
+}
+#hero h1 {
+font-size: 72px;
+}
+#hero #heading p {
+font-size: 48px; 
+line-height: 61px;
+}
+#hero #player {
+    float:right;
+    margin:192px 70px 0 0;
+background: #3c8ebd;
+width: 722px;
+height: 405px;
+border-radius: 11px;
+}
+
+#hero #player p{
+font-size: 36px; 
+line-height: 48px;
+    
+}
+#player p:nth-child(2) {
+float:right;
+margin:70px 63px 0 0;
+}
+
+#player p:nth-child(1) {
+float:left;
+margin:70px 0 0 63px;
+}
+
+
+

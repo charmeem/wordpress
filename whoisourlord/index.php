@@ -25,9 +25,10 @@
 	</div> <!--end grid -->
 	
 	<div id ="hero">
+	  <div id = "heading">
 	    <h1><a href="http://localhost/psd_to_html_/whoisourlord/inner1.php"> Who is Our Lord</a></h1>
 		<p>All praise be to Allah. <br>The Lord of the Universe. <br>The most Merciful, the ever Merciful. <br>Master of the day of judgment.</p>
-		
+	  </div>  <!--end heading -->	
 		<div id ="player">
 		    <p>In the name of Allah, <br>the most Merciful, the <br> ever Merciful.</p>
 			<p>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْم</p>
