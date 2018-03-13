@@ -17,7 +17,7 @@
 			<li><a href="#">LEARNING</a></li>
 			<li><a href="#">ABOUT</a></li>
 			<li id = "search">
-			    <img src="img/search_icon.png" alt="search" />
+			    
 			    <input type="text" name = "s" id ="s" value = "Enter search item" />
 			</li>
 		</ul>
