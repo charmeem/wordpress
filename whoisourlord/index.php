@@ -30,43 +30,44 @@
 		<p>All praise be to Allah. <br>The Lord of the Universe. <br>The most Merciful, the ever Merciful. <br>Master of the day of judgment.</p>
 	  </div>  <!--end heading -->	
 		<div id ="player">
-		    <p>In the name of Allah, <br>the most Merciful, the <br> ever Merciful.</p>
+		    
+			<p>In the name of Allah, <br>the most Merciful, the <br> ever Merciful.</p>
 			<p>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْم</p>
+			
+			
 		</div> <!-- end player -->
 	</div> <!-- end hero -->
 	
 	<div id = "centre">
 	    <div class="article">
-	        <h2><a>Who is our Lord</a></h2>
-            <img src="img/brushg1.png" alt="first article" />
+	        <h2 style="background:url(img/brushg1.png) 10px 0px/266px 222px no-repeat #002157; "><a>Who is our Lord</a></h2>
             <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful. <br>Master of the day of judgment.</p>		
 		</div> <!-- end article -->
 		
 		<div class="article">
-	        <h2><a>Who is Jesus Christ</a></h2>
-            <img src="img/imgg2.png" alt="second article" />
+	        <h2 style="background:url(img/imgg2.png) 0px 0px/360px 202px no-repeat ; "><a>Who is Jesus Christ</a></h2>
+            
             <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful.</p>	
 		</div> <!-- end article -->
 		
 		<div class="article">
-	        <img src="img/imgg3.png" alt="third article" />
+		    <h2 style="background:url(img/imgg3.png) 0px 0px/360px 202px no-repeat; "><a>Who is our Lord</a></h2>
+	        
             <p class ="caption">And recite to them the news of Abraham.<br>when he said to His father</p>		
 		</div> <!-- end article -->
 		
 		<div class="article">
-	        <img src="img/imgg4.png" alt="fourth article" />
-            <p class ="caption">The most Merciful, the ever Merciful. <br>Master of the day of judgement.</p>		
+		    <h2 style="background:url(img/imgg4.png) 0px 0px/360px 202px no-repeat; "><a>Who is our Lord</a></h2>
+	        <p class ="caption">The most Merciful, the ever Merciful. <br>Master of the day of judgement.</p>		
 		</div> <!-- end article -->
 		
 		<div class="article">
-	        <h2>Who is our Lord</h2>
-            <img src="img/imgg5.png" alt="fifth article" />
+	        <h2 style="background:url(img/imgg5.png) 0px 0px/360px 202px no-repeat; "><a>Who is our Lord</a></h2>
             <p class ="caption">The Lord of the Universe.<br>The most Merciful, the ever Merciful. </p>	
 		</div> <!-- end article -->
 		
 		<div class="article">
-	        <h2>Who is our Lord</h2>
-            <img src="img/brushg6.png" alt="sixth article" />
+	        <h2 style="background:url(img/brushg6.png) 0px 0px/360px 202px no-repeat #d1dcf1; "><a>Who is our Lord</a></h2>
             <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful. <br>Master of the day of judgment.</p>		
 		</div> <!-- end article -->
 		
@@ -75,20 +76,20 @@
 	<div class = "grid">
 	<div id = "lower">
 	    <div class="article">
-	        <h2>Who is our Lord</h2>
-            <img src="img/imgg5.png" alt="1st article" />
+	        <h2 style="background:url(img/pregnancy-week-13.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We</a></h2>
+        </div> <!-- end article -->
+	    <div class="article">
+	        <h2 style="background:url(img/imgg5.png) 0px 0px/360px 260px no-repeat; "><a>Who is our Lord</a></h2>
+            <iimg src="img/imgg5.png" alt="1st article" />
         </div> <!-- end article -->
 		<div class="article">
-	        <h2>Who is Jesus Christ</h2>
-            <img src="img/imgg2.png" alt="2nd article" />
+	        <h2 style="background:url(img/pregnancy-week-6.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We 2</a></h2>
+            <idmg src="img/imgg2.png" alt="2nd article" />
         </div> <!-- end article -->
+		
 		<div class="article">
-	        <h2>Who is our Lord</h2>
-            <img src="img/imgg2.png" alt="3rd article" />
-        </div> <!-- end article -->
-		<div class="article">
-	        <h2>Who is Jesus Christ</h2>
-            <img src="img/imgg2.png" alt="4rth article" />
+	        <h2 style="background:url(img/imgg2.png) 0px 0px/360px 260px no-repeat; "><a>Who is Jesus Christ</a></h2>
+            <idmg src="img/imgg2.png" alt="4rth article" />
         </div> <!-- end article -->
 		
 	</div> <!-- end lower -->

@@ -28,7 +28,7 @@ footer,
 header,
 nav,
 section {
-	ddisplay: block;
+	display: block;
 }
 
 h1 {
@@ -289,7 +289,7 @@ html {
 .grid {
     woidth:1020px;
 	bdackground:red;
-	margin:auto;
+	mfargin:auto;
 }
 
 a:active,
@@ -302,8 +302,8 @@ a:hover {
     Features:
 	- Fully Responsive by
 	- Flexbox implementation
-	- Divided into 2 columns: h1 and navigation ul
-    
+	- Divided into 2 columns: h1(logo image) and navigation ul
+    - grid maaintained through margins
 --------------------------------------------------------------*/
 
 /* Both #header and #header ul given role of parent */
@@ -361,8 +361,7 @@ input:focus, input:hover {
 /* Navigation */
 #header ul {
  	-webkit-flex-basis:50%;  /* Shrinking UL items */
-    paddding-left:200px;
-	margin-right:100px;
+    margin-right:100px;
 }
 
 #header ul li {
@@ -379,54 +378,168 @@ padding-right:23px;
 
 /*--------------------------------------------------------------
   Hero
+  Flexbox model: 2 columns same width
+         col1-heading
+         col2- player
  --------------------------------------------------------------*/
 
 #hero {
-display: -webkit-flex;
--webkit-flex-direction: row;
--webkit-justify-content: space-around; 
--webkit-flex-wrap: wrap;
-widdth:1200px;
-height: 840px;
-background: #87b8cb;
+    display: -webkit-flex;
+	-webkit-flex-direction: row;
+    -webkit-justify-content: space-around; 
+	-woebkit-align-items: center;
+    -webkit-flex-wrap: wrap;
+    background: url('./img/play_button_circle.png') no-repeat 825px 245px, 
+	            url('./img/play_button_arrow.png')  no-repeat 862px 280px,
+				url('./img/player_left_arrow.png')  no-repeat 752px 280px,
+				url('./img/player_right_arrow.png')  no-repeat 972px 280px,				
+                #87b8cb;
+	opacity: 0.9;
 }
 
+
 #hero #heading {
-     
-    margin: 192px 0 0 0px;
+    margin: 100px 0 80px 0px;
 }
+
 #hero h1 {
-font-size: 61px;
+    font-size: 51px;
 }
+
 #hero #heading p {
-font-size: 41px; 
-line-height: 47px;
+    font-size: 31px; 
+    line-height: 35px;
 }
+
 #hero #player {
-display:-webkit-flex;
- -webkit-justify-content: space-around;     
-    margin:192px 0px 0 0;
+opacity:0.87;
+    display:-webkit-flex;
+    -webkit-justify-content: space-around;     
+    margin:100px 0px 100px 0;
     background: #3c8ebd;
     wdidth: 722px;
-    height: 205px;
+    hdeight: 153px;
     border-radius: 11px;
-	
+    
 }
 
 #hero #player p{
 font-size: 31px; 
 line-height: 31px;
-  padding:0 30px 0 30px;  
-}
-#player p:nth-child(2) {
-fhloat:right;
-margin:70px 0px 0 0;
+margin:30px 30px 30px 30px;
 }
 
-#player p:nth-child(1) {
-fhloat:left;
-margin:70px 0 0 0px;
+/*--------------------------------------------------------------
+  Articles - Central portion
+  Flexbox model: 3 columns same width
+                 2 Rows
+ --------------------------------------------------------------*/
+
+#centre {
+    background : #f6f4f4;
+    display: -webkit-flex;
+	-wdebkit-align-items: center;
+	-webkit-justify-content: space-around; /* in-effective when -webkit-flex property used in childes*/
+    -webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap; 
 }
 
 
+/* adjusting 3 articles on a row */
+#centre .article h2 {
+    display: -webkit-flex;
+	wdebkit-justify-content:space-around:;
+	margin:25px 15px 0px 15px;
+    bbackground:orange;
+    height:200px;
+	width:359px;	
+}
+
+
+#centre .article h2 a {
+    color:white;
+    padding:40px 0 0 95px  ;
+}
+
+.article p {
+     color: #7e7e7e;
+}
+
+#centre .article p {
+    display: -webkit-flex;
+    -webkit-align-items:center;
+    margin:0px 15px 15px 15px;
+    height:60px;
+    width:291px;
+    text-align:center;
+    background:#e3e3e4;
+    padding-left:68px;
+    padding-top:2px;
+    padding-bottom:5px;
+}
+
+/* increasing left margin of only first and 4th article */
+#centre .article p:nth-child(1n+4)  {
+ 	margin-bottom:25px;
+} 
+
+
+/*--------------------------------------------------------------
+  Articles - lower portion - class grid
+  Flexbox model: 2 columns same width
+                 2 Rows
+				 grid maintained through margins
+ --------------------------------------------------------------*/
+
+ #lower {
+    display: -webkit-flex;
+	-webkit-justify-content: space-around; /* in-effective when -webkit-flex property used in childes*/
+    -webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap; 
+}
+
+/* Maintaining Grid through 
+   left margin for 1st and 3rd post, 
+   right margin for 2nd and 4rth post  */
+#lower .article:nth-child(odd)  {
+ 	margin-left:100px;
+}
+#lower .article:nth-child(even)  {
+ 	margin-right:100px;
+}
+
+@media screen and (max-width:950px) {
+  #lower .article:nth-child(odd)  {
+ 	margin-left:50px;
+}
+#lower .article:nth-child(even)  {
+ 	margin-right:50px;
+}
+  }
+@media screen and (max-width:850px) {
+  #lower .article:nth-child(odd)  {
+ 	margin-left:0px;
+}
+#lower .article:nth-child(even)  {
+ 	margin-right:0px;
+}
+  }
+
+
+#lower .article h2 {
+    display: -webkit-flex;
+	wdebkit-justify-content:space-around:;
+	margin-top:100px;
+    bbackground:orange;
+    height:260px;
+	width:359px;	
+}  
+
+#lower .article h2 a {
+    display: -webkit-flex;
+    -webkit-align-items: center; /* align vertically */
+    color:white;
+    font-size:31px;
+    margin:auto;                 /* align horizontally */
+}
 
