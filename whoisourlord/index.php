@@ -82,14 +82,15 @@
 	        <h2 style="background:url(img/imgg5.png) 0px 0px/360px 260px no-repeat; "><a>Who is our Lord</a></h2>
             <iimg src="img/imgg5.png" alt="1st article" />
         </div> <!-- end article -->
-		<div class="article">
-	        <h2 style="background:url(img/pregnancy-week-6.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We 2</a></h2>
-            <idmg src="img/imgg2.png" alt="2nd article" />
-        </div> <!-- end article -->
-		
+				
 		<div class="article">
 	        <h2 style="background:url(img/imgg2.png) 0px 0px/360px 260px no-repeat; "><a>Who is Jesus Christ</a></h2>
             <idmg src="img/imgg2.png" alt="4rth article" />
+        </div> <!-- end article -->
+		
+		<div class="article">
+	        <h2 style="background:url(img/pregnancy-week-6.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We 2</a></h2>
+            <idmg src="img/imgg2.png" alt="2nd article" />
         </div> <!-- end article -->
 		
 	</div> <!-- end lower -->
@@ -97,10 +98,15 @@
 	
 	<div id = "footer">
 	    <div class = "grid">
-	    <div id ="wiol">
+	     <div id ="wiol">
 		    <h2>Who is our Lord</h2>
-		    <p> Phasellus interdum dignissim nibh, eget egestas velit bibendum vel. Integer aliquet, purus pretium gravida maximus, ante nulla convallis nulla, sit amet pulvinar odio tellus in mauris. Sed egestas varius rhoncus. Fusce sed ultrices erat, et laoreet tortor. Curabitur viverra gravida tellus.</p>
-		</div>
+		    <p> Phasellus interdum dignissim nibh, eget egestas
+			velit bibendum vel. Integer aliquet, purus pretium  
+			gravida maximus, ante nulla convallis nulla, sit amet 
+			pulvinar odio tellus in mauris. Sed egestas varius rhoncus. 
+			Fusce sed ultrices erat, et laoreet tortor. Curabitur 
+			viverra gravida tellus.</p>
+		 </div>
 	    <div id ="kc">
 		    <h2>Keep Connected</h2>
 		    <p>Phasellus interdum :www.facebook.com</p>
@@ -109,20 +115,33 @@
 		    <p>ger aliquet, purus pre: www.skype.com</p>
 		</div>
 		<div id ="lb">
-		    <h2>Keep Connected</h2>
-		    <p>Phasellus interdum :www.facebook.com</p>
-		    <p>nibh, eget egestas ve: www.linkedin.com</p>
-		    <p>it bibendum vel. Int  : www.twitter.com</p>
-		    <p>ger aliquet, purus pre: www.skype.com</p>
+		    <h2>Latest Blogs</h2>
+		    <p>Phasellus interdum iium jkj ddde </p>
+		    <p>nibh, eget egestas veuytgu g g h</p>
+		    <p>it bibendum vel. Int askjhkkjnjn </p>
+		    <p>ger aliquet, purus pre kjhkjh kh </p>
 		</div>
 		<div id ="gallery">
-		    <h3>Gallery</h3>
-			<img src=".png" alt="thumb1" />
-			<img src=".png" alt="thumb2" />
-			<img src=".png" alt="thumb3" />
-			<img src=".png" alt="thumb4" />
-			<img src=".png" alt="thumb5" />
-			<img src=".png" alt="thumb6" />
+		    <h2>Gallery</h2>
+			<a href = "#" >
+			    <img src="img/imgg5.png" width="65px" height="65px" alt="thumb1" />
+			</a>
+			<a href = "#" >
+			    <img src="img/logo.png" width="65px" height="65px" alt="thumb2" />
+			</a>
+			<a href = "#" >
+			    <img src="img/imgg2.png" width="65px" height="65px" alt="thumb3" />
+			</a>
+			<a href = "#" >
+			    <img src="img/imgg4.png" width="65px" height="65px" alt="thumb4" />
+			</a>
+			<a href = "#" >
+			    <img src="img/pregnancy-week-13.jpg" width="65px" height="65px" alt="thumb5" />
+			</a>
+			<a href = "#" >
+			    <img src="img/imgg3.png" width="65px" height="65px" alt="thumb6" />
+			</a>
+			
 		</div>
 	</div> <!-- end grid -->
 	</div> <!-- end footer -->

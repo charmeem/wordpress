@@ -439,7 +439,7 @@ margin:30px 30px 30px 30px;
     background : #f6f4f4;
     display: -webkit-flex;
 	-wdebkit-align-items: center;
-	-webkit-justify-content: space-around; /* in-effective when -webkit-flex property used in childes*/
+	-webkit-justify-content: space-evenly; /* in-effective when -webkit-flex property used in childes*/
     -webkit-flex-direction: row;
 	-webkit-flex-wrap: wrap; 
 }
@@ -509,28 +509,27 @@ margin:30px 30px 30px 30px;
 }
 
 @media screen and (max-width:950px) {
-  #lower .article:nth-child(odd)  {
- 	margin-left:50px;
+    #lower .article:nth-child(odd)  {
+ 	    margin-left:50px;
+    }
+    #lower .article:nth-child(even)  {
+ 	    margin-right:50px;
+    }
 }
-#lower .article:nth-child(even)  {
- 	margin-right:50px;
-}
-  }
+  
 @media screen and (max-width:850px) {
-  #lower .article:nth-child(odd)  {
- 	margin-left:0px;
+#lower .article:nth-child(odd)  {
+  margin-left:0px;
 }
 #lower .article:nth-child(even)  {
- 	margin-right:0px;
+  margin-right:0px;
 }
-  }
+}
 
 
 #lower .article h2 {
     display: -webkit-flex;
-	wdebkit-justify-content:space-around:;
 	margin-top:100px;
-    bbackground:orange;
     height:260px;
 	width:359px;	
 }  
@@ -543,3 +542,57 @@ margin:30px 30px 30px 30px;
     margin:auto;                 /* align horizontally */
 }
 
+/*--------------------------------------------------------------
+  Footer
+  Flexbox model: 4 columns same width
+                 
+				 grid maintained through margins
+ --------------------------------------------------------------*/
+#footer .grid {
+    display:-webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: space-around;
+    -webkit-flex-wrap: wrap;	
+    
+ }
+
+#footer #wiol {
+    flex-basis: 15%;  /* keep p text size constraint */
+    -wsebkit-align-items: center;
+margin-left:180px;
+} 
+#footer #gallery{
+margin-right:150px;
+}
+#footer p {
+font-size:14px;
+color: #7e7e7e;
+}
+#footer h2 {
+font-size: 20px;
+color: #7e7e7e;
+}
+#footer #lb {
+-webkit-flex-basis:20%;
+}
+
+/* Managing Footer image gallery in flexbox */
+#footer #gallery{
+display:-webkit-flex;
+-webkit-flex-wrap:wrap;
+-webkit-align-content:start;
+-webkit-flex-basis:17%;
+}
+#footer #gallery h2 {
+-webkit-flex-basis:100%; /* Keeping h2 on seperate row */
+}
+
+#footer #gallery a {
+-webkit-flex-grow:1;
+-webkit-flex-basis:23%;
+margin:3px;
+}
+#footer #gallery img{
+height:100%;
+width:100%;
+}
