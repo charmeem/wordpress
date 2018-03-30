@@ -303,8 +303,8 @@ a:hover {
 	- Fully Responsive by
 	- Flexbox implementation
 	- Divided into 2 columns: h1(logo image) and navigation ul
-    - grid maaintained through margins
---------------------------------------------------------------*/
+        - grid maintained through margin-left & margin-right = 160px
+-------------------------------------------------------------------*/
 
 /* Both #header and #header ul given role of parent */
 #header, #header ul {
@@ -321,7 +321,7 @@ a:hover {
 	width:170px;
 	height:180px;
 	text-indent:-9999px;
-	margin-left:100px;
+	margin-left:110px;
     margin-top:10px;
 
 } 
@@ -336,6 +336,8 @@ a:hover {
 @media screen and (max-width:850px) {
   #header h1 {
     -webkit-flex-basis: 50%;
+	-webkit-align-items: center;
+	margin-left:0px;
   }
 }
 
@@ -361,7 +363,7 @@ input:focus, input:hover {
 /* Navigation */
 #header ul {
  	-webkit-flex-basis:50%;  /* Shrinking UL items */
-    margin-right:100px;
+    margin-right:86px;
 }
 
 #header ul li {
@@ -491,63 +493,70 @@ margin:30px 30px 30px 30px;
 				 grid maintained through margins
  --------------------------------------------------------------*/
 
- #lower {
+#lower .grid{
     display: -webkit-flex;
-	-webkit-justify-content: space-around; /* in-effective when -webkit-flex property used in childes*/
+	-webkit-justify-content: space-evenly; /* in-effective when -webkit-flex property used in childes*/
     -webkit-flex-direction: row;
-	-webkit-flex-wrap: wrap; 
+    -webkit-flex-wrap: wrap;
+    -wbkit-align-content:start; 
+}
+
+/* only last 2 articles */
+#lower .article:nth-child(n+3) {
+margin-bottom:40px;
+}
+
+/* only first 2 articles */
+#lower .article:nth-child(-n+2){
+margin-top:20px;
+
 }
 
 /* Maintaining Grid through 
    left margin for 1st and 3rd post, 
    right margin for 2nd and 4rth post  */
 #lower .article:nth-child(odd)  {
- 	margin-left:100px;
+-webkit-align-items:center;
+ 	margin-left:120px;
 }
 #lower .article:nth-child(even)  {
- 	margin-right:100px;
+    -webkit-align-items:center;
+ 	margin-right:120px;
 }
 
-@media screen and (max-width:950px) {
-    #lower .article:nth-child(odd)  {
- 	    margin-left:50px;
-    }
-    #lower .article:nth-child(even)  {
- 	    margin-right:50px;
-    }
+/* Controlling margin on smaller screens */
+@media screen and (max-width:1200px) {
+   #lower .article:nth-child(odd)  {
+    -webkit-align-items:center;
+    margin-left:0px;
 }
-  
-@media screen and (max-width:850px) {
-#lower .article:nth-child(odd)  {
-  margin-left:0px;
-}
-#lower .article:nth-child(even)  {
-  margin-right:0px;
+  #lower .article:nth-child(even)  {
+    -webkit-align-items:center;
+ 	margin-right:0px;
 }
 }
-
 
 #lower .article h2 {
-    display: -webkit-flex;
-	margin-top:100px;
-    height:260px;
-	width:359px;	
-}  
-
-#lower .article h2 a {
-    display: -webkit-flex;
-    -webkit-align-items: center; /* align vertically */
     color:white;
     font-size:31px;
-    margin:auto;                 /* align horizontally */
-}
+    -webkit-align-items:center;
+    margin:120px;
+    position:absolute;
+ }  
 
+#lower .article img {
+    display: -webkit-flex;
+    	
+}  
+
+#lower .grid .article a {
+    margin:1px;
+}
 /*--------------------------------------------------------------
   Footer
   Flexbox model: 4 columns same width
-                 
-				 grid maintained through margins
- --------------------------------------------------------------*/
+                 grid maintained through margin-left & margin-right = 160px
+ -----------------------------------------------------------------------*/
 #footer .grid {
     display:-webkit-flex;
     -webkit-flex-direction: row;
@@ -557,42 +566,74 @@ margin:30px 30px 30px 30px;
  }
 
 #footer #wiol {
-    flex-basis: 15%;  /* keep p text size constraint */
-    -wsebkit-align-items: center;
-margin-left:180px;
+    flex-basis: 16%;  /* keep p text size constraint */
+    -weubkit-align-items: center;
+    margin-left:152px;
 } 
 #footer #gallery{
-margin-right:150px;
+    margin-right:150px;
 }
 #footer p {
-font-size:14px;
-color: #7e7e7e;
+    font-size:14px;
+    color: #7e7e7e;
 }
 #footer h2 {
-font-size: 20px;
-color: #7e7e7e;
+    font-size: 20px;
+    color: #7e7e7e;
 }
 #footer #lb {
--webkit-flex-basis:20%;
+    -webkit-flex-basis:20%;
 }
 
 /* Managing Footer image gallery in flexbox */
 #footer #gallery{
-display:-webkit-flex;
--webkit-flex-wrap:wrap;
--webkit-align-content:start;
--webkit-flex-basis:17%;
+    display:-webkit-flex;
+    -webkit-flex-wrap:wrap;
+    -webkit-align-content:start;
+    -webkit-flex-basis:17%;
 }
 #footer #gallery h2 {
--webkit-flex-basis:100%; /* Keeping h2 on seperate row */
+    -webkit-flex-basis:100%; /* Keeping h2 on seperate row */
 }
 
 #footer #gallery a {
--webkit-flex-grow:1;
--webkit-flex-basis:23%;
-margin:3px;
+    -webkit-flex-grow:1;
+    -webkit-flex-basis:23%;
+    margin:3px;
 }
 #footer #gallery img{
-height:100%;
-width:100%;
+    height:100%;
+    width:100%;
+}
+
+/* Controlling margin on smaller screens */
+@media screen and (max-width:1140px) {
+
+   #footer #wiol {
+    -webkit-flex-basis: 30%;  /* keep p text size constraint */
+-weabkit-align-items: center;    
+    margin-left:70px;
+} 
+#footer #gallery{
+    margin-right:70px;
+}
+}
+
+@media screen and (max-width:1036px) {
+
+   #footer #wiol {
+    -webkit-flex-basis: 30%;  /* keep p text size constraint */
+-webkit-align-items: center;    
+    margin-left:50px;
+} 
+
+}
+@media screen and (max-width:484px) {
+
+   #footer #wiol {
+    -webkit-flex-basis: 30%;  /* keep p text size constraint */
+-webkit-align-items: center;    
+    margin-left:2px;
+} 
+
 }

@@ -73,28 +73,40 @@
 		
 	</div> <!-- end center-->
 	
-	<div class = "grid">
 	<div id = "lower">
-	    <div class="article">
-	        <h2 style="background:url(img/pregnancy-week-13.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We</a></h2>
+      <div class = "grid">	
+        <div class="article">
+	       
+		   <!-- <h2 style="background:url(img/pregnancy-week-13.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We</a></h2> -->
+			<a href = "#" >
+			<h2>Who are We</h2>
+		    <img src="img/pregnancy-week-13.jpg" width='430px' height='300px' alt="1st article" />
+			</a>
         </div> <!-- end article -->
+		
 	    <div class="article">
-	        <h2 style="background:url(img/imgg5.png) 0px 0px/360px 260px no-repeat; "><a>Who is our Lord</a></h2>
-            <iimg src="img/imgg5.png" alt="1st article" />
+	        <a href = "#" >
+			<h2>Who is our Lord</h2>
+			<img src="img/imgg5.png" width='430px' height='300px' alt="2nd article" />
+			</a>
         </div> <!-- end article -->
 				
 		<div class="article">
-	        <h2 style="background:url(img/imgg2.png) 0px 0px/360px 260px no-repeat; "><a>Who is Jesus Christ</a></h2>
-            <idmg src="img/imgg2.png" alt="4rth article" />
+		    <a href = "#" >
+	        <h2>Who is Jesus Christ</h2>
+			<img src="img/imgg2.png" width='430px' height='300px' alt="3rd article" />
+			</a>
         </div> <!-- end article -->
 		
 		<div class="article">
-	        <h2 style="background:url(img/pregnancy-week-6.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We 2</a></h2>
-            <idmg src="img/imgg2.png" alt="2nd article" />
+	        <a href = "#" >
+			<h2>Who are We 2</h2>
+			<img src="img/pregnancy-week-6.jpg" width='430px' height='300px' alt="4rth article" />
+			</a>
         </div> <!-- end article -->
-		
+	</div> <!-- end grid -->	
 	</div> <!-- end lower -->
-	</div> <!-- end grid -->
+	
 	
 	<div id = "footer">
 	    <div class = "grid">
