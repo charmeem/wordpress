@@ -110,7 +110,7 @@
 	
 	<div id = "footer">
 	    <div class = "grid">
-	     <div id ="wiol">
+		   <div id ="wiol">
 		    <h2>Who is our Lord</h2>
 		    <p> Phasellus interdum dignissim nibh, eget egestas
 			velit bibendum vel. Integer aliquet, purus pretium  
@@ -155,7 +155,17 @@
 			</a>
 			
 		</div>
-	</div> <!-- end grid -->
+		</div> <!-- end grid -->
+		<div id = "copyright">
+		    <p> copyright@2018 charmeem soft</p>
+		    <ul>
+			    <li><a href="#">HOME</a></li>
+			    <li><a href="#">CATEGORIES</a></li>
+			    <li><a href="#">LEARNING</a></li>
+			    <li><a href="#">ABOUT</a></li>
+			</ul>	
+		</div>
+	
 	</div> <!-- end footer -->
 	
 	

@@ -557,12 +557,15 @@ margin-top:20px;
   Flexbox model: 4 columns same width
                  grid maintained through margin-left & margin-right = 160px
  -----------------------------------------------------------------------*/
-#footer .grid {
+#footer {
+    background: url('img/footer_pattern.png') 0px 0px / 1600px 1300px no-repeat;	 
+}
+ #footer .grid {
     display:-webkit-flex;
     -webkit-flex-direction: row;
     -webkit-justify-content: space-around;
     -webkit-flex-wrap: wrap;	
-    
+   
  }
 
 #footer #wiol {
@@ -631,9 +634,40 @@ margin-top:20px;
 @media screen and (max-width:484px) {
 
    #footer #wiol {
-    -webkit-flex-basis: 30%;  /* keep p text size constraint */
+    -webkit-flex-basis: 50%;  /* keep p text size constraint */
 -webkit-align-items: center;    
     margin-left:2px;
 } 
 
+}
+
+/*--------------------------------------------------------------
+  Lower footer
+  Flexbox model: 2 columns same width
+                 grid maintained through margin-left & margin-right = 160px
+ -----------------------------------------------------------------------*/
+#copyright{
+    display: -webkit-flex;
+	-webkit-flex-direction: row;
+-webkit-flex:1;
+	-webkit-justify-content: space-around; /* in-effective when -webkit-flex property used in childes*/
+    -webkit-align-items: center;
+	-webkit-flex-wrap: wrap;  
+
+}
+
+#copyright ul {
+display : -webkit-flex;
+-webkit-flex-direction: row;
+-webkit-justify-content:space-around;
+ 	-webkit-flex-basis:35%;  /* Shrinking UL items */
+    fmargin-right:160px;
+}
+
+#copyright p {
+ 	 margin-left:20px;
+}
+
+#copyright ul li {
+    font: bold 13px oswald;
 }
