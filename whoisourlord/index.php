@@ -31,6 +31,15 @@
 	  </div>  <!--end heading -->	
 		<div id ="player">
 		    
+			<!--
+			<a href = "#" >
+			    p
+			</a>
+			<a href = "#" >
+			    <img src="img/player_arrow.png" wsidth="65px" hseight="65px" alt="thumb1" />
+			</a>
+			-->
+			
 			<p>In the name of Allah, <br>the most Merciful, the <br> ever Merciful.</p>
 			<p>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْم</p>
 			

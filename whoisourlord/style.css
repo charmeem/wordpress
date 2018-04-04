@@ -332,13 +332,26 @@ a:hover {
 	
 }
 
-/* Making Logo in centre when screen size is reduced */
-@media screen and (max-width:850px) {
+/* Making Logo Responsive , in centre when screen size is reduced */
+@media screen and (max-width:840px) {
+  #header h1 {
+    -webkit-flex-basis: 30%;
+	-it-justify-content:center;
+	-webkit-align-items: center;
+	margin:auto;
+  }
+}
+
+@media screen and (max-width:560px) {
   #header h1 {
     -webkit-flex-basis: 50%;
-	-webkit-align-items: center;
-	margin-left:0px;
-  }
+ }
+}
+
+@media screen and (max-width:344px) {
+  #header h1 {
+    -webkit-flex-basis: 67%;
+ }
 }
 
 /* Search input */
@@ -391,10 +404,8 @@ padding-right:23px;
     -webkit-justify-content: space-around; 
 	-woebkit-align-items: center;
     -webkit-flex-wrap: wrap;
-    background: url('./img/play_button_circle.png') no-repeat 825px 245px, 
-	            url('./img/play_button_arrow.png')  no-repeat 862px 280px,
-				url('./img/player_left_arrow.png')  no-repeat 752px 280px,
-				url('./img/player_right_arrow.png')  no-repeat 972px 280px,				
+    background: url('./img/play_button.png') no-repeat 825px 245px, 
+	            url('./img/player_arrow.png')  no-repeat 972px 280px,				
                 #87b8cb;
 	opacity: 0.9;
 }
@@ -647,6 +658,7 @@ margin-top:20px;
                  grid maintained through margin-left & margin-right = 160px
  -----------------------------------------------------------------------*/
 #copyright{
+ background: url('img/footer_opaque.png') 0px 0px / 1600px 1300px no-repeat;	
     display: -webkit-flex;
 	-webkit-flex-direction: row;
 -webkit-flex:1;
