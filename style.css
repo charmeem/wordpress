@@ -1,0 +1,722 @@
+/*
+Theme Name: Wiol
+Theme URI: http://charmeem.com
+Author: Muhammad Mubashir mufti
+Author URI: http://charmeem.com/about-us
+Description: A theme developed from scratch- PSD mock-up to Word press
+             whoIsOurLord is motivating factor for this theme development.
+Version: 1.0
+Tags: PSD to Wordpress, Responsive using Flexbox, Full Width front page
+ 
+*/
+
+
+
+/**
+ * Flex Box is implemented in this style sheet
+ */
+ 
+
+/*--------------------------------------------------------------
+1.0 Normalize
+Styles based on Normalize v5.0.0 @link https://github.com/necolas/normalize.css
+- Normalize.css is an alternative to CSS resets
+- for more detail @link http://nicolasgallagher.com/about-normalize-css/
+- modified by mmm as per video course
+--------------------------------------------------------------*/
+ 
+html {
+	font-family: oswald, sans-serif;
+	line-height: 1.15;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+	display: block;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0em 0;
+}
+
+figcaption,
+figure,
+main {
+	display: block;
+}
+
+figure {
+	margin: 1em 0;
+}
+
+hr {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+pre {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+a {
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+	text-decoration: none;
+	color: black;
+}
+
+a:active,
+a:hover {
+	outline-width: 0;
+}
+
+abbr[title] {
+	border-bottom: 1px #767676 dotted;
+	text-decoration: none;
+}
+
+b,
+strong {
+	font-weight: inherit;
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+code,
+kbd,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+dfn {
+	font-style: italic;
+}
+
+mark {
+	background-color: #eee;
+	color: #222;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+audio,
+video {
+	display: inline-block;
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+img {
+	border-style: none;
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: sans-serif;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+}
+
+button,
+input {
+	overflow: visible;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+fieldset {
+	border: 1px solid #bbb;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: inherit;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal;
+}
+
+progress {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+textarea {
+	overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+[type="search"] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+
+details,
+menu {
+	display: block;
+}
+
+summary {
+	display: list-item;
+}
+
+canvas {
+	display: inline-block;
+}
+
+template {
+	display: none;
+}
+
+[hidden] {
+	display: none;
+}
+
+ul, ol {
+       list-style:none;
+} 
+
+/*--------------------------------------------------------------
+2.0 Typography
+--------------------------------------------------------------*/
+gh1 {
+       font-size:72px;
+       font-color:#fff;
+}
+gh2 {
+       font-size:48px;
+}
+
+/*--------------------------------------------------------------
+2.0 Main 
+--------------------------------------------------------------*/
+html {
+    /* Using multiple background features:
+	 * URL of top image no-repeat position/size, colour of lower background
+	 */
+	background:url('img/logo_highlight.png') no-repeat 0px -39px/ 390px 350px, 
+	           url('img/hero_background_brush2.png') no-repeat, 
+	           url('img/hero_background_brush1.png') no-repeat,
+			   #a7cbd9 ;
+}
+
+.grid {
+    woidth:1020px;
+	bdackground:red;
+	mfargin:auto;
+}
+
+a:active,
+a:hover {
+	color:#3d8ebc;
+}
+
+/*--------------------------------------------------------------
+3.0 Header
+    Features:
+	- Fully Responsive by
+	- Flexbox implementation
+	- Divided into 2 columns: h1(logo image) and navigation ul
+        - grid maintained through margin-left & margin-right = 160px
+-------------------------------------------------------------------*/
+
+/* Both #header and #header ul given role of parent */
+#header, #header ul {
+    display: -webkit-flex;
+	-webkit-flex-direction: row;
+	-webkit-justify-content: space-around; /* in-effective when -webkit-flex property used in childes*/
+    -webkit-align-items: center;
+	-webkit-flex-wrap: wrap;   
+}
+
+/* Logo is styled here */
+#header h1 {
+    background:url('img/logo.png') no-repeat  ;
+	width:170px;
+	height:180px;
+	text-indent:-9999px;
+	margin-left:110px;
+    margin-top:10px;
+
+} 
+
+#header h1 a {
+    width:170px;
+	height:180px;
+	
+}
+
+/* Making Logo Responsive , in centre when screen size is reduced */
+@media screen and (max-width:840px) {
+  #header h1 {
+    -webkit-flex-basis: 30%;
+	-it-justify-content:center;
+	-webkit-align-items: center;
+	margin:auto;
+  }
+}
+
+@media screen and (max-width:560px) {
+  #header h1 {
+    -webkit-flex-basis: 50%;
+ }
+}
+
+@media screen and (max-width:344px) {
+  #header h1 {
+    -webkit-flex-basis: 67%;
+ }
+}
+
+/* Search input */
+input {
+    background: url('img/search_icon.png') 110px 4px no-repeat #d1e5ec;
+	border: 1px solid #b4b5b5;
+	border-radius: 6px;
+	color: #333333;
+	font: bold 13px oswald;
+	padding-left: 7px;
+    padding-right: 10px;
+	padding-top:5px;
+	padding-bottom: 7px;
+	
+}
+
+input:focus, input:hover {
+    background:#3d8ebc;
+	color:#ebebeb;
+}
+
+/* Navigation */
+#header ul {
+ 	-webkit-flex-basis:50%;  /* Shrinking UL items */
+    margin-right:86px;
+}
+
+#header ul li {
+    font: bold 16px oswald;
+}
+
+
+/* Creates Lines in between But I am disabing it temporarily to cater Responsiveness
+#header ul li a {
+border-right: 1px solid black; 
+padding-right:23px;            
+}
+*/
+
+/*--------------------------------------------------------------
+  Hero
+  Flexbox model: 2 columns same width
+         col1-heading
+         col2- player
+ --------------------------------------------------------------*/
+#hero {
+    display: -webkit-flex;
+	-webkit-flex-direction: row;
+    -webkit-justify-content: space-around; 
+	-woebkit-align-items: center;
+    -webkit-flex-wrap: wrap;
+    background: #156686;
+	opacity: 0.7;
+	z-index:-1;
+}
+
+#hero #heading {
+    margin: 100px 0 80px 0px;
+}
+
+#hero h1 {
+    font-size: 51px;
+}
+
+#hero #heading p {
+    font-size: 31px; 
+    line-height: 35px;
+}
+
+
+
+#hero #player {
+opacity:0.87;
+    display:-webkit-flex;
+    -webkit-justify-content: space-around; 
+-wsebkit-flex-basis: 50%;
+    margin:100px 0px 100px 0;
+    background: #3c8ebd;
+    wsidth: 722px;
+    height: 223px;
+    border-radius: 11px;
+    
+}
+
+#hero #player p{
+-wdebkit-flex:1;
+-webkit-justify-content: space-evenly; 
+-webkit-align-items:center; 
+font-size: 31px; 
+line-height: 31px;
+margin:30px 30px 30px 30px;
+}
+#hero #player a{
+-wsebkit-align-items:center; 
+  -webkit-flex-grow: 1;
+  -webksit-flex-basis: 23%;
+  -webkit-flex: 1;
+}
+#hero #player img {
+diasplay:-webkit-flex;
+-webkit_align-items:center;   
+hseight:100%;
+wsidth:100%; 
+position:absolute;
+    margin-top:138px;
+	margin-left:-330px;
+}
+/*--------------------------------------------------------------
+  Articles - Central portion
+  Flexbox model: 3 columns same width
+                 2 Rows
+ --------------------------------------------------------------*/
+
+#centre {
+    background : #f6f4f4;
+    display: -webkit-flex;
+	-wdebkit-align-items: center;
+	-webkit-justify-content: space-evenly; /* in-effective when -webkit-flex property used in childes*/
+    -webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap; 
+}
+
+
+/* adjusting 3 articles on a row */
+#centre .article h2 {
+    display: -webkit-flex;
+	wdebkit-justify-content:space-around:;
+	margin:25px 15px 0px 15px;
+    bbackground:orange;
+    height:200px;
+	width:359px;	
+}
+
+
+#centre .article h2 a {
+    color:white;
+    padding:40px 0 0 95px  ;
+}
+
+.article p {
+     color: #7e7e7e;
+}
+
+#centre .article p {
+    display: -webkit-flex;
+    -webkit-align-items:center;
+    margin:0px 15px 15px 15px;
+    height:60px;
+    width:291px;
+    text-align:center;
+    background:#e3e3e4;
+    padding-left:68px;
+    padding-top:2px;
+    padding-bottom:5px;
+}
+
+/* increasing left margin of only first and 4th article */
+#centre .article p:nth-child(1n+4)  {
+ 	margin-bottom:25px;
+} 
+
+
+/*--------------------------------------------------------------
+  Articles - lower portion - class grid
+  Flexbox model: 2 columns same width
+                 2 Rows
+				 grid maintained through margins
+ --------------------------------------------------------------*/
+
+#lower .grid{
+    display: -webkit-flex;
+	-webkit-justify-content: space-evenly; /* in-effective when -webkit-flex property used in childes*/
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -wbkit-align-content:start; 
+}
+
+/* only last 2 articles */
+#lower .article:nth-child(n+3) {
+margin-bottom:40px;
+}
+
+/* only first 2 articles */
+#lower .article:nth-child(-n+2){
+margin-top:20px;
+
+}
+
+/* Maintaining Grid through 
+   left margin for 1st and 3rd post, 
+   right margin for 2nd and 4rth post  */
+#lower .article:nth-child(odd)  {
+-webkit-align-items:center;
+ 	margin-left:120px;
+}
+#lower .article:nth-child(even)  {
+    -webkit-align-items:center;
+ 	margin-right:120px;
+}
+
+/* Controlling margin on smaller screens */
+@media screen and (max-width:1200px) {
+   #lower .article:nth-child(odd)  {
+    -webkit-align-items:center;
+    margin-left:0px;
+}
+  #lower .article:nth-child(even)  {
+    -webkit-align-items:center;
+ 	margin-right:0px;
+}
+}
+
+#lower .article h2 {
+    color:white;
+    font-size:31px;
+    -webkit-align-items:center;
+    margin:120px;
+    position:absolute;
+ }  
+
+#lower .article img {
+    display: -webkit-flex;
+    	
+}  
+
+#lower .grid .article a {
+    margin:1px;
+}
+/*--------------------------------------------------------------
+  Footer
+  Flexbox model: 4 columns same width
+                 grid maintained through margin-left & margin-right = 160px
+ -----------------------------------------------------------------------*/
+#footer {
+    background: url('img/footer_pattern.png') 0px 0px / 1600px 1300px no-repeat;	 
+}
+ #footer .grid {
+    display:-webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: space-around;
+    -webkit-flex-wrap: wrap;	
+   
+ }
+
+#footer #wiol {
+    -webkit-flex-basis: 16%;  /* keep p text size constraint */
+    margin-left:152px;
+} 
+#footer #gallery{
+    margin-right:150px;
+}
+#footer p {
+    font-size:14px;
+    color: #7e7e7e;
+}
+#footer h2 {
+    font-size: 20px;
+    color: #7e7e7e;
+}
+#footer #lb {
+    -webkit-flex-basis:20%;
+}
+
+/* Managing Footer image gallery in flexbox */
+#footer #gallery{
+    display:-webkit-flex;
+    -webkit-flex-wrap:wrap;
+    -webkit-align-content:start;
+    -webkit-flex-basis:17%;
+}
+#footer #gallery h2 {
+    -webkit-flex-basis:100%; /* Keeping h2 on seperate row */
+}
+
+#footer #gallery a {
+    -webkit-flex-grow:1;
+	-webkit-flex-basis:23%;
+    margin:3px;
+}
+#footer #gallery img{
+    height:100%;
+    width:100%;
+}
+
+#gallery a:nth-child(-n+4){
+    hesight:28%;   /* reducing height of 1st row in the gallery */
+} 
+
+
+
+/* Controlling margin on smaller screens */
+@media screen and (max-width:1140px) {
+
+   #footer #wiol {
+    -webkit-flex-basis: 30%;  /* keep p text size constraint */
+-weabkit-align-items: center;    
+    margin-left:70px;
+} 
+#footer #gallery{
+    margin-right:70px;
+}
+}
+
+@media screen and (max-width:1036px) {
+
+   #footer #wiol {
+    -webkit-flex-basis: 30%;  /* keep p text size constraint */
+-webkit-align-items: center;    
+    margin-left:50px;
+} 
+
+}
+@media screen and (max-width:484px) {
+
+   #footer #wiol {
+    -webkit-flex-basis: 50%;  /* keep p text size constraint */
+-webkit-align-items: center;    
+    margin-left:2px;
+} 
+
+}
+
+/*--------------------------------------------------------------
+  Lower footer
+  Flexbox model: 2 columns same width
+                 grid maintained through margin-left & margin-right = 160px
+ -----------------------------------------------------------------------*/
+#copyright{
+ background: url('img/footer_opaque.png') 0px 0px / 1600px 1300px no-repeat;	
+    display: -webkit-flex;
+	-webkit-flex-direction: row;
+-webkit-flex:1;
+	-webkit-justify-content: space-around; /* in-effective when -webkit-flex property used in childes*/
+    -webkit-align-items: center;
+	-webkit-flex-wrap: wrap;  
+
+}
+
+#copyright ul {
+display : -webkit-flex;
+-webkit-flex-direction: row;
+-webkit-justify-content:space-around;
+ 	-webkit-flex-basis:35%;  /* Shrinking UL items */
+    fmargin-right:160px;
+}
+
+#copyright p {
+ 	 margin-left:20px;
+}
+
+#copyright ul li a {
+    font: bold 13px oswald;
+	color: #7e7e7e;
+}
