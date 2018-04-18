@@ -340,10 +340,11 @@ a:hover {
 
 } 
 
+/* This creates link to the logo image */
 #header h1 a {
     width:170px;
 	height:180px;
-	
+	display:block;
 }
 
 /* Making Logo Responsive , in centre when screen size is reduced */

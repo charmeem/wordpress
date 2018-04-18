@@ -53,34 +53,74 @@
 	</div> <!-- end hero -->
 	
 	<div id="content">
-	
-	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-	    <div id = "centre">
-	      <div class="article">
+	<div id = "centre">
+	    <div class="article">
 	        <h2 style="background:url(<?php echo bloginfo('template_directory') . '/img/brushg1.png'; ?>) 10px 0px/266px 222px no-repeat #002157; "><a>Who is our Lord</a></h2>
             <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful. <br>Master of the day of judgment.</p>		
-		  </div> <!-- end article -->
-	    </div> <!-- end center-->
+		</div> <!-- end article -->
+		
+		<div class="article">
+	        <h2 style="background:url(<?php echo bloginfo('template_directory') . '/img/imgg2.png'; ?>) 0px 0px/360px 202px no-repeat ; "><a>Who is Jesus Christ</a></h2>
+            
+            <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful.</p>	
+		</div> <!-- end article -->
+		
+		<div class="article">
+		    <h2 style="background:url(<?php echo bloginfo('template_directory') . '/img/imgg3.png'; ?>) 0px 0px/360px 202px no-repeat; "><a>Who is our Lord</a></h2>
+	        
+            <p class ="caption">And recite to them the news of Abraham.<br>when he said to His father</p>		
+		</div> <!-- end article -->
+		
+		<div class="article">
+		    <h2 style="background:url(<?php echo bloginfo('template_directory') . '/img/imgg4.png'; ?>) 0px 0px/360px 202px no-repeat; "><a>Who is our Lord</a></h2>
+	        <p class ="caption">The most Merciful, the ever Merciful. <br>Master of the day of judgement.</p>		
+		</div> <!-- end article -->
+		
+		<div class="article">
+	        <h2 style="background:url(<?php echo bloginfo('template_directory') . '/img/imgg5.png'; ?>) 0px 0px/360px 202px no-repeat; "><a>Who is our Lord</a></h2>
+            <p class ="caption">The Lord of the Universe.<br>The most Merciful, the ever Merciful. </p>	
+		</div> <!-- end article -->
+		
+		<div class="article">
+	        <h2 style="background:url(<?php echo bloginfo('template_directory') . '/img/brushg6.png'; ?>) 0px 0px/360px 202px no-repeat #d1dcf1; "><a>Who is our Lord</a></h2>
+            <p class ="caption">The Lord of the Universe. <br>The most Merciful, the ever Merciful. <br>Master of the day of judgment.</p>		
+		</div> <!-- end article -->
+		
+	</div> <!-- end center-->
 	
-	    <div id = "lower">
-          <div class = "grid">	
-            <div class="article">
+	<div id = "lower">
+      <div class = "grid">	
+        <div class="article">
 	       
 		   <!-- <h2 style="background:url(img/pregnancy-week-13.jpg) 0px 0px/360px 260px no-repeat; "><a>Who are We</a></h2> -->
 			<a href = "#" >
 			<h2>Who are We</h2>
 		    <img src="<?php echo bloginfo('template_directory') . '/img/pregnancy-week-13.jpg'; ?>" width='430px' height='300px' alt="1st article" />
 			</a>
-            </div> <!-- end article -->
-	      </div> <!-- end grid -->	
-	    </div> <!-- end lower -->    
-	<?php endwhile; ?>
-	
-    <?php else: ?>
-        <p> I am not Sure what you are looking for ></p>	
-	<?php endif; ?>
-	
-	
+        </div> <!-- end article -->
+		
+	    <div class="article">
+	        <a href = "#" >
+			<h2>Who is our Lord</h2>
+			<img src="<?php echo bloginfo('template_directory') . '/img/imgg5.png'; ?>" width='430px' height='300px' alt="2nd article" />
+			</a>
+        </div> <!-- end article -->
+				
+		<div class="article">
+		    <a href = "#" >
+	        <h2>Who is Jesus Christ</h2>
+			<img src="<?php echo bloginfo('template_directory') . '/img/imgg2.png'; ?>" width='430px' height='300px' alt="3rd article" />
+			</a>
+        </div> <!-- end article -->
+		
+		<div class="article">
+	        <a href = "#" >
+			<h2>Who are We 2</h2>
+			<img src="<?php echo bloginfo('template_directory') . '/img/pregnancy-week-6.jpg'; ?>" width='430px' height='300px' alt="4rth article" />
+			</a>
+        </div> <!-- end article -->
+	</div> <!-- end grid -->	
+	</div> <!-- end lower -->
 	</div> <!-- end content -->
 	
 	<div id = "footer">
