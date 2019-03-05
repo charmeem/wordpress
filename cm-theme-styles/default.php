@@ -68,11 +68,13 @@ class cm_theme_support_message extends WP_Customize_Control
 		<div style = "border:1px solid black; padding-left:2px">
 		<span >
 		 <em><strong>Note:Colorizer is not yet tested with your theme therefore might not give desired result.</em></strong>
-		 <a href = "http://charmeem.com/request" target = "_blank">
+		 <!-- <a href = "http://charmeem.com/request" target = "_blank"> -->
+		  <a href = "http://localhost/wordpress/requests" target = "_blank">
+		 
 		  Click here and send request to test and add your theme.
-		  <br><br>
+		   <br><br>
 		 </a>
-		</span>
+		 </span>
 		</div>
 		<?php
 	}

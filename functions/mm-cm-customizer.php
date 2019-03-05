@@ -53,12 +53,13 @@ function mm_cm_include_file() {
  * 
  * @ uses wp_get_theme()  To check if theme is not 'customizr'
  * @ uses mm_cm_get_color_scheme()   Get the current color scheme
- * @ uses get_setting()   A function that fetches names of setting/control UI from a separate theme file
+ * @ uses get_setings()   A function that fetches names of setting/control UI from a separate theme file
  * @ 
  * @since Colorizer 1.1
  *
  * @param WP_Customize_Manager $wp_customize Customizer object.
  */
+ 
 add_action( 'customize_register', 'mm_cm_customizer_setup' , 11);
 function mm_cm_customizer_setup( $wp_customize ) {
 	
@@ -87,7 +88,7 @@ function mm_cm_customizer_setup( $wp_customize ) {
 		'priority' => 1,
 	) );
 	
-	$settings =  get_setting(); // A function defined below 
+	$settings =  get_setings(); // A function defined below 
 	
 	if ( $settings ) {
 		// include custom controls if any
@@ -398,7 +399,7 @@ add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
  * @uses get_theme_support()  Fetches color element from array defined by add_theme_support in respective theme file
  * @param string $key
  */
-	function get_setting( $key = null ) {
+	function get_setings( $key = null ) {
 
 		$settings = get_theme_support( 'colorizer' );
 		if ( isset( $settings[0] ) ) {
@@ -432,7 +433,7 @@ add_action( 'customize_preview_init', 'mm_cm_customize_preview_js' );
  */
 function mm_cm_color_scheme_css_template() {
 
-	$settings =  get_setting();
+	$settings =  get_setings();
 	$colors = $settings['template']; // I have customized the theme style by moving the templete array into
 									// respective theme file , e.g. in twenty-twelve.php
 	

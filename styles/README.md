@@ -7,9 +7,9 @@
 
 **Requires at least:4.2
 
-**Tested up to:4.5.3
+**Tested up to:4.4.2
 
-**Stable tag: 1.2.1
+**Stable tag: 1.2
 
 **License: GPLv2 or later
 
@@ -67,8 +67,5 @@ Feb. 04, 2016
 ##### 1.2 #####
 Feb. 25, 2016
 
-##### 1.2.1 #####
-Jun. 23, 2016
-
-* Minor changes
+* Support added for corpbiz theme
 

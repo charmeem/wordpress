@@ -2,8 +2,8 @@
 
 /*
 Plugin Name: Colorizer
-Plugin URI: https://github.com/charmeem/wordpress/tree/colorizer
-Description: Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve, twentythirteen, twentyfourteen and Graphy.
+Plugin URI: http://www.charmeem.com/colorizer
+Description: Make your themes colourful by utilizing easy to use Customizer feature of WP. Multiple themes supports, so far tested with Customizr, twenty twelve, twentythirteen, twentyfourteen and Graphy while more to come.
 Version: 1.2
 Author: Mubashir Mufti
 Author URI: http://www.charmeem.com
@@ -41,7 +41,7 @@ if ( !defined( 'ABSPATH' ) ) {
 add_action( 'plugins_loaded', 'charmeem_colorpicker_translation' ); //Add the translation function after the plugins loaded hook.
 
 function charmeem_colorpicker_translation() {
-if ( !is_admin() ) 											//If we’re not in the admin, load any translation of our plugin.
+if ( !is_admin() ) 													//If we’re not in the admin, load any translation of our plugin.
 	load_plugin_textdomain( 'charmeem-plugins', false, 'charmeem-plugins/languages' );
 	
 }

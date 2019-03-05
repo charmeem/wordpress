@@ -15,7 +15,7 @@
 	// Site title.
 	api( 'blogname', function( value ) {
 	
-	// ! USE .on instead of .bind as it is DEPRECATED			
+				
 	value.bind( function( to ) {
 			$( '.site-title a' ).text( to );
 		} );
